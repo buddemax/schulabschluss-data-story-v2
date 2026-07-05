@@ -42,11 +42,11 @@
                       "Entity": "dim_abschluss"
                     }
                   },
-                  "Property": "Quote ohne HSA (Geschlecht) %"
+                  "Property": "Quote ohne HSA %"
                 }
               },
-              "queryRef": "dim_abschluss.Quote ohne HSA (Geschlecht) %",
-              "nativeQueryRef": "Quote ohne HSA (Geschlecht) %",
+              "queryRef": "dim_abschluss.Quote ohne HSA %",
+              "nativeQueryRef": "Quote ohne HSA %",
               "active": true
             }
           ]
@@ -61,11 +61,11 @@
                       "Entity": "dim_abschluss"
                     }
                   },
-                  "Property": "Abiturquote (Geschlecht) %"
+                  "Property": "Abiturquote %"
                 }
               },
-              "queryRef": "dim_abschluss.Abiturquote (Geschlecht) %",
-              "nativeQueryRef": "Abiturquote (Geschlecht) %"
+              "queryRef": "dim_abschluss.Abiturquote %",
+              "nativeQueryRef": "Abiturquote %"
             }
           ]
         }
@@ -80,7 +80,7 @@
                     "Entity": "dim_abschluss"
                   }
                 },
-                "Property": "Quote ohne HSA (Geschlecht) %"
+                "Property": "Quote ohne HSA %"
               }
             },
             "direction": "Descending"
