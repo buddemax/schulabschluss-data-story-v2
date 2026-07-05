@@ -1,38 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
-  "name": "0aa11map0000000000b1",
+  "name": "ca8566969fd81f00f22c",
   "position": {
-    "x": 310,
-    "y": 20,
-    "z": 3,
-    "height": 430,
-    "width": 560,
-    "tabOrder": 3
+    "x": 518.75,
+    "y": 570,
+    "z": 3003,
+    "height": 150,
+    "width": 340,
+    "tabOrder": 3003
   },
   "visual": {
-    "visualType": "map",
+    "visualType": "kpi",
     "query": {
       "queryState": {
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dim_region"
-                    }
-                  },
-                  "Property": "region"
-                }
-              },
-              "queryRef": "dim_region.region",
-              "nativeQueryRef": "region",
-              "active": true
-            }
-          ]
-        },
-        "Size": {
+        "Indicator": {
           "projections": [
             {
               "field": {
@@ -42,30 +23,47 @@
                       "Entity": "dim_abschluss"
                     }
                   },
-                  "Property": "Quote ohne HSA %"
+                  "Property": "Abiturquote (Geschlecht) %"
                 }
               },
-              "queryRef": "dim_abschluss.Quote ohne HSA %",
-              "nativeQueryRef": "Quote ohne HSA %"
+              "queryRef": "dim_abschluss.Abiturquote (Geschlecht) %",
+              "nativeQueryRef": "Abiturquote (Geschlecht) %"
+            }
+          ]
+        },
+        "TrendLine": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_abgaenge"
+                    }
+                  },
+                  "Property": "geschlecht"
+                }
+              },
+              "queryRef": "fact_abgaenge.geschlecht",
+              "nativeQueryRef": "geschlecht"
             }
           ]
         }
       }
-    },
-    "drillFilterOtherVisuals": true
+    }
   },
   "filterConfig": {
     "filters": [
       {
-        "name": "blf_0aa11map0000000000b1",
+        "name": "6dbbc8a0dd4b2d981823",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "dim_region"
+                "Entity": "fact_abgaenge"
               }
             },
-            "Property": "ebene"
+            "Property": "geschlecht"
           }
         },
         "type": "Categorical",
@@ -73,8 +71,8 @@
           "Version": 2,
           "From": [
             {
-              "Name": "d",
-              "Entity": "dim_region",
+              "Name": "f",
+              "Entity": "fact_abgaenge",
               "Type": 0
             }
           ],
@@ -87,10 +85,10 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "d"
+                            "Source": "f"
                           }
                         },
-                        "Property": "ebene"
+                        "Property": "geschlecht"
                       }
                     }
                   ],
@@ -98,7 +96,7 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'BL'"
+                          "Value": "'weiblich'"
                         }
                       }
                     ]
@@ -107,8 +105,21 @@
               }
             }
           ]
+        }
+      },
+      {
+        "name": "6fc2b9d948444b158fe0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "Abiturquote (Geschlecht) %"
+          }
         },
-        "howCreated": "User"
+        "type": "Advanced"
       }
     ]
   }

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "6852c1376c79a8b91b57",
+  "position": {
+    "x": 0,
+    "y": 177.5,
+    "z": 3000,
+    "height": 411.25,
+    "width": 550,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_region"
+                    }
+                  },
+                  "Property": "region"
+                }
+              },
+              "queryRef": "dim_region.region",
+              "nativeQueryRef": "region",
+              "active": true
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_abschluss"
+                    }
+                  },
+                  "Property": "Quote ohne HSA %"
+                }
+              },
+              "queryRef": "dim_abschluss.Quote ohne HSA %",
+              "nativeQueryRef": "Quote ohne HSA %",
+              "active": true
+            }
+          ]
+        }
+      }
+    }
+  }
+}

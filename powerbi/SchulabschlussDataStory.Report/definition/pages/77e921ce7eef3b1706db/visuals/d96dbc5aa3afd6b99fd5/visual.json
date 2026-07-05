@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "d96dbc5aa3afd6b99fd5",
   "position": {
-    "x": 10,
-    "y": 20,
+    "x": 0,
+    "y": 206.25,
     "z": 0,
-    "height": 280,
-    "width": 280,
+    "height": 460,
+    "width": 498.75,
     "tabOrder": 0
   },
   "visual": {
@@ -146,6 +146,34 @@
             }
           ]
         }
+      },
+      {
+        "name": "85bb3ac635e95fba49a7",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "Abiturquote (Geschlecht) %"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3bbdd37d417222a76b85",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "Quote ohne HSA (Geschlecht) %"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

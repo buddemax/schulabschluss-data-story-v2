@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
-  "name": "a64b2d40a9eab4ea2d9a",
+  "name": "93d3a815dec4a4392c70",
   "position": {
-    "x": 10,
-    "y": 20,
-    "z": 0,
-    "height": 280,
-    "width": 280,
-    "tabOrder": 0
+    "x": 507,
+    "y": 160,
+    "z": 6000,
+    "height": 560,
+    "width": 495,
+    "tabOrder": 6000
   },
   "visual": {
-    "visualType": "scatterChart",
+    "visualType": "lineChart",
     "query": {
       "queryState": {
         "Category": {
@@ -32,22 +32,21 @@
             }
           ]
         },
-        "X": {
+        "Series": {
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_abschluss"
+                      "Entity": "dim_zeit"
                     }
                   },
-                  "Property": "Quote ohne HSA %"
+                  "Property": "schuljahr"
                 }
               },
-              "queryRef": "dim_abschluss.Quote ohne HSA %",
-              "nativeQueryRef": "Quote ohne HSA %",
-              "active": true
+              "queryRef": "dim_zeit.schuljahr",
+              "nativeQueryRef": "schuljahr"
             }
           ]
         },
@@ -61,11 +60,11 @@
                       "Entity": "dim_abschluss"
                     }
                   },
-                  "Property": "Abiturquote %"
+                  "Property": "Quote ohne HSA %"
                 }
               },
-              "queryRef": "dim_abschluss.Abiturquote %",
-              "nativeQueryRef": "Abiturquote %"
+              "queryRef": "dim_abschluss.Quote ohne HSA %",
+              "nativeQueryRef": "Quote ohne HSA %"
             }
           ]
         }
@@ -93,7 +92,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "4e017f820f34de615240",
+        "name": "fcd541d23d3eee67440f",
         "field": {
           "Column": {
             "Expression": {
@@ -134,7 +133,7 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'KR'"
+                          "Value": "'BL'"
                         }
                       }
                     ]

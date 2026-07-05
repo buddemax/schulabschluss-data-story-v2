@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "348b41bf59da6b6065f8",
   "position": {
-    "x": 10,
-    "y": 320,
-    "z": 1,
-    "height": 280,
-    "width": 280,
-    "tabOrder": 1
+    "x": 598.75,
+    "y": 177.5,
+    "z": 0,
+    "height": 431.25,
+    "width": 312.5,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "tableEx",
@@ -37,11 +37,11 @@
                       "Entity": "dim_region"
                     }
                   },
-                  "Property": "bundesland_code"
+                  "Property": "Land"
                 }
               },
-              "queryRef": "dim_region.bundesland_code",
-              "nativeQueryRef": "bundesland_code"
+              "queryRef": "dim_region.Land",
+              "nativeQueryRef": "Land"
             }
           ]
         }
@@ -67,20 +67,6 @@
   },
   "filterConfig": {
     "filters": [
-      {
-        "name": "0b9f09cd6be1ee2be2f3",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_abschluss"
-              }
-            },
-            "Property": "StdAbw Quote ohne HSA (Kreise)"
-          }
-        },
-        "type": "Advanced"
-      },
       {
         "name": "6f1fd5057b042b8539e7",
         "field": {
@@ -134,20 +120,6 @@
           ]
         },
         "howCreated": "User"
-      },
-      {
-        "name": "6f647a42647be477802d",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_region"
-              }
-            },
-            "Property": "bundesland_code"
-          }
-        },
-        "type": "Categorical"
       }
     ]
   }

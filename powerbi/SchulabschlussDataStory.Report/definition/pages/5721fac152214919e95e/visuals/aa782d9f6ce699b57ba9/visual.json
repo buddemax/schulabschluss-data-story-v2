@@ -1,0 +1,63 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "aa782d9f6ce699b57ba9",
+  "position": {
+    "x": 1014,
+    "y": 10,
+    "z": 5000,
+    "height": 150,
+    "width": 266,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "listSlicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_zeit"
+                    }
+                  },
+                  "Property": "schuljahr"
+                }
+              },
+              "queryRef": "dim_zeit.schuljahr",
+              "nativeQueryRef": "schuljahr",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e1d37f541e938afa6fcd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_zeit"
+              }
+            },
+            "Property": "schuljahr"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

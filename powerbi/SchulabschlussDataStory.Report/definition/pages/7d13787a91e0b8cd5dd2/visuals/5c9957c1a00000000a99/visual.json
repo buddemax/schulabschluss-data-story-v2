@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "5c9957c1a00000000a99",
   "position": {
-    "x": 300,
-    "y": 340,
-    "z": 6,
+    "x": 980,
+    "y": 240,
+    "z": 3000,
     "height": 120,
     "width": 300,
-    "tabOrder": 6
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "slicer",
@@ -34,6 +34,31 @@
         }
       }
     },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "fd245bcc7352b5640eec",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_region"
+              }
+            },
+            "Property": "stadt_land"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

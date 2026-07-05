@@ -3,10 +3,10 @@
   "name": "a713d6a1881712fdcb67",
   "position": {
     "x": 10,
-    "y": 20,
+    "y": 160,
     "z": 0,
-    "height": 280,
-    "width": 280,
+    "height": 558.75,
+    "width": 643.75,
     "tabOrder": 0
   },
   "visual": {
@@ -128,24 +128,76 @@
         "howCreated": "User"
       },
       {
-        "name": "3e92f0cd2aa0622a28c5",
+        "name": "e77bdfa48707002f8d6f",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "dim_zeit"
+                "Entity": "dim_region"
               }
             },
-            "Property": "jahr"
+            "Property": "region"
           }
         },
-        "type": "Categorical",
+        "type": "TopN",
         "filter": {
           "Version": 2,
           "From": [
             {
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "d",
+                        "Entity": "dim_region",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "d1",
+                        "Entity": "dim_abschluss",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "d"
+                            }
+                          },
+                          "Property": "region"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Measure": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d1"
+                              }
+                            },
+                            "Property": "Quote ohne HSA %"
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 15
+                  }
+                }
+              },
+              "Type": 2
+            },
+            {
               "Name": "d",
-              "Entity": "dim_zeit",
+              "Entity": "dim_region",
               "Type": 0
             }
           ],
@@ -161,25 +213,20 @@
                             "Source": "d"
                           }
                         },
-                        "Property": "jahr"
+                        "Property": "region"
                       }
                     }
                   ],
-                  "Values": [
-                    [
-                      {
-                        "Literal": {
-                          "Value": "2023L"
-                        }
-                      }
-                    ]
-                  ]
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
+                    }
+                  }
                 }
               }
             }
           ]
-        },
-        "howCreated": "User"
+        }
       }
     ]
   }

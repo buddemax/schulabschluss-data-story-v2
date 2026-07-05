@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "ff51e8211dca01a94a1b",
   "position": {
-    "x": 10,
-    "y": 320,
-    "z": 1,
-    "height": 280,
-    "width": 280,
-    "tabOrder": 1
+    "x": 0,
+    "y": 178.75,
+    "z": 1000,
+    "height": 512.5,
+    "width": 535,
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "columnChart",
@@ -74,21 +74,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "3eb19286db6955dc5ee6",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_abschluss"
-              }
-            },
-            "Property": "Ausgaben Schulart (DE 2023)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "5b90d1f064c8dec53fe5",
+        "name": "664ed497fc77c84b2c3b",
         "field": {
           "Column": {
             "Expression": {
@@ -100,6 +86,20 @@
           }
         },
         "type": "Categorical"
+      },
+      {
+        "name": "22c72dd09d90d01f12c8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "Ausgaben Schulart (DE 2023)"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

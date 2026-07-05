@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "5c99e1c0de000000aa19",
   "position": {
-    "x": 300,
-    "y": 210,
-    "z": 6,
+    "x": 980,
+    "y": 390,
+    "z": 5000,
     "height": 110,
     "width": 300,
-    "tabOrder": 6
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "slicer",
@@ -34,7 +34,6 @@
         }
       }
     },
-    "drillFilterOtherVisuals": true,
     "objects": {
       "data": [
         {
@@ -48,7 +47,31 @@
             }
           }
         }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7f7ad66bedb1dd5806e6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_einkommen_kreis"
+              }
+            },
+            "Property": "einkommen_je_ew"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

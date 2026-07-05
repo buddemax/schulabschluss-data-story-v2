@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "0a3ef5fbafedcdee2a4a",
   "position": {
-    "x": 310,
-    "y": 20,
-    "z": 2,
-    "height": 560,
+    "x": 680,
+    "y": 161.25,
+    "z": 2000,
+    "height": 558.75,
     "width": 600,
-    "tabOrder": 2
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "map",
@@ -51,12 +51,40 @@
           ]
         }
       }
+    },
+    "objects": {
+      "mapStyles": [
+        {
+          "properties": {
+            "mapTheme": {
+              "expr": {
+                "Literal": {
+                  "Value": "'grayscale'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "heatMap": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "filterConfig": {
     "filters": [
       {
-        "name": "beaca183b689a13a9c3f",
+        "name": "a7db0fb01167a14d84d7",
         "field": {
           "Column": {
             "Expression": {
@@ -67,21 +95,94 @@
             "Property": "Kreis"
           }
         },
-        "type": "Categorical"
-      },
-      {
-        "name": "09cffd7d774d066b2945",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_abschluss"
-              }
+        "type": "TopN",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "d",
+                        "Entity": "dim_region",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "d1",
+                        "Entity": "dim_abschluss",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "d"
+                            }
+                          },
+                          "Property": "Kreis"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Measure": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d1"
+                              }
+                            },
+                            "Property": "Quote ohne HSA %"
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 15
+                  }
+                }
+              },
+              "Type": 2
             },
-            "Property": "Quote ohne HSA %"
-          }
-        },
-        "type": "Advanced"
+            {
+              "Name": "d",
+              "Entity": "dim_region",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "d"
+                          }
+                        },
+                        "Property": "Kreis"
+                      }
+                    }
+                  ],
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
       }
     ]
   }

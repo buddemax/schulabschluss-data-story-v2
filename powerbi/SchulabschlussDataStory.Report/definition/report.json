@@ -11,59 +11,6 @@
       "type": "RegisteredResources"
     }
   },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "3e9dbd72c10ac25ef9ee",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_zeit"
-              }
-            },
-            "Property": "jahr"
-          }
-        },
-        "type": "Advanced",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "d",
-              "Entity": "dim_zeit",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "Comparison": {
-                  "ComparisonKind": 0,
-                  "Left": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Source": "d"
-                        }
-                      },
-                      "Property": "jahr"
-                    }
-                  },
-                  "Right": {
-                    "Literal": {
-                      "Value": "2023L"
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        },
-        "howCreated": "User"
-      }
-    ]
-  },
   "resourcePackages": [
     {
       "name": "RegisteredResources",

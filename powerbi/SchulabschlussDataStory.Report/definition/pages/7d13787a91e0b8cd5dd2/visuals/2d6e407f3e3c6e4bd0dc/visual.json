@@ -3,10 +3,10 @@
   "name": "2d6e407f3e3c6e4bd0dc",
   "position": {
     "x": 10,
-    "y": 20,
+    "y": 211.25,
     "z": 0,
-    "height": 280,
-    "width": 280,
+    "height": 432.5,
+    "width": 465,
     "tabOrder": 0
   },
   "visual": {
@@ -145,6 +145,48 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "ee376f3368b45dad28dd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_region"
+              }
+            },
+            "Property": "region"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "cf9aab9991b3913b7cf7",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "Quote ohne HSA %"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8f9522aaff09a73cea7a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "Jugend-ALQ Ø"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "ae0c1c8278c9dd1a3a20",
   "position": {
-    "x": 9.72644376899696,
-    "y": 20.425531914893618,
+    "x": 0,
+    "y": 157.5,
     "z": 0,
-    "height": 640,
-    "width": 760,
+    "height": 562.5,
+    "width": 823.75,
     "tabOrder": 0
   },
   "visual": {
@@ -169,48 +169,6 @@
         "howCreated": "User"
       },
       {
-        "name": "65c92ce96a35cc2b09b1",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_region"
-              }
-            },
-            "Property": "region"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "6cf97fceb12fde1b780d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_abschluss"
-              }
-            },
-            "Property": "Ausgaben je Schüler Ø"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "93ffa75c34dd5927872a",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_abschluss"
-              }
-            },
-            "Property": "Abiturquote %"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "ac29dadcba0b40f9e1f3",
         "field": {
           "Column": {
@@ -260,7 +218,21 @@
         "howCreated": "User"
       },
       {
-        "name": "2ee82ee5ea99bf00a30f",
+        "name": "0058285fb874d416581d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_region"
+              }
+            },
+            "Property": "region"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "27e3c17e9b8b169a4a12",
         "field": {
           "Column": {
             "Expression": {
@@ -272,6 +244,34 @@
           }
         },
         "type": "Categorical"
+      },
+      {
+        "name": "add47e1a114724989467",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "Ausgaben je Schüler Ø"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a4083173305b32821116",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "Abiturquote %"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

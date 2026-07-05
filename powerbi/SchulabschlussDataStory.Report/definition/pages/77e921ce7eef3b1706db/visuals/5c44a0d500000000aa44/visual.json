@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "5c44a0d500000000aa44",
   "position": {
-    "x": 310,
-    "y": 20,
-    "z": 6,
+    "x": 980,
+    "y": 400,
+    "z": 2000,
     "height": 320,
     "width": 300,
-    "tabOrder": 6
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "slicer",
@@ -34,6 +34,31 @@
         }
       }
     },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1eb7c951a97813ffee88",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_region"
+              }
+            },
+            "Property": "Land"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

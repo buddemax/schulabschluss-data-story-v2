@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "9cbfb2de5a7c8207bc55",
   "position": {
-    "x": 470,
-    "y": 70,
+    "x": 450,
+    "y": 240,
     "z": 0,
     "height": 480,
     "width": 440,
@@ -126,6 +126,34 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "fa7c4b8a1b0fdba1fc05",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_region"
+              }
+            },
+            "Property": "region"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5835c9cdf8cd808a21c2",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "Ohne HSA je 1000 (15-18)"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

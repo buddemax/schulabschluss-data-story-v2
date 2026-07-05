@@ -4,5 +4,12 @@
   "displayName": "LF3 ohne HSA × Abitur (Kreise)",
   "displayOption": "FitToPage",
   "height": 720,
-  "width": 1280
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "6852c1376c79a8b91b57",
+      "target": "5034711dcddb9bc17069",
+      "type": "NoFilter"
+    }
+  ]
 }

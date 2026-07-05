@@ -1,0 +1,126 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "bc65a55a6882c226e26e",
+  "position": {
+    "x": 518.75,
+    "y": 461.25,
+    "z": 3004,
+    "height": 150,
+    "width": 340,
+    "tabOrder": 3004
+  },
+  "visual": {
+    "visualType": "kpi",
+    "query": {
+      "queryState": {
+        "Indicator": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_abschluss"
+                    }
+                  },
+                  "Property": "Abiturquote (Geschlecht) %"
+                }
+              },
+              "queryRef": "dim_abschluss.Abiturquote (Geschlecht) %",
+              "nativeQueryRef": "Abiturquote (Geschlecht) %"
+            }
+          ]
+        },
+        "TrendLine": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_abgaenge"
+                    }
+                  },
+                  "Property": "geschlecht"
+                }
+              },
+              "queryRef": "fact_abgaenge.geschlecht",
+              "nativeQueryRef": "geschlecht"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "6dbbc8a0dd4b2d981823",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_abgaenge"
+              }
+            },
+            "Property": "geschlecht"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "fact_abgaenge",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "f"
+                          }
+                        },
+                        "Property": "geschlecht"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'maennlich'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "513fc237f7f3226f35f6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "Abiturquote (Geschlecht) %"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

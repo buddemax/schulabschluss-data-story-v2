@@ -1,0 +1,126 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "f7d446b62a0475f6cb2d",
+  "position": {
+    "x": 518.75,
+    "y": 161.25,
+    "z": 3001,
+    "height": 150,
+    "width": 340,
+    "tabOrder": 3001
+  },
+  "visual": {
+    "visualType": "kpi",
+    "query": {
+      "queryState": {
+        "Indicator": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_abschluss"
+                    }
+                  },
+                  "Property": "Quote ohne HSA (Geschlecht) %"
+                }
+              },
+              "queryRef": "dim_abschluss.Quote ohne HSA (Geschlecht) %",
+              "nativeQueryRef": "Quote ohne HSA (Geschlecht) %"
+            }
+          ]
+        },
+        "TrendLine": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_abgaenge"
+                    }
+                  },
+                  "Property": "geschlecht"
+                }
+              },
+              "queryRef": "fact_abgaenge.geschlecht",
+              "nativeQueryRef": "geschlecht"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1e12ec80c9654a179807",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "Quote ohne HSA (Geschlecht) %"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6dbbc8a0dd4b2d981823",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_abgaenge"
+              }
+            },
+            "Property": "geschlecht"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "fact_abgaenge",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "f"
+                          }
+                        },
+                        "Property": "geschlecht"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'maennlich'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
