@@ -30,7 +30,7 @@ table fact_einkommen_kreis
 		source =
 				let
 				src = Csv.Document(File.Contents(DataFolder & "82411-01-03-4.csv"), [Delimiter=";", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
-				y = Table.SelectRows(src, each Text.Trim([Column1]) = "2021"),
+				y = Table.SelectRows(src, each Text.Trim([Column1]) = "2021" and fnEbene([Column2]) <> "?"),
 				r = Table.AddColumn(y, "rec", each [region_code = Text.Trim([Column2]), jahr = 2021, region = Text.Trim([Column3]), einkommen_je_ew = fnToInt([Column5])]),
 				tbl = Table.SelectRows(Table.FromRecords(r[rec]), each [einkommen_je_ew] <> null),
 				typed = Table.TransformColumnTypes(tbl, {{"region_code", type text}, {"jahr", Int64.Type}, {"region", type text}, {"einkommen_je_ew", Int64.Type}}, "en-US")

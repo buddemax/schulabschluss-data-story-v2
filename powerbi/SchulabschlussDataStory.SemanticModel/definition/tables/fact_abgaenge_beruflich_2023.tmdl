@@ -38,27 +38,27 @@ table fact_abgaenge_beruflich_2023
 		sourceColumn: insgesamt
 
 	column mit_hauptschulabschluss
-		dataType: string
+		dataType: int64
 		lineageTag: 185f0008-5ecb-4c3c-837d-b5c71c36035a
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: mit_hauptschulabschluss
 
 	column mit_mittlerem_abschluss
-		dataType: string
+		dataType: int64
 		lineageTag: 937a7994-2cd7-4b02-8c96-ea8186de2fd0
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: mit_mittlerem_abschluss
 
 	column fachhochschulreife
-		dataType: string
+		dataType: int64
 		lineageTag: 3df2c2a8-c19f-4330-9119-01c40de67a1d
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: fachhochschulreife
 
 	column allg_hochschulreife
-		dataType: string
+		dataType: int64
 		lineageTag: 9454ff23-87fa-4610-9949-5e789ffea4c8
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: allg_hochschulreife
 
 	partition fact_abgaenge_beruflich_2023 = m
@@ -69,7 +69,7 @@ table fact_abgaenge_beruflich_2023
 				y = Table.SelectRows(src, each Text.Trim([Column1]) = "2023" and fnEbene([Column2]) <> "?"),
 				r = Table.AddColumn(y, "rec", each [jahr = 2023, region_code = Text.Trim([Column2]), region = Text.Trim([Column3]), ebene = fnEbene([Column2]), bundesland_code = fnBlc([Column2]), insgesamt = fnToInt([Column4]), mit_hauptschulabschluss = fnToInt([Column6]), mit_mittlerem_abschluss = fnToInt([Column8]), fachhochschulreife = fnToInt([Column10]), allg_hochschulreife = fnToInt([Column12])]),
 				tbl = Table.FromRecords(r[rec]),
-				typed = Table.TransformColumnTypes(tbl, {{"jahr", Int64.Type}, {"region_code", type text}, {"region", type text}, {"ebene", type text}, {"bundesland_code", type text}, {"insgesamt", Int64.Type}, {"mit_hauptschulabschluss", type text}, {"mit_mittlerem_abschluss", type text}, {"fachhochschulreife", type text}, {"allg_hochschulreife", type text}})
+				typed = Table.TransformColumnTypes(tbl, {{"jahr", Int64.Type}, {"region_code", type text}, {"region", type text}, {"ebene", type text}, {"bundesland_code", type text}, {"insgesamt", Int64.Type}, {"mit_hauptschulabschluss", Int64.Type}, {"mit_mittlerem_abschluss", Int64.Type}, {"fachhochschulreife", Int64.Type}, {"allg_hochschulreife", Int64.Type}})
 				in
 				typed
 

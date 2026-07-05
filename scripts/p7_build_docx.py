@@ -357,6 +357,12 @@ PL("Methodischer Grundsatz:","Korrelation ≠ Kausalität. Sowohl bei LF8 als au
    "Zusammenhänge aus, ziehen aber keine ursächlichen Schlüsse; plausibler ist jeweils ein Confounder "
    "(Stadtstaat-Status bzw. regionale Wirtschaftsstruktur). Alle Korrelationsaussagen sind daher als Hinweise "
    "auf Strukturzusammenhänge zu lesen, nicht als Kausalnachweise.")
+PL("Aggregatebene (ökologischer Fehlschluss):","Alle Auswertungen liegen auf Gebietsebene (Bundesland bzw. "
+   "Kreis) vor. Ein Zusammenhang zwischen Regionen darf nicht auf Einzelpersonen übertragen werden – dass in "
+   "einkommensschwächeren Kreisen mehr Jugendliche ohne Abschluss bleiben, ist eine Aussage über Kreise, nicht "
+   "über einzelne Schülerinnen und Schüler (ökologischer Fehlschluss). Der Risiko-Score (LF9) ist bewusst als "
+   "regionaler Strukturindikator formuliert, nicht als individuelle Prognose. Aggregatzusammenhänge können sich "
+   "auf Individualebene abschwächen oder umkehren (Simpson-Paradoxon) – genau das zeigt LF8 mit den Stadtstaaten.")
 
 # ===================== 6. WERKZEUG & LERNINHALTE =====================
 H("6. Werkzeug-Reflexion und Lerninhalte")

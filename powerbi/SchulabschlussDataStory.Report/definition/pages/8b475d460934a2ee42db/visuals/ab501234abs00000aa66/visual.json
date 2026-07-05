@@ -1,8 +1,8 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
-  "name": "9cbfb2de5a7c8207bc55",
+  "name": "ab501234abs00000aa66",
   "position": {
-    "x": 470,
+    "x": 20,
     "y": 70,
     "z": 0,
     "height": 480,
@@ -42,11 +42,11 @@
                       "Entity": "dim_abschluss"
                     }
                   },
-                  "Property": "Ohne HSA je 1000 (15-18)"
+                  "Property": "Abgänge ohne HSA"
                 }
               },
-              "queryRef": "dim_abschluss.Ohne HSA je 1000 (15-18)",
-              "nativeQueryRef": "Ohne HSA je 1000 (15-18)"
+              "queryRef": "dim_abschluss.Abgänge ohne HSA",
+              "nativeQueryRef": "Abgänge ohne HSA"
             }
           ]
         }
@@ -61,7 +61,7 @@
                     "Entity": "dim_abschluss"
                   }
                 },
-                "Property": "Ohne HSA je 1000 (15-18)"
+                "Property": "Abgänge ohne HSA"
               }
             },
             "direction": "Descending"
@@ -74,7 +74,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "241175bcacba07275912",
+        "name": "241175bcacba07275913",
         "field": {
           "Column": {
             "Expression": {

@@ -49,12 +49,12 @@ PARTS["fact_abgaenge_beruflich_2023"] = ([
  'y = Table.SelectRows(src, each Text.Trim([Column1]) = "2023" and fnEbene([Column2]) <> "?")',
  'r = Table.AddColumn(y, "rec", each [jahr = 2023, region_code = Text.Trim([Column2]), region = Text.Trim([Column3]), ebene = fnEbene([Column2]), bundesland_code = fnBlc([Column2]), insgesamt = fnToInt([Column4]), mit_hauptschulabschluss = fnToInt([Column6]), mit_mittlerem_abschluss = fnToInt([Column8]), fachhochschulreife = fnToInt([Column10]), allg_hochschulreife = fnToInt([Column12])])',
  'tbl = Table.FromRecords(r[rec])',
- 'typed = Table.TransformColumnTypes(tbl, {{"jahr", Int64.Type}, {"region_code", type text}, {"region", type text}, {"ebene", type text}, {"bundesland_code", type text}, {"insgesamt", Int64.Type}, {"mit_hauptschulabschluss", type text}, {"mit_mittlerem_abschluss", type text}, {"fachhochschulreife", type text}, {"allg_hochschulreife", type text}})',
+ 'typed = Table.TransformColumnTypes(tbl, {{"jahr", Int64.Type}, {"region_code", type text}, {"region", type text}, {"ebene", type text}, {"bundesland_code", type text}, {"insgesamt", Int64.Type}, {"mit_hauptschulabschluss", Int64.Type}, {"mit_mittlerem_abschluss", Int64.Type}, {"fachhochschulreife", Int64.Type}, {"allg_hochschulreife", Int64.Type}})',
 ], "typed")
 
 PARTS["fact_einkommen_kreis"] = ([
  'src = Csv.Document(File.Contents(DataFolder & "82411-01-03-4.csv"), [Delimiter=";", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None])',
- 'y = Table.SelectRows(src, each Text.Trim([Column1]) = "2021")',
+ 'y = Table.SelectRows(src, each Text.Trim([Column1]) = "2021" and fnEbene([Column2]) <> "?")',
  'r = Table.AddColumn(y, "rec", each [region_code = Text.Trim([Column2]), jahr = 2021, region = Text.Trim([Column3]), einkommen_je_ew = fnToInt([Column5])])',
  'tbl = Table.SelectRows(Table.FromRecords(r[rec]), each [einkommen_je_ew] <> null)',
  'typed = Table.TransformColumnTypes(tbl, {{"region_code", type text}, {"jahr", Int64.Type}, {"region", type text}, {"einkommen_je_ew", Int64.Type}}, "en-US")',

@@ -57,7 +57,7 @@ table dim_abschluss
 		formatString: 0
 		lineageTag: 51c82ecf-93f6-4430-b011-bf628e8760d2
 
-	measure 'Ausgaben Schulart (DE 2023)' = CALCULATE(AVERAGE(fact_ausgaben_schulart[ausgaben_je_schueler]),fact_ausgaben_schulart[bundesland]="Deutschland",fact_ausgaben_schulart[jahr]=2023)
+	measure 'Ausgaben Schulart (DE 2023)' = IF(ISFILTERED(dim_region[Land]) || ISFILTERED(fact_ausgaben_schulart[bundesland]), CALCULATE(AVERAGE(fact_ausgaben_schulart[ausgaben_je_schueler]), fact_ausgaben_schulart[jahr]=2023), CALCULATE(AVERAGE(fact_ausgaben_schulart[ausgaben_je_schueler]), fact_ausgaben_schulart[jahr]=2023, fact_ausgaben_schulart[bundesland]="Deutschland"))
 		lineageTag: 0a0a87fc-6f26-4366-9dc2-9db470c94620
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -67,7 +67,7 @@ table dim_abschluss
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure Risiko-Score = VAR pop = CALCULATETABLE(ADDCOLUMNS(FILTER(VALUES(dim_region[region_code]),NOT ISBLANK([Quote ohne HSA %])&&NOT ISBLANK([Jugend-ALQ Ø])&&NOT ISBLANK([Verf. Einkommen je EW Ø])),"@q",[Quote ohne HSA %],"@a",[Jugend-ALQ Ø],"@e",[Verf. Einkommen je EW Ø]),REMOVEFILTERS(dim_region),dim_region[ebene]="KR") VAR muQ=AVERAGEX(pop,[@q]) VAR sdQ=STDEVX.S(pop,[@q]) VAR muA=AVERAGEX(pop,[@a]) VAR sdA=STDEVX.S(pop,[@a]) VAR muE=AVERAGEX(pop,[@e]) VAR sdE=STDEVX.S(pop,[@e]) RETURN DIVIDE([Quote ohne HSA %]-muQ,sdQ)+DIVIDE([Jugend-ALQ Ø]-muA,sdA)+DIVIDE(muE-[Verf. Einkommen je EW Ø],sdE)
+	measure Risiko-Score = VAR pop = CALCULATETABLE(ADDCOLUMNS(FILTER(VALUES(dim_region[region_code]),NOT ISBLANK([Quote ohne HSA %])&&NOT ISBLANK([Jugend-ALQ Ø])&&NOT ISBLANK([Verf. Einkommen je EW Ø])),"@q",[Quote ohne HSA %],"@a",[Jugend-ALQ Ø],"@e",[Verf. Einkommen je EW Ø]),REMOVEFILTERS(dim_region),REMOVEFILTERS(fact_einkommen_kreis),dim_region[ebene]="KR") VAR muQ=AVERAGEX(pop,[@q]) VAR sdQ=STDEVX.S(pop,[@q]) VAR muA=AVERAGEX(pop,[@a]) VAR sdA=STDEVX.S(pop,[@a]) VAR muE=AVERAGEX(pop,[@e]) VAR sdE=STDEVX.S(pop,[@e]) RETURN DIVIDE([Quote ohne HSA %]-muQ,sdQ)+DIVIDE([Jugend-ALQ Ø]-muA,sdA)+DIVIDE(muE-[Verf. Einkommen je EW Ø],sdE)
 		lineageTag: a0ec6bf6-1f55-4983-8a0a-2c2034d8dcf1
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}

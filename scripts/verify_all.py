@@ -168,6 +168,17 @@ check("DQ9 korrekt: 9 doppelte Regionsnamen", _ndup==9, f"{len(dim)} Codes / {_n
 schA=rd("fact_ausgaben_schulart.csv")
 deS={r["schulart"]:int(r["ausgaben_je_schueler"]) for r in schA if r["bundesland"]=="Deutschland" and r["jahr"]=="2023"}
 check("LF7 fact_ausgaben_schulart (DE 2023: Gymnasien=10900, Grundschulen=8400)", deS.get("Gymnasien")==10900 and deS.get("Grundschulen")==8400, f"{len(deS)} Schularten")
+# Referentielle Integrität: jede Fakt-region_code existiert in dim_region (kein Orphan/Blank) – fängt VGRdL-Sub-Codes wie 03241001
+import glob as _g_ri
+_valid_rc=set(r["region_code"].strip() for r in dim)
+_ri_bad={}
+for _f in _g_ri.glob(os.path.join(CLEAN,"fact_*.csv")):
+    _rows=rd(os.path.basename(_f))
+    if not _rows or "region_code" not in _rows[0]: continue
+    _orph=sorted(set(r["region_code"].strip() for r in _rows if r.get("region_code","").strip() and r["region_code"].strip() not in _valid_rc))
+    _empty=sum(1 for r in _rows if not r.get("region_code","").strip())
+    if _orph or _empty: _ri_bad[os.path.basename(_f)]={"orphan":_orph[:5],"leer":_empty}
+check("Referentielle Integrität: alle Fakt-region_code in dim_region (0 Orphans/Blanks)", not _ri_bad, "alle Fakten sauber" if not _ri_bad else str(_ri_bad))
 
 print("\n== 3. Power BI .pbix / TMDL ==")
 pbix=os.path.join(PBI,"SchulabschlussDataStory.pbix")
@@ -237,6 +248,20 @@ dr=open(os.path.join(tdir,"dim_region.tmdl"),encoding="utf-8").read()
 check("TMDL: berechnete Spalte stadtstaat (Stadtstaat/Flächenland) für LF8-Farbtrennung", "column stadtstaat =" in dr and "Stadtstaat" in dr and "Flächenland" in dr)
 check("TMDL: echte Region-Hierarchie Land→Regierungsbezirk→Kreis", "hierarchy 'Land Hierarchie'" in dr and "level Land" in dr and "level Regierungsbezirk" in dr and "level Kreis" in dr)
 check("TMDL: Hierarchie-Spalten (Land/Regierungsbezirk/Kreis) berechnet", "column Land =" in dr and "column Regierungsbezirk =" in dr and "column Kreis =" in dr)
+# --- Bug-Fixes (Modellcode-Regressionsschutz) ---
+_asm=re.search(r"measure 'Ausgaben Schulart \(DE 2023\)' = (.+)",da)
+_asm=_asm.group(1) if _asm else ""
+check("TMDL: Bug1 – LF7-Measure 'Ausgaben Schulart' respektiert Land-Slicer (ISFILTERED-Fallback)",
+      "ISFILTERED(dim_region[Land])" in _asm and 'fact_ausgaben_schulart[bundesland]="Deutschland"' in _asm,
+      "ISFILTERED + Deutschland-Default")
+_ber=open(os.path.join(tdir,"fact_abgaenge_beruflich_2023.tmdl"),encoding="utf-8").read()
+_bcols=["mit_hauptschulabschluss","mit_mittlerem_abschluss","fachhochschulreife","allg_hochschulreife"]
+_ber_meta=all(re.search(r"column "+c+r"\s+dataType: int64",_ber) for c in _bcols)
+_ber_m=all('"'+c+'", Int64.Type' in _ber for c in _bcols) and not any('"'+c+'", type text' in _ber for c in _bcols)
+check("TMDL: Bug2 – beruflich-Zählspalten int64 in M UND Metadaten (konsistent, kein type text)",
+      _ber_meta and _ber_m, f"meta={_ber_meta} M={_ber_m}")
+check("TMDL: Bug3 – Risiko-Score-Baseline immun gegen Einkommens-Slider (REMOVEFILTERS fact_einkommen_kreis)",
+      "REMOVEFILTERS(fact_einkommen_kreis)" in da)
 
 print("\n== 3b. Power-Query-Architektur (alle Transformationen in M aus data/raw) ==")
 _smdir=os.path.join(PBI,"SchulabschlussDataStory.SemanticModel","definition")

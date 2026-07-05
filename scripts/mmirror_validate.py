@@ -77,8 +77,10 @@ def build_beruflich():
 def build_einkommen():
     out=[]
     for p in raw_year_rows("82411-01-03-4.csv", r"^2021$", 5):
-        if ebene(p[1])=="?": continue
-        out.append([p[1],2021,p[2],to_int(p[4])])
+        if ebene(p[1])=="?": continue          # Sub-Kreis-VGRdL-Codes (8-stellig) raus
+        v=to_int(p[4])
+        if v is None: continue                 # nur Regionen mit vorhandenem Einkommenswert (wie Modell-M)
+        out.append([p[1],2021,p[2],v])
     return ["region_code","jahr","region","einkommen_je_ew"], out
 
 # abgaenge kreis (wide->long) -> intermediate (fuer fact_abgaenge + dim_region)
