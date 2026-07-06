@@ -4,12 +4,5 @@
   "displayName": "LF3 Streuung ohne HSA je Kreis",
   "displayOption": "FitToPage",
   "height": 720,
-  "width": 1280,
-  "visualInteractions": [
-    {
-      "source": "6852c1376c79a8b91b57",
-      "target": "5034711dcddb9bc17069",
-      "type": "NoFilter"
-    }
-  ]
+  "width": 1280
 }

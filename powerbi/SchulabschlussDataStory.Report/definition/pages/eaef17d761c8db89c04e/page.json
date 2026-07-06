@@ -4,5 +4,12 @@
   "displayName": "LF7 Ausgaben je Schüler (BL)",
   "displayOption": "FitToPage",
   "height": 720,
-  "width": 1280
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "5c77a0d500000000aa77",
+      "target": "ff51e8211dca01a94a1b",
+      "type": "NoFilter"
+    }
+  ]
 }
