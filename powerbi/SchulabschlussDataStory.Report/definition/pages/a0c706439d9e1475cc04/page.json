@@ -4,12 +4,5 @@
   "displayName": "LF5 Schulartmix",
   "displayOption": "FitToPage",
   "height": 720,
-  "width": 1280,
-  "visualInteractions": [
-    {
-      "source": "35a045d9dad5e820a490",
-      "target": "79c517a0308302d76186",
-      "type": "DataFilter"
-    }
-  ]
+  "width": 1280
 }

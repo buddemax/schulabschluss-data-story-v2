@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
-  "name": "9cbfb2de5a7c8207bc55",
+  "name": "5c05ohnegs00000000a5",
   "position": {
-    "x": 450,
-    "y": 240,
+    "x": 500,
+    "y": 272.5,
     "z": 0,
-    "height": 480,
-    "width": 440,
-    "tabOrder": 0
+    "height": 447.5,
+    "width": 460,
+    "tabOrder": 500
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_region"
+                      "Entity": "dim_schulart"
                     }
                   },
-                  "Property": "region"
+                  "Property": "schulart"
                 }
               },
-              "queryRef": "dim_region.region",
-              "nativeQueryRef": "region",
+              "queryRef": "dim_schulart.schulart",
+              "nativeQueryRef": "schulart",
               "active": true
             }
           ]
@@ -42,11 +42,11 @@
                       "Entity": "dim_abschluss"
                     }
                   },
-                  "Property": "Ohne HSA je 1000 (15-18)"
+                  "Property": "Schüleranteil ohne Grundschule %"
                 }
               },
-              "queryRef": "dim_abschluss.Ohne HSA je 1000 (15-18)",
-              "nativeQueryRef": "Ohne HSA je 1000 (15-18)"
+              "queryRef": "dim_abschluss.Schüleranteil ohne Grundschule %",
+              "nativeQueryRef": "Schüleranteil ohne Grundschule %"
             }
           ]
         }
@@ -61,7 +61,7 @@
                     "Entity": "dim_abschluss"
                   }
                 },
-                "Property": "Ohne HSA je 1000 (15-18)"
+                "Property": "Schüleranteil ohne Grundschule %"
               }
             },
             "direction": "Descending"
@@ -84,7 +84,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Relativ: ohne HSA je 1.000 der 15- bis 18-Jährigen'"
+                  "Value": "'Ohne Grundschulen: Anteil je Schulart (%)'"
                 }
               }
             },
@@ -97,33 +97,106 @@
             }
           }
         }
-      ],
-      "valueAxis": [
-        {
-          "properties": {
-            "showAxisTitle": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "titleText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'je 1.000'"
-                }
-              }
-            }
-          }
-        }
       ]
     }
   },
   "filterConfig": {
     "filters": [
       {
-        "name": "241175bcacba07275912",
+        "name": "og5c05ohnegs0000",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_schulart"
+              }
+            },
+            "Property": "schulart"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "dim_schulart",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "schulart"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'Insgesamt'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'Grundschulen'"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "oa5c05ohnegs0000",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "Schüleranteil ohne Grundschule %"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "oe5c05ohnegs0000",
         "field": {
           "Column": {
             "Expression": {
@@ -139,7 +212,7 @@
           "Version": 2,
           "From": [
             {
-              "Name": "d",
+              "Name": "er",
               "Entity": "dim_region",
               "Type": 0
             }
@@ -153,7 +226,7 @@
                       "Column": {
                         "Expression": {
                           "SourceRef": {
-                            "Source": "d"
+                            "Source": "er"
                           }
                         },
                         "Property": "ebene"
@@ -164,88 +237,11 @@
                     [
                       {
                         "Literal": {
-                          "Value": "'BL'"
+                          "Value": "'DE'"
                         }
                       }
                     ]
                   ]
-                }
-              }
-            }
-          ]
-        },
-        "howCreated": "User"
-      },
-      {
-        "name": "fa7c4b8a1b0fdba1fc05",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_region"
-              }
-            },
-            "Property": "region"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "5835c9cdf8cd808a21c2",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_abschluss"
-              }
-            },
-            "Property": "Ohne HSA je 1000 (15-18)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "jf9cbfb2de5a7c8207",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_abgaenge"
-              }
-            },
-            "Property": "jahr"
-          }
-        },
-        "type": "Advanced",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "jf",
-              "Entity": "fact_abgaenge",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "Comparison": {
-                  "ComparisonKind": 0,
-                  "Left": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Source": "jf"
-                        }
-                      },
-                      "Property": "jahr"
-                    }
-                  },
-                  "Right": {
-                    "Literal": {
-                      "Value": "2023L"
-                    }
-                  }
                 }
               }
             }
