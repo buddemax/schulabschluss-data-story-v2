@@ -88,6 +88,11 @@ table dim_abschluss
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Formatierungs-Measure (nicht analytisch): faerbt in LF1 den fuehrenden Balken
+	/// Sachsen-Anhalt vermillion (#D55E00), die uebrigen gedaempft blau (#8FB3D0).
+	measure 'Farbe Führung LF1' = IF(SELECTEDVALUE(dim_region[region]) = "Sachsen-Anhalt", "#D55E00", "#8FB3D0")
+		lineageTag: b1f0c0de-1a2b-4c3d-9e8f-000000000f01
+
 	column abschluss_key
 		dataType: string
 		lineageTag: b309a523-0fb9-4a93-9edd-fa7a57765fc4
