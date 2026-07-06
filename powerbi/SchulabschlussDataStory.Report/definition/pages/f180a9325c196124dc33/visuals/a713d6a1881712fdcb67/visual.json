@@ -104,6 +104,26 @@
             ]
           }
         }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Top-15-Kreise: Quote ohne Hauptschulabschluss (2023)'"
+                }
+              }
+            }
+          }
+        }
       ]
     }
   },

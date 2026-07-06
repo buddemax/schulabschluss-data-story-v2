@@ -132,7 +132,7 @@ lf_slide("TEIL 2 · STRUKTUR",ORANGE,"LF6 — Die Wertung kippt: absolut vs. rel
 s=slide()
 chip(s,0.6,0.45,2.9,"TEIL 3 · ÖKONOMISCH",RGBColor(0x55,0x52,0x77))
 tb(s,0.6,1.0,12,1.0,"LF7 — Bildungsausgaben je Schüler nach Schulart",26,NAVY,True,HEAD)
-au=[("Grundschulen","8.400 €"),("Realschulen","9.700 €"),("Gymnasien","10.900 €"),("Mehrere Bildungsg.","10.600 €"),("Integr. Gesamtschulen","11.600 €"),("Alle Schularten","10.500 €")]
+au=[("Grundschulen","8.400 €"),("Realschulen","9.700 €"),("Gymnasien","10.900 €"),("Mehrere Bildungsg.","10.600 €"),("Integr. Gesamtschulen","11.600 €"),("Alle Schularten","9.800 €")]
 for i,(k,v) in enumerate(au):
     bx=0.7+(i%3)*4.1; by=2.2+(i//3)*2.1
     card=s.shapes.add_shape(5,Inches(bx),Inches(by),Inches(3.8),Inches(1.8)); card.fill.solid(); card.fill.fore_color.rgb=LIGHT; card.line.fill.background(); card.shadow.inherit=False
@@ -144,8 +144,8 @@ lf_slide("TEIL 3 · ÖKONOMISCH",RGBColor(0x55,0x52,0x77),"LF8 — Mehr Geld = m
     [("r = +0,61 über alle 16 BL (p=0,01) …",True),("… aber OHNE Stadtstaaten: r = −0,36 (n.s.)",True),("Positiver Eindruck = Stadtstaaten-Artefakt",True),("n=16 → kein robuster Befund, keine Kausalität",False)],
     "Artefakt","Stadtstaaten treiben die Trendlinie")
 lf_slide("TEIL 3 · ÖKONOMISCH",RGBColor(0x55,0x52,0x77),"LF9 — Risiko-Kreise: Bildung trifft Arbeitsmarkt","pbi/pbi_lf9.png",
-    [("Pirmasens, Gelsenkirchen, Mansfeld-Südharz führen",True),("Hohe Quote ohne HSA + hohe Jugend-ALQ",False),("Score z-standardisiert, gleich gewichtet",False),("Jahresversatz 2023↔2025 dokumentiert",False)],
-    "Top-Risiko","Pirmasens: 16,5 % ohne HSA · 12,2 % Jugend-ALQ")
+    [("Gelsenkirchen, Pirmasens, Mansfeld-Südharz führen",True),("Hohe Quote ohne HSA + hohe Jugend-ALQ + niedriges Einkommen",False),("Score z-standardisiert (3 Dimensionen), gleich gewichtet",False),("Datenstände 2023/2025/2021 dokumentiert",False)],
+    "Top-Risiko","Gelsenkirchen: Score 8,1 · 13,0 % ohne HSA · 13,4 % Jugend-ALQ")
 
 # DATENQUALITAET
 s=slide()
@@ -182,13 +182,13 @@ NOTES=[
  "Max Budde. Vision: Wir verfolgen Abschlüsse von der Bundesland- bis auf die Kreisebene und verknüpfen sie mit Schulstruktur, Ausgaben und Arbeitsmarkt. Daten-Flow am Schaubild durchgehen: INPUT -> OUTPUT -> ÜBERGANG -> ERGEBNIS. Betonen: ausschließlich offene Daten (Destatis/Regionalstatistik), kein Login.",
  "Max Budde. Die 9 Leitfragen in 3 Blöcken vorstellen: Befund (ich), Struktur (John), Ökonomie (Aaron). Nur kurz anreißen - Details folgen je Block.",
  "Max Budde - LF1. Sachsen-Anhalt führt 2023 mit 12,7 % Abgängen ohne Hauptschulabschluss; Ost-Flächenländer + Bremen/SH oben, Bayern am niedrigsten (5,4 %). Anstieg 2022 (11,3 %) -> 2023 (12,7 %). Wert in Power BI und unabhängig gegen die amtlichen Quellwerte verifiziert.",
- "Max Budde - LF2/LF3. Es ist auch ein Kreisproblem: Hotspots Anhalt-Bitterfeld 16,8 %, Pirmasens 16,5 %. Der Boxplot zeigt: starke Streuung INNERHALB der Länder (z. B. Rheinland-Pfalz Spannweite 12,7 pp). Landesdurchschnitt verdeckt lokale Extreme. Übergabe an John Kanto.",
+ "Max Budde - LF2/LF3. Es ist auch ein Kreisproblem: Hotspots Anhalt-Bitterfeld 16,8 %, Pirmasens 16,5 %. Das Streudiagramm und die Streuungstabelle zeigen: starke Streuung INNERHALB der Länder (z. B. Rheinland-Pfalz Spannweite 12,7 pp). Landesdurchschnitt verdeckt lokale Extreme. Übergabe an John Kanto.",
  "Sprecher: John Kanto (Teil 2 - Struktur, ca. 5 Min). LF4 Geschlechtergefälle: ohne HSA Jungen 8,4 % vs. Mädchen 5,8 %; Abitur Mädchen 37,1 % vs. Jungen 29,3 %. Gefälle in beide Richtungen (DE 2023).",
  "John Kanto - LF5 Schulartmix (DE 2023, Σ=100 %): Grundschulen 35,2 %, Gymnasien 25,9 %, Integr. Gesamtschulen 13,1 %. Der Gymnasial-/Gesamtschulanteil prägt die Abiturquote mit.",
  "John Kanto - LF6. Die Wertung kippt: absolut führt NRW (meiste Fälle), relativ (je 1.000 der 15-18-Jährigen) führt Sachsen-Anhalt. Kleine Ost-Länder und Bremen rücken nach vorn. Relative Betrachtung ist fairer. Übergabe an Aaron Ziegler.",
  "Sprecher: Aaron Ziegler (Teil 3 - Ökonomie, ca. 5 Min). LF7 Ausgaben je Schüler: Gymnasien/Gesamtschulen am teuersten (~11 Tsd €), Grundschulen ~8,4 Tsd €. Nach Bundesland führen die Stadtstaaten (Berlin/Hamburg).",
  "Aaron Ziegler - LF8. Mehr Ausgaben je Schüler gehen mit höherer Abiturquote einher: r = +0,61 über 16 Bundesländer; mit der Quote ohne HSA r = -0,33. WICHTIG: Zusammenhang, KEINE Kausalität; Strukturkosten der Stadtstaaten beachten.",
- "Aaron Ziegler - LF9. Risiko-Kreise verbinden hohes Bildungsrisiko (ohne HSA) und hohe Jugend-Arbeitslosigkeit: u. a. Pirmasens, Gelsenkirchen, Mansfeld-Südharz. Score z-standardisiert, gleich gewichtet. Jahresversatz 2023<->2025 transparent dokumentiert.",
+ "Aaron Ziegler - LF9. Risiko-Kreise verbinden hohes Bildungsrisiko (ohne HSA), hohe Jugend-Arbeitslosigkeit und niedriges verfügbares Einkommen: Gelsenkirchen führt (Score 8,1) vor Pirmasens und Mansfeld-Südharz. Score z-standardisiert über drei Dimensionen, gleich gewichtet. Datenstände 2023/2025/2021 transparent dokumentiert.",
  "Aaron Ziegler - Datenqualität & Methodik. 6 offene Quellen, jede Kennzahl unabhängig gegen die amtlichen Quellwerte nachgerechnet; Konsistenz/Plausibilität geprüft, Missing nie als 0. Behobene Datenfehler transparent dokumentiert (DQ8-DQ11): Dezimal-Locale (Jugend-ALQ x10), Whitespace-Join (Ausgaben), Jahresbezug 2023. Sternschema: 4 Kern-Fakten + 4 Dimensionen.",
  "Aaron Ziegler - Fazit. Kernbotschaften zusammenführen: Niveau = Länderpolitik, aber Risiken sind lokal; Streuung; relative Betrachtung verändert das Ranking; Ausgaben-Zusammenhang ohne Kausalbeweis; Risiko-Kreise. Schlusssatz: Bildungsinvestitionen wirken nur, wenn sie lokal in Abschlüsse, Übergänge und Einkommen übersetzt werden.",
  "Aaron Ziegler - Dank und Überleitung zur Diskussion. Für Rückfragen bereitstehen; Team nochmals nennen.",

@@ -122,6 +122,19 @@
             }
           }
         }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "end": {
+              "expr": {
+                "Literal": {
+                  "Value": "14000D"
+                }
+              }
+            }
+          }
+        }
       ]
     }
   },

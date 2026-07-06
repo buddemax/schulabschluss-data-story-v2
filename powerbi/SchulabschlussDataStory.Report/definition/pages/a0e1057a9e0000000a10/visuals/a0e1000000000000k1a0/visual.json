@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
-  "name": "a0e1000000000000b1a0",
+  "name": "a0e1000000000000k1a0",
   "position": {
     "x": 24,
-    "y": 290,
-    "z": 1200,
-    "height": 190,
-    "width": 284,
-    "tabOrder": 1200
+    "y": 565,
+    "z": 1800,
+    "height": 90,
+    "width": 1180,
+    "tabOrder": 1800
   },
   "visual": {
     "visualType": "textbox",
@@ -19,9 +19,9 @@
               {
                 "textRuns": [
                   {
-                    "value": "1 · INPUT",
+                    "value": "Kernergebnis in einem Satz:",
                     "textStyle": {
-                      "fontSize": "13pt",
+                      "fontSize": "12pt",
                       "fontWeight": "bold"
                     }
                   }
@@ -30,9 +30,9 @@
               {
                 "textRuns": [
                   {
-                    "value": "Ausgaben & Schulstruktur: Was fließt ins System – und wie unterschiedlich ist es aufgebaut?",
+                    "value": "Sachsen-Anhalt führt bei den Abgängen ohne Hauptschulabschluss (12,7 % im Jahr 2023/24), die größten Unterschiede liegen aber zwischen den Kreisen (bis 16,8 % in Anhalt-Bitterfeld) – und in Kreisen wie Gelsenkirchen bündeln sich Bildungs-, Arbeitsmarkt- und Einkommensrisiken.",
                     "textStyle": {
-                      "fontSize": "10pt"
+                      "fontSize": "12pt"
                     }
                   }
                 ]

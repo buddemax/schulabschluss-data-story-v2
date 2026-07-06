@@ -124,6 +124,26 @@
             ]
           }
         }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Absolut: Abgänge ohne Hauptschulabschluss (2023)'"
+                }
+              }
+            }
+          }
+        }
       ]
     }
   },

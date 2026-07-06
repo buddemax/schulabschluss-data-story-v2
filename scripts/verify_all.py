@@ -214,7 +214,7 @@ import glob as _g4
 _pbip_vn=_g4.glob(os.path.join(PBI,"SchulabschlussDataStory.Report","definition","pages","*","visuals","*","visual.json"))
 check(".pbix aktuell (Visual-Zahl == .pbip-Report, kein veralteter Export)", len(_pbix_vn)==len(_pbip_vn) and len(_pbix_vn)>=39, f".pbix={len(_pbix_vn)} .pbip={len(_pbip_vn)}")
 _pbix_maps=sum(1 for n in _pbix_vn if '"visualType": "map"' in _rd(n))
-_pbix_slic=sum(1 for n in _pbix_vn if '"visualType": "slicer"' in _rd(n))
+_pbix_slic=sum(1 for n in _pbix_vn if any(s in _rd(n) for s in (chr(34)+"visualType"+chr(34)+": "+chr(34)+"slicer"+chr(34), chr(34)+"visualType"+chr(34)+": "+chr(34)+"listSlicer"+chr(34))))
 check(".pbix enthält Interaktivität (Karte + Slicer vorhanden)", _pbix_maps>=1 and _pbix_slic>=6, f"maps={_pbix_maps} slicer={_pbix_slic}")
 layraw=rf+"".join("".join(v) for v in _vis.values())
 # H2: Schulart-Story im interaktiven Bericht verbaut?
@@ -316,7 +316,7 @@ print("\n== 3c. Interaktivität (Karte + Slicer/Slider im Bericht) ==")
 import glob as _glob3
 _allvis=[json.load(open(_f,encoding="utf-8")) for _f in _glob3.glob(os.path.join(PBI,"SchulabschlussDataStory.Report","definition","pages","*","visuals","*","visual.json"))]
 _maps=[v for v in _allvis if v["visual"]["visualType"]=="map"]
-_slicers=[v for v in _allvis if v["visual"]["visualType"]=="slicer"]
+_slicers=[v for v in _allvis if v["visual"]["visualType"] in ("slicer","listSlicer","advancedSlicerVisual")]
 def _slfield(v):
     for _r in v["visual"].get("query",{}).get("queryState",{}).values():
         for _p in _r.get("projections",[]): return _p.get("nativeQueryRef","")
@@ -325,7 +325,16 @@ _slf=[_slfield(v) for v in _slicers]
 _mapdump=[json.dumps(m,ensure_ascii=False) for m in _maps]
 check("Karte(n) mit 'Quote ohne HSA %' vorhanden", len(_maps)>=1 and all("Quote ohne HSA %" in d for d in _mapdump), f"{len(_maps)} Karten")
 check("Slicer für Interaktivität vorhanden (≥6; bewusst entschlackt)", len(_slicers)>=6, f"{len(_slicers)}: {sorted(set(_slf))}")
-check("Land-Slicer auf mehreren Seiten (≥5)", _slf.count("Land")>=5, f"{_slf.count('Land')}× Land")
+# LF4-Land-Slicer in der Audit-Runde entfernt (Visuals sind ebene='DE'-gepinnt -> Auswahl leerte die Seite)
+check("Land-Slicer auf mehreren Seiten (≥4)", _slf.count("Land")>=4, f"{_slf.count('Land')}× Land")
+# LF9-Faerbung: Schwelle 5,5 muss exakt die Top-10 treffen (Marge 5,57 vs. 5,44 - Drift-Warnung bei Datenaenderung)
+_n_ueber = sum(1 for v in _score.values() if v >= 5.5)
+check("LF9 Top-10-Schwelle 5,5 trifft exakt 10 Kreise (Farbe Risiko LF9)", _n_ueber == 10, f"{_n_ueber} Kreise >= 5,5")
+# LF9-CF-Verdrahtung im Report: Farb-Measure am Scatter (inkl. Selector) + Datenbalken an der Tabelle
+_lf9sc = open(os.path.join(PBI, "SchulabschlussDataStory.Report", "definition", "pages", "7d13787a91e0b8cd5dd2", "visuals", "2d6e407f3e3c6e4bd0dc", "visual.json"), encoding="utf-8").read()
+_lf9tb = open(os.path.join(PBI, "SchulabschlussDataStory.Report", "definition", "pages", "7d13787a91e0b8cd5dd2", "visuals", "d2a6d9721a7261bd0032", "visual.json"), encoding="utf-8").read()
+check("LF9-Report: Scatter-Faerbung (Farbe Risiko LF9 + Selector) + Datenbalken verdrahtet",
+      "Farbe Risiko LF9" in _lf9sc and "dataViewWildcard" in _lf9sc and "dataBars" in _lf9tb)
 _slider=[v for v in _slicers if _slfield(v)=="einkommen_je_ew"]
 check("Einkommens-Slider (Between/Range) vorhanden", len(_slider)>=1 and any("Between" in json.dumps(v,ensure_ascii=False) for v in _slider))
 

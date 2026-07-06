@@ -83,6 +83,28 @@
         ],
         "isDefaultSort": true
       }
+    },
+    "objects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Abschlussquoten nach Geschlecht (Deutschland 2023)'"
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "filterConfig": {

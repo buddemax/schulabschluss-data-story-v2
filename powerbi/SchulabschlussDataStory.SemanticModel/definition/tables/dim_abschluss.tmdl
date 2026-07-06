@@ -123,6 +123,14 @@ table dim_abschluss
 	measure 'Farbe Rangwechsel LF6' = SWITCH(SELECTEDVALUE(dim_region[region]), "Sachsen-Anhalt", "#D55E00", "Nordrhein-Westfalen", "#0072B2", "#C9CDD2")
 		lineageTag: b1f0c0de-1a2b-4c3d-9e8f-000000000f08
 
+	/// Formatierungs-Measure: LF7 BL-Chart, Spitzenreiter Berlin akzentuiert
+	measure 'Farbe Spitze LF7' = IF(SELECTEDVALUE(dim_region[Land]) = "Berlin", "#D55E00", "#8FB3D0")
+		lineageTag: b1f0c0de-1a2b-4c3d-9e8f-000000000f09
+
+	/// Formatierungs-Measure: LF7 Schulart-Chart, guenstigste Schulart Grundschulen akzentuiert
+	measure 'Farbe Schulart LF7' = IF(SELECTEDVALUE(fact_ausgaben_schulart[schulart]) = "Grundschulen", "#D55E00", "#8FB3D0")
+		lineageTag: b1f0c0de-1a2b-4c3d-9e8f-000000000f10
+
 	column abschluss_key
 		dataType: string
 		lineageTag: b309a523-0fb9-4a93-9edd-fa7a57765fc4

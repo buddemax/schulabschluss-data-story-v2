@@ -149,3 +149,18 @@ B1 (Jahr-Filter/Slicer), B2 (ebene-Filter), B4 (löst sich mit B1/B2), B5 (Entst
 - **S3:** Akzentfarben LF2 (Anhalt-Bitterfeld), LF5 (Grundschulen/Gymnasien), LF6 (Sachsen-Anhalt vermillion + NRW blau = Rangwechsel-Story).
 - **S4/K1/K2:** Slicer-Spalte vereinheitlicht, linke Ränder auf x=24, 16-px-Lücken, Unterkanten auf 696, leere Filter-Stubs entfernt.
 - **Kür 14/15:** Quellenzeile auf allen 9 LF-Seiten; Einstiegsseite „Überblick & Leseführung" (These, 4 Fluss-Stufen, Leseführung).
+
+
+---
+
+## 6) Finaler adversarialer Audit (nach Runde 3) – Ergebnis & Fixes
+
+**Setup:** 15 unabhängige Prüfer (10 Seiten-Renderings + DOCX + PPTX + Nebendoku + Repo + Testabdeckung), jedes Finding adversarial gegengeprüft (Blocker doppelt). Ergebnis: **57 bestätigte Findings** (4 Blocker – alle in den Abgabe-TEXTEN, keiner im Bericht), 4 widerlegt.
+
+**Behobene Blocker:** PPTX Folie 9 zeigte den 2024er-Wert (10.500 €) unter dem 2023er-Label (korrekt: 9.800 €); PPTX Folie 11 nannte Pirmasens statt Gelsenkirchen als Top-Risiko (alter 2-dim-Score-Text); DOCX LI1 beschrieb entfernte Slicer (Ost/West, Stadt/Landkreis, Stadtstaat) und die nicht mehr existierende LF8-Slicer-Interaktion.
+
+**Behobene Interaktions-Fallen:** LF1-Schuljahr-Slicer leerte den 2023-gepinnten Balken (jetzt NoFilter → steuert nur den Trend-Chart); LF4-Bundesland-Slicer leerte alle DE-gepinnten Visuals (Slicer entfernt).
+
+**Weitere Fixes:** Quellenzeilen auf allen Seiten waren vertikal abgeschnitten (Höhe 18→23 px); LF1-Titel überlappte den Slicer; Slicer-Header „schuljahr"→„Schuljahr" (displayName); LF9-Einkommensspalte war abgeschnitten (Tabelle breiter + Kurzname „Einkommen €/EW"); LF7 ohne Akzent + Text ohne Länder-Aussage (Berlin/Grundschulen vermillion, Spanne 8.900–13.500 € ergänzt); LF6-Quellenzeile „15 bis unter 18 Jahre" präzisiert; Intro-Leerfläche mit Kernergebnis-Box gefüllt; Doku-Drift in powerbi/README, ABGABE_README, visual_spezifikation, analyseabfragen (18→20 Measures, 15→6 Slicer, 2→1 Karte, 8,09→8,08) bereinigt; fremdes, unreferenziertes JPG aus dem Repo entfernt; 2 neue Guards (Top-10-Schwelle 5,5; LF9-CF-Verdrahtung). verify_all: **100/100 grün**.
+
+**Bewusst offen:** redaktionelle Chart-Titel-Overrides rendern in diesem PBI-Build nicht (objects.title wird ignoriert) – Auto-Titel bleiben; native Label-Truncation (Ellipsen) und `data_story.pdf` (Aufgabenstellung des Dozenten, referenziert in aufgabe_und_bewertung.md) als Empfehlung an das Team: vor Veröffentlichung klären, ob das Aufgabenblatt im öffentlichen Repo bleiben darf.

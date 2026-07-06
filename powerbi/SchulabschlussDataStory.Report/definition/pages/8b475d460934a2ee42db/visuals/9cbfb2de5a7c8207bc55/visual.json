@@ -124,6 +124,26 @@
             ]
           }
         }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Relativ: ohne HSA je 1.000 der 15- bis unter 18-Jährigen (2023)'"
+                }
+              }
+            }
+          }
+        }
       ]
     }
   },

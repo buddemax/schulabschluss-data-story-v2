@@ -186,7 +186,7 @@ PL("Ergebnis:","Sachsen-Anhalt führt in beiden Jahren klar. Der Anteil der Schu
    "(10,06 %), Schleswig-Holstein (9,94 %), Mecklenburg-Vorpommern (9,93 %) und Bremen (9,83 %); am niedrigsten "
    "liegt Bayern mit rund 5,4 %.")
 pic("pbi/pbi_lf1.png",cap="Abb. 2 (LF1): Berichtsseite LF1 – Anteil ohne Hauptschulabschluss je Bundesland: "
-    "Balken-Rangliste, Deutschlandkarte auf Bundeslandebene (Blasengröße = Quote) sowie Land- und Stadtstaat-Slicer.")
+    "Balken-Rangliste 2023/24 (Spitzenreiter Sachsen-Anhalt hervorgehoben) und Zwei-Jahres-Trend als Linien, dazu ein Schuljahr-Slicer.")
 PL("Interpretation:","Es gibt ein stabiles Muster aus ostdeutschen Flächenländern plus Bremen und "
    "Schleswig-Holstein. Bemerkenswert ist nicht nur die Rangfolge, sondern der Trend: In den meisten führenden "
    "Ländern steigt der Anteil von 2022/23 auf 2023/24, das Problem verschärft sich also leicht. Das Grundniveau "
@@ -201,7 +201,7 @@ PL("Ergebnis:","Auf Kreisebene liegen die Spitzenwerte bei rund 15 bis 17 %, als
    "Burgenlandkreis (15,12 %), Mansfeld-Südharz (14,88 %), Wittenberg (14,79 %), Dessau-Roßlau (14,78 %), "
    "Halle (14,71 %) und Suhl (14,42 %).")
 pic("pbi/pbi_lf2.png",cap="Abb. 3 (LF2): Berichtsseite LF2 – Kreis-Hotspots ohne Hauptschulabschluss: Balken-Rangliste, "
-    "interaktive Deutschlandkarte (Blasengröße = Quote ohne HSA je Kreis) sowie Slicer für Bundesland und Ost/West.")
+    "interaktive Deutschlandkarte (Blasengröße = Quote ohne HSA je Kreis); der Spitzenreiter Anhalt-Bitterfeld ist im Balken hervorgehoben.")
 PL("Interpretation:","Das Problem konzentriert sich stark regional; fast alle Hotspots liegen in Sachsen-Anhalt, "
    "dazu Thüringen. Der Ausreißer Pirmasens (kreisfreie Stadt in Rheinland-Pfalz) zeigt aber, dass es kein "
    "reines Ostphänomen ist, sondern überall dort auftritt, wo strukturschwache Städte und Kreise liegen.")
@@ -374,11 +374,12 @@ table(["Kriterium","Bewertung"],[
  ["Abfragesprache","DAX für Measures (Quoten, Anteile, Streuung, Korrelation, 3-dim Risiko-Score); Power Query (M) für Transformationen. Grenze: Kontextübergänge sind fehleranfällig, deshalb gegen die amtlichen Quellwerte validiert."],
  ["Visualisierung","Interaktiver Bericht mit 9 Seiten (LF1–LF9), je mit Kernbotschaft und Erkenntnis-Textbox; Drilldown über die Region-Hierarchie; barrierearmes Okabe-Ito-Theme."]])
 P("LI1 Berichte und Berichtsgeneratoren:",bold=True); P("Interaktiver Power-BI-Bericht mit einer Seite je Leitfrage. "
-  "Für Interaktivität sorgen zwei geografische Deutschlandkarten (Bundeslandebene auf LF1, Kreisebene auf LF2; "
-  "Blasengröße = Quote ohne HSA), auf jeder Seite Slicer (Bundesland, Ost/West, Stadt/Landkreis bzw. "
-  "Stadtstaat/Flächenland), ein Einkommens-Schieberegler (LF9, Between-Modus) sowie Drilldown über die "
-  "Region-Hierarchie (Land → Regierungsbezirk → Kreis). Alle Visuals cross-filtern sich gegenseitig; auf LF8 lässt "
-  "sich der Stadtstaaten-Confounder per Slicer live entfernen, worauf die Korrelation ins Negative kippt.")
+  "Für Interaktivität sorgen eine geografische Deutschlandkarte auf Kreisebene (LF2, Blasengröße = Quote ohne HSA), "
+  "gezielt eingesetzte Slicer (Schuljahr auf LF1; Bundesland-Einzelauswahl auf LF5–LF7 und LF9), ein "
+  "Einkommens-Schieberegler (LF9, Between-Modus) sowie Drilldown über die Region-Hierarchie "
+  "(Land → Regierungsbezirk → Kreis). Die Visuals einer Seite cross-filtern sich; auf LF8 ist der "
+  "Stadtstaaten-Confounder über die farbliche Trennung der Punkte (Stadtstaat vs. Flächenland) direkt ablesbar – "
+  "ohne Stadtstaaten kippt die Korrelation ins Negative (im Text ausgewiesen).")
 P("Hinweis zu den Karten: Es handelt sich um Bing-gestützte Kartenvisuals. Sie rendern nur, wenn in Power BI unter "
   "Optionen → Sicherheit die Option für Kartenvisuals aktiviert ist; dabei werden ausschließlich die öffentlichen "
   "Gebiets-/Kreisnamen zur Geokodierung an Microsoft/Bing übermittelt (keine personenbezogenen Daten). Die übrige "

@@ -28,7 +28,8 @@
               },
               "queryRef": "dim_zeit.schuljahr",
               "nativeQueryRef": "schuljahr",
-              "active": true
+              "active": true,
+              "displayName": "Schuljahr"
             }
           ]
         }

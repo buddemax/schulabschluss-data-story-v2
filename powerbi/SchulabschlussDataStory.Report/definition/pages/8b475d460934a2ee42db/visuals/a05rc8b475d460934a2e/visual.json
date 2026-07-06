@@ -3,9 +3,9 @@
   "name": "a05rc8b475d460934a2e",
   "position": {
     "x": 24,
-    "y": 700,
+    "y": 697,
     "z": 8500,
-    "height": 18,
+    "height": 23,
     "width": 1100,
     "tabOrder": 8500
   },
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Quellen: Regionalstatistik (21111: Abgänger 2023/24); Bevölkerung 15–17 Jahre (Fortschreibung 2023) als Bezugsgröße.",
+                    "value": "Quellen: Regionalstatistik (21111: Abgänger 2023/24); Bevölkerung 15 bis unter 18 Jahre (Fortschreibung 2023) als Bezugsgröße.",
                     "textStyle": {
                       "fontSize": "8pt"
                     }
