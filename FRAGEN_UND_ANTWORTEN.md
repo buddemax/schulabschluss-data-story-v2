@@ -26,7 +26,7 @@ Ja: Slice/Dice über Slicer und Cross-Filter, Roll-up/Drill-down über die Regio
 ## B. Datenmodellierung
 
 **Warum ein Sternschema (Kimball)?**
-Klare Trennung Fakten/Dimensionen, einfache Joins, abfrageoptimiert – ideal für interaktive Auswertung. Wir haben 8 Fakttabellen + 4 Dimensionen.
+Klare Trennung Fakten/Dimensionen, einfache Joins, abfrageoptimiert – ideal für interaktive Auswertung. Wir haben 9 Fakttabellen + 4 Dimensionen.
 
 **Was ist eure konforme Dimension?**
 `dim_region` – sie hängt über den eindeutigen `region_code` (AGS) an **allen** Fakten und macht Auswertungen über alle Prozesse hinweg vergleichbar.

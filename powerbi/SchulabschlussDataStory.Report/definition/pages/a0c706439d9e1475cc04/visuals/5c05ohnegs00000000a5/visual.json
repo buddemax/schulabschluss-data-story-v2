@@ -10,7 +10,7 @@
     "tabOrder": 500
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "barChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_schulart"
+                      "Entity": "fact_abgaenge_schulart"
                     }
                   },
                   "Property": "schulart"
                 }
               },
-              "queryRef": "dim_schulart.schulart",
+              "queryRef": "fact_abgaenge_schulart.schulart",
               "nativeQueryRef": "schulart",
               "active": true
             }
@@ -42,11 +42,11 @@
                       "Entity": "dim_abschluss"
                     }
                   },
-                  "Property": "Schüleranteil ohne Grundschule %"
+                  "Property": "Abgänge ohne HSA (Schulart)"
                 }
               },
-              "queryRef": "dim_abschluss.Schüleranteil ohne Grundschule %",
-              "nativeQueryRef": "Schüleranteil ohne Grundschule %"
+              "queryRef": "dim_abschluss.Abgänge ohne HSA (Schulart)",
+              "nativeQueryRef": "Abgänge ohne HSA (Schulart)"
             }
           ]
         }
@@ -61,7 +61,7 @@
                     "Entity": "dim_abschluss"
                   }
                 },
-                "Property": "Schüleranteil ohne Grundschule %"
+                "Property": "Abgänge ohne HSA (Schulart)"
               }
             },
             "direction": "Descending"
@@ -71,6 +71,19 @@
       }
     },
     "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
       "dataPoint": [
         {
           "properties": {}
@@ -87,7 +100,7 @@
                           "Entity": "dim_abschluss"
                         }
                       },
-                      "Property": "Farbe Schulart LF5 oG"
+                      "Property": "Farbe Schulart LF5 HSA"
                     }
                   }
                 }
@@ -105,142 +118,52 @@
           }
         }
       ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Abgänge ohne Hauptschulabschluss je Schulart (Deutschland 2023)'"
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "filterConfig": {
     "filters": [
       {
-        "name": "og5c05ohnegs0000",
+        "name": "6495fd70b07df53fa309",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "dim_schulart"
+                "Entity": "fact_abgaenge_schulart"
               }
             },
             "Property": "schulart"
           }
         },
-        "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "d",
-              "Entity": "dim_schulart",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "Not": {
-                  "Expression": {
-                    "In": {
-                      "Expressions": [
-                        {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Source": "d"
-                              }
-                            },
-                            "Property": "schulart"
-                          }
-                        }
-                      ],
-                      "Values": [
-                        [
-                          {
-                            "Literal": {
-                              "Value": "'Insgesamt'"
-                            }
-                          }
-                        ],
-                        [
-                          {
-                            "Literal": {
-                              "Value": "'Grundschulen'"
-                            }
-                          }
-                        ]
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        },
-        "objects": {
-          "general": [
-            {
-              "properties": {
-                "isInvertedSelectionMode": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "true"
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        }
+        "type": "Categorical"
       },
       {
-        "name": "oe5c05ohnegs0000",
+        "name": "7edf233796a128f474cd",
         "field": {
-          "Column": {
+          "Measure": {
             "Expression": {
               "SourceRef": {
-                "Entity": "dim_region"
+                "Entity": "dim_abschluss"
               }
             },
-            "Property": "ebene"
+            "Property": "Abgänge ohne HSA (Schulart)"
           }
         },
-        "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "er",
-              "Entity": "dim_region",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "In": {
-                  "Expressions": [
-                    {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Source": "er"
-                          }
-                        },
-                        "Property": "ebene"
-                      }
-                    }
-                  ],
-                  "Values": [
-                    [
-                      {
-                        "Literal": {
-                          "Value": "'DE'"
-                        }
-                      }
-                    ]
-                  ]
-                }
-              }
-            }
-          ]
-        },
-        "howCreated": "User"
+        "type": "Advanced"
       }
     ]
   }

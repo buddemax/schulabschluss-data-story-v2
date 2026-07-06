@@ -5,7 +5,7 @@
     "x": 24,
     "y": 82.5,
     "z": 2000,
-    "height": 63.75,
+    "height": 110,
     "width": 833.5,
     "tabOrder": 1000
   },
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Erkenntnis LF5: Der Schulartmix prägt die Abschlüsse. Grundschulen 35,2 %, Gymnasien 25,9 %, Hauptschule nur noch 3,8 %. Der hohe Gymnasialanteil erklärt die hohen Abiturquoten."
+                    "value": "Erkenntnis LF5: Der Schulartmix prägt die Abschlussverteilung deutlich. Links die Zusammensetzung der Schülerschaft nach Schulart (Input). Rechts, welche Schulart die Abgänge ohne Hauptschulabschluss stellt: 42 % (23.324) entfallen 2023 bundesweit auf Förderschulen, 22 % auf integrierte Gesamtschulen – von Gymnasien nur rund 3 % (Deutschland, Destatis 21111-12)."
                   }
                 ]
               }

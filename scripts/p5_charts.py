@@ -169,22 +169,22 @@ footer(fig); fig.tight_layout(rect=[0,0.03,1,1]); fig.savefig(os.path.join(OUT,"
 # ---- Sternschema-Diagramm (für Doku Kap.4) ----
 fig,ax=plt.subplots(figsize=(10,6.2)); ax.axis("off")
 dims=[("dim_region",0.4,4.7),("dim_zeit",0.4,3.5),("dim_abschluss",0.4,2.3),("dim_schulart",0.4,1.1)]
-facts=[("fact_abgaenge",6.2,5.5),("fact_schule_2023",6.2,4.66),("fact_arbeitsmarkt_2025",6.2,3.81),
-       ("fact_ausgaben_je_schueler",6.2,2.97),("fact_ausgaben_schulart",6.2,2.13),
-       ("fact_bevoelkerung (Hilf)",6.2,1.29),("fact_abgaenge_beruflich (Hilf)",6.2,0.44),
+facts=[("fact_abgaenge",6.2,5.5),("fact_abgaenge_schulart",6.2,4.76),("fact_schule_2023",6.2,4.02),
+       ("fact_arbeitsmarkt_2025",6.2,3.29),("fact_ausgaben_je_schueler",6.2,2.55),("fact_ausgaben_schulart",6.2,1.81),
+       ("fact_bevoelkerung (Hilf)",6.2,1.07),("fact_abgaenge_beruflich (Hilf)",6.2,0.34),
        ("fact_einkommen_kreis (Hilf)",6.2,-0.4)]
 def _box(x,y,t,c):
     ax.add_patch(plt.Rectangle((x,y),3.2,0.66,facecolor=c,edgecolor="white",zorder=2))
     ax.text(x+1.6,y+0.33,t,ha="center",va="center",color="white",fontsize=9.5,fontweight="bold",zorder=3)
-# region->alle 8 Fakten; zeit->abgaenge; abschluss->abgaenge; schulart->schule (alle *:1)
-rels=[(0,0),(0,1),(0,2),(0,3),(0,4),(0,5),(0,6),(0,7),(1,0),(2,0),(3,1)]
+# region->alle 9 Fakten; zeit->abgaenge; abschluss->abgaenge+abgaenge_schulart; schulart->schule (alle *:1)
+rels=[(0,0),(0,1),(0,2),(0,3),(0,4),(0,5),(0,6),(0,7),(0,8),(1,0),(2,0),(2,1),(3,2)]
 for di,fi in rels:
     _,dx,dy=dims[di]; _,fx,fy=facts[fi]
     ax.plot([dx+3.2,fx],[dy+0.33,fy+0.33],color=C["grau"],lw=0.8,zorder=1)
 for t,x,y in dims: _box(x,y,t,C["blau"])
 for t,x,y in facts: _box(x,y,t,C["gruen"])
 ax.set_xlim(0,9.8); ax.set_ylim(-0.7,6.3)
-ax.set_title("Sternschema: 5 Fakten (4 Kern + Ausgaben-Schulart) + 3 Hilfsfakten · 4 Dimensionen",loc="left",fontsize=11.5,fontweight="bold")
+ax.set_title("Sternschema: 6 Fakten (4 Kern + Ausgaben-Schulart + Abgänge-Schulart) + 3 Hilfsfakten · 4 Dimensionen",loc="left",fontsize=11,fontweight="bold")
 fig.text(0.01,0.01,"Alle Fakten *:1 (Single-Direction) zu dim_region über region_code · dim_zeit→fact_abgaenge · dim_schulart→fact_schule · kein m:n (M6 behoben, DQ9)",fontsize=7.5,color=C["grau"])
 fig.tight_layout(rect=[0,0.03,1,1]); fig.savefig(os.path.join(OUT,"schema_stern.png")); plt.close(fig)
 

@@ -42,3 +42,11 @@ relationship rel1000000-0000-0000-0000-000000000000
 	fromColumn: fact_einkommen_kreis.region_code
 	toColumn: dim_region.region_code
 
+relationship rel1100000-0000-0000-0000-000000000000
+	fromColumn: fact_abgaenge_schulart.region_code
+	toColumn: dim_region.region_code
+
+relationship rel1200000-0000-0000-0000-000000000000
+	fromColumn: fact_abgaenge_schulart.abschluss_key
+	toColumn: dim_abschluss.abschluss_key
+

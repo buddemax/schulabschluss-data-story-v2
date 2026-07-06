@@ -153,6 +153,19 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2076.5442379971755,
+            "y": 384.94657856438306
+          },
+          "nodeIndex": "fact_abgaenge_schulart",
+          "nodeLineageTag": "fac70000-5c00-4a17-9e01-000000000001",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "Alle Tabellen",

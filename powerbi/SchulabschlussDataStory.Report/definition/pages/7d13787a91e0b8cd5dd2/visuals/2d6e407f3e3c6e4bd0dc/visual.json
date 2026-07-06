@@ -23,17 +23,45 @@
                       "Entity": "dim_region"
                     }
                   },
-                  "Property": "region"
+                  "Property": "region_code"
                 }
               },
-              "queryRef": "dim_region.region",
-              "nativeQueryRef": "region",
+              "queryRef": "dim_region.region_code",
+              "nativeQueryRef": "region_code",
               "active": true
             }
           ]
         },
-        "X": {
+        "Tooltips": {
           "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_region"
+                    }
+                  },
+                  "Property": "region"
+                }
+              },
+              "queryRef": "dim_region.region",
+              "nativeQueryRef": "region"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_region"
+                    }
+                  },
+                  "Property": "Land"
+                }
+              },
+              "queryRef": "dim_region.Land",
+              "nativeQueryRef": "Land"
+            },
             {
               "field": {
                 "Measure": {
@@ -46,13 +74,8 @@
                 }
               },
               "queryRef": "dim_abschluss.Quote ohne HSA %",
-              "nativeQueryRef": "Quote ohne HSA %",
-              "active": true
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
+              "nativeQueryRef": "Quote ohne HSA %"
+            },
             {
               "field": {
                 "Measure": {
@@ -66,24 +89,6 @@
               },
               "queryRef": "dim_abschluss.Jugend-ALQ Ø",
               "nativeQueryRef": "Jugend-ALQ Ø"
-            }
-          ]
-        },
-        "Tooltips": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dim_abschluss"
-                    }
-                  },
-                  "Property": "Risiko-Score"
-                }
-              },
-              "queryRef": "dim_abschluss.Risiko-Score",
-              "nativeQueryRef": "Risiko-Score"
             },
             {
               "field": {
@@ -100,6 +105,43 @@
               "nativeQueryRef": "Verf. Einkommen je EW Ø"
             }
           ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_abschluss"
+                    }
+                  },
+                  "Property": "BL-Position"
+                }
+              },
+              "queryRef": "dim_abschluss.BL-Position",
+              "nativeQueryRef": "BL-Position",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_abschluss"
+                    }
+                  },
+                  "Property": "Risiko-Score"
+                }
+              },
+              "queryRef": "dim_abschluss.Risiko-Score",
+              "nativeQueryRef": "Risiko-Score"
+            }
+          ]
         }
       },
       "sortDefinition": {
@@ -112,7 +154,7 @@
                     "Entity": "dim_abschluss"
                   }
                 },
-                "Property": "Quote ohne HSA %"
+                "Property": "Risiko-Score"
               }
             },
             "direction": "Descending"
@@ -153,6 +195,34 @@
                 }
               }
             ]
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Bundesland (Position 01=SH … 16=TH)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Risiko-Score je Kreis, gruppiert nach Bundesland'"
+                }
+              }
+            }
           }
         }
       ]
@@ -213,6 +283,118 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "65067fcba4189d5206bf",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_region"
+              }
+            },
+            "Property": "region_code"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e408c2ff3b326b63ec9b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "BL-Position"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2a7c8244ee17bec5e661",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "Risiko-Score"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "43bcc805100af152a5a7",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_region"
+              }
+            },
+            "Property": "region"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9f7e6ef38652eb289fc3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_region"
+              }
+            },
+            "Property": "Land"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f542fbce6fbee0b68818",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "Quote ohne HSA %"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "04d81cced0f43a6b59ff",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "Jugend-ALQ Ø"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bef92308a8b12bc3e4dc",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "Verf. Einkommen je EW Ø"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

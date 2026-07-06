@@ -113,15 +113,15 @@ lf_slide("TEIL 2 · STRUKTUR",ORANGE,"LF4 — Jungen öfter ohne Abschluss, Mäd
 # LF5 ohne eigenes Chart -> Stat-Layout
 s=slide()
 chip(s,0.6,0.45,2.6,"TEIL 2 · STRUKTUR",ORANGE)
-tb(s,0.6,1.0,12,1.0,"LF5 — Der Schulartmix prägt die Abschlussstruktur",26,NAVY,True,HEAD)
-mix=[("Grundschulen","35,2 %"),("Gymnasien","25,9 %"),("Integr. Gesamtschulen","13,1 %"),("Realschulen","8,8 %"),("Förderschulen","3,9 %"),("Hauptschulen","3,8 %")]
+tb(s,0.6,1.0,12,1.0,"LF5 — Der Schulartmix prägt die Abschlussverteilung",26,NAVY,True,HEAD)
+mix=[("Förderschulen","42 %"),("Integr. Gesamtschulen","22 %"),("Schularten m. mehr. BG","16 %"),("Hauptschulen","13 %"),("Realschulen","5 %"),("Gymnasien (G8/G9)","~3 %")]
 gx,gy=0.7,2.2
 for i,(k,v) in enumerate(mix):
     bx=gx+(i%3)*4.1; by=gy+(i//3)*2.1
     card=s.shapes.add_shape(5,Inches(bx),Inches(by),Inches(3.8),Inches(1.8)); card.fill.solid(); card.fill.fore_color.rgb=LIGHT; card.line.fill.background(); card.shadow.inherit=False
     tb(s,bx+0.2,by+0.2,3.4,0.9,v,30,NAVY,True,HEAD)
     tb(s,bx+0.22,by+1.05,3.4,0.6,k,14,DARKT)
-tb(s,0.6,6.2,12,0.5,"Schüleranteil je Schulart (Deutschland 2023): Gymnasial-/Gesamtschulanteil bestimmt die Abiturquote mit.",13,GRAY,italic=True)
+tb(s,0.6,6.2,12,0.5,"Herkunft der Abgänge ohne Hauptschulabschluss nach Schulart (DE 2023, Destatis 21111-12): Förderschulen stellen 42 %, integrierte Gesamtschulen 22 % – von Gymnasien nur rund 3 %.",13,GRAY,italic=True)
 src(s)
 lf_slide("TEIL 2 · STRUKTUR",ORANGE,"LF6 — Die Wertung kippt: absolut vs. relativ","pbi/pbi_lf6.png",
     [("Absolut führt NRW (11.835 ohne HSA)",False),("Relativ (je 1.000 der 15–18-Jährigen) führt Sachsen-Anhalt",True),("Kleine Ost-Länder & Bremen rücken nach vorn",False),("Relative Betrachtung ist fairer",True)],
@@ -184,7 +184,7 @@ NOTES=[
  "Max Budde - LF1. Sachsen-Anhalt führt 2023 mit 12,7 % Abgängen ohne Hauptschulabschluss; Ost-Flächenländer + Bremen/SH oben, Bayern am niedrigsten (5,4 %). Anstieg 2022 (11,3 %) -> 2023 (12,7 %). Wert in Power BI und unabhängig gegen die amtlichen Quellwerte verifiziert.",
  "Max Budde - LF2/LF3. Es ist auch ein Kreisproblem: Hotspots Anhalt-Bitterfeld 16,8 %, Pirmasens 16,5 %. Das Streudiagramm und die Streuungstabelle zeigen: starke Streuung INNERHALB der Länder (z. B. Rheinland-Pfalz Spannweite 12,7 pp). Landesdurchschnitt verdeckt lokale Extreme. Übergabe an John Kanto.",
  "Sprecher: John Kanto (Teil 2 - Struktur, ca. 5 Min). LF4 Geschlechtergefälle: ohne HSA Jungen 8,4 % vs. Mädchen 5,8 %; Abitur Mädchen 37,1 % vs. Jungen 29,3 %. Gefälle in beide Richtungen (DE 2023).",
- "John Kanto - LF5 Schulartmix (DE 2023, Σ=100 %): Grundschulen 35,2 %, Gymnasien 25,9 %, Integr. Gesamtschulen 13,1 %. Der Gymnasial-/Gesamtschulanteil prägt die Abiturquote mit.",
+ "John Kanto - LF5 Schulartmix (DE 2023): Der Schulartmix prägt die Abschlussverteilung. Von 55.705 Abgängen ohne Hauptschulabschluss stellen Förderschulen 42 % (23.324), integrierte Gesamtschulen 22 %, Schularten mit mehreren Bildungsgängen 16 % und Hauptschulen 13 % - von Gymnasien nur rund 3 % (Destatis 21111-12, Landesebene).",
  "John Kanto - LF6. Die Wertung kippt: absolut führt NRW (meiste Fälle), relativ (je 1.000 der 15-18-Jährigen) führt Sachsen-Anhalt. Kleine Ost-Länder und Bremen rücken nach vorn. Relative Betrachtung ist fairer. Übergabe an Aaron Ziegler.",
  "Sprecher: Aaron Ziegler (Teil 3 - Ökonomie, ca. 5 Min). LF7 Ausgaben je Schüler: Gymnasien/Gesamtschulen am teuersten (~11 Tsd €), Grundschulen ~8,4 Tsd €. Nach Bundesland führen die Stadtstaaten (Berlin/Hamburg).",
  "Aaron Ziegler - LF8. Mehr Ausgaben je Schüler gehen mit höherer Abiturquote einher: r = +0,61 über 16 Bundesländer; mit der Quote ohne HSA r = -0,33. WICHTIG: Zusammenhang, KEINE Kausalität; Strukturkosten der Stadtstaaten beachten.",

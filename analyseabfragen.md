@@ -1,7 +1,7 @@
 # Analyseabfragen & KPIs (REQ-053, REQ-056) – DAX + Referenzwert
 
 > Je Leitfrage: KPI, **DAX-Measure** (für Power-BI-Modell), **Referenzwert** (aus den amtlichen Quelldaten, `data/kpi_referenzwerte.json`).
-> **Validierungsregel (§7d):** Eine Measure gilt als bestätigt, wenn das Power-BI-Ergebnis mit der Nachrechnung übereinstimmt. Wir haben das auf zwei Wegen geprüft: jede Kennzahl unabhängig aus den Rohdaten nachgerechnet und die 20 analytischen DAX-Measures im TMDL gegengelesen; Stichproben (LF1 Sachsen-Anhalt 12,66 %, LF2 16,78 %, LF5 35,23 %, LF9 3-dim Risiko-Score Gelsenkirchen 8,08, LF3 RLP σ 2,84) zusätzlich live in Power BI Desktop abgeglichen. Bezugsjahr der abgängebasierten Visuals ist 2023 (Bericht-Filter `dim_zeit[jahr]=2023`, DQ11).
+> **Validierungsregel (§7d):** Eine Measure gilt als bestätigt, wenn das Power-BI-Ergebnis mit der Nachrechnung übereinstimmt. Wir haben das auf zwei Wegen geprüft: jede Kennzahl unabhängig aus den Rohdaten nachgerechnet und die 23 analytischen DAX-Measures im TMDL gegengelesen; Stichproben (LF1 Sachsen-Anhalt 12,66 %, LF2 16,78 %, LF5 35,23 %, LF9 3-dim Risiko-Score Gelsenkirchen 8,08, LF3 RLP σ 2,84) zusätzlich live in Power BI Desktop abgeglichen. Bezugsjahr der abgängebasierten Visuals ist 2023 (Bericht-Filter `dim_zeit[jahr]=2023`, DQ11).
 
 ## Basis-Measures
 ```DAX

@@ -105,6 +105,21 @@
           }
         }
       ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Schülerschaft nach Schulart (Input, Deutschland 2023)'"
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   },
   "filterConfig": {
@@ -234,6 +249,20 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "a7517889a285adce2476",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_abschluss"
+              }
+            },
+            "Property": "Schüleranteil %"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

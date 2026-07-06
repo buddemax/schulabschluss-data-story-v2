@@ -14,7 +14,7 @@ Bildungserfolg ist kein reines Länderphänomen – er wird **lokal** entschiede
 | LF2 | Wo ist der Anteil ohne Hauptschulabschluss am höchsten? | Kreis-Hotspots bis ~17 % (Anhalt-Bitterfeld, Pirmasens) |
 | LF3 | Länder- oder Kreisproblem? | beides – starke Streuung *innerhalb* der Länder (σ RLP 2,84) |
 | LF4 | Unterschied Jungen/Mädchen? | Jungen öfter ohne HSA (8,4 % vs. 5,8 %), Mädchen öfter Abitur |
-| LF5 | Prägt der Schulartmix die Abschlüsse? | ohne Grundschule dominieren Gymnasien (40 %) |
+| LF5 | Prägt der Schulartmix die Abschlüsse? | ja, massiv – 42 % der Abgänge ohne HSA kommen von Förderschulen (Destatis 21111-12, DE 2023) |
 | LF6 | Ändert sich die Wertung relativ statt absolut? | ja – Rangfolge kippt komplett |
 | LF7 | Wie verteilen sich die Bildungsausgaben? | steigen mit der Schulart (GS 8.400 € → IGS 11.600 €) |
 | LF8 | Mehr Geld = bessere Abschlüsse? | **nein** – r=+0,61 ist ein Stadtstaaten-Artefakt (ohne SS r=−0,36, n.s.) |
@@ -24,7 +24,7 @@ Methodischer Grundsatz durchgehend: **Korrelation ≠ Kausalität** (Konfidenzin
 
 ## Technischer Aufbau
 - **Datenaufbereitung komplett in Power Query (M)** – lädt die offenen Rohdateien **direkt aus `data/raw`** (Windows-1252-CSV + Destatis-XLSX) und transformiert dort (Encoding, Missing-Handling, Wide→Long, AGS-Ableitung, Dezimal-Locale). Kein vorgelagertes Cleaning außerhalb des BI-Werkzeugs.
-- **Dimensionales Sternschema (Kimball)** in TMDL: 8 Fakttabellen + 4 Dimensionen, konforme Region-Dimension über `region_code`, Region-Hierarchie Land→Regierungsbezirk→Kreis, SCD Typ 1, Bus-Matrix, Additivitätsklassifikation.
+- **Dimensionales Sternschema (Kimball)** in TMDL: 9 Fakttabellen + 4 Dimensionen, konforme Region-Dimension über `region_code`, Region-Hierarchie Land→Regierungsbezirk→Kreis, SCD Typ 1, Bus-Matrix, Additivitätsklassifikation.
 - **18 DAX-Measures** (Quoten, Anteile, Streuung, Korrelation, z-standardisierter 3-dim Risiko-Score).
 - **Interaktiver Bericht** (9 Seiten LF1–LF9): 2 Deutschlandkarten (Bundesland- + Kreisebene), 15 Slicer (Bundesland, Ost/West, Stadt/Landkreis, Stadtstaat), Einkommens-Schieberegler, Drilldown; barrierearmes Okabe-Ito-Theme.
 

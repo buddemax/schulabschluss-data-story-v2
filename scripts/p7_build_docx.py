@@ -117,7 +117,7 @@ P("Damit wir jede Leitfrage auf der jeweils richtigen Ebene beantworten können,
   "dimensionales Sternschema (Kimball). Die Präsentations-Vision (S10) nennt vier konzeptionelle Kern-Fakten; "
   "physisch sind es fünf Fakttabellen (die Ausgaben zusätzlich nach Schulart) plus drei Hilfsfakttabellen "
   "(Bevölkerung als Nenner, berufliche Abgänge als Übergang, verfügbares Einkommen für die Ergebnis-Stufe), "
-  "also insgesamt 8 Fakttabellen und 4 Dimensionen.")
+  "also insgesamt 9 Fakttabellen und 4 Dimensionen.")
 table(["Typ","Tabelle","Grain / Schlüssel","Fluss-Stufe"],[
  ["Fakt","Abgänge","Region × Jahr × Abschluss × Geschlecht","OUTPUT"],
  ["Fakt","Schule","Region × Jahr × Schulart","INPUT"],
@@ -132,7 +132,7 @@ table(["Typ","Tabelle","Grain / Schlüssel","Fluss-Stufe"],[
  ["Dim","Abschluss","abschluss_key, Rang","OUTPUT"],
  ["Dim","Schulart","Schulart","INPUT"]])
 P("Die zentrale, über alle Prozesse konforme Dimension ist die Region: dim_region verbindet über den eindeutigen "
-  "region_code alle acht Fakten als reines Sternschema (1:n, Single-Direction). Die Zeit ist aktiv nur an den "
+  "region_code alle neun Fakten als reines Sternschema (1:n, Single-Direction). Die Zeit ist aktiv nur an den "
   "Abgängen verknüpft, weil dies die einzige echte Mehrjahres-Analyse ist (Schuljahre 2022/23 und 2023/24); die "
   "übrigen Fakten sind Einzeljahr-Snapshots oder Mehrjahres-Durchschnitte. Den beiden Ausgaben-Tabellen und der "
   "Einkommenstabelle wurde ein region_code ergänzt (Name auf AGS), sodass alle Verknüpfungen als sauberes "
@@ -237,23 +237,26 @@ P("LF5 – Wie prägt der Schulartmix die Abschlussverteilung?",bold=True)
 PL("Ergebnis (Gesamtmix):","Von allen Schülern entfallen 35,2 % auf Grundschulen, 25,9 % auf Gymnasien, 13,1 % "
    "auf integrierte Gesamtschulen, 8,8 % auf Realschulen, 6,3 % auf Schularten mit mehreren Bildungsgängen, "
    "3,9 % auf Förderschulen und nur noch 3,8 % auf Hauptschulen.")
-PL("Ergebnis (Fokus: abschlussvergebende Schulen):","Grundschulen vergeben keinen der hier untersuchten "
-   "Abschlüsse – sie dominieren den Gesamtmix aber mit gut einem Drittel und verdecken so die eigentliche "
-   "Verteilung. Klammert man sie aus (Basis: weiterführende, abschlussvergebende Schulen), dominieren die "
-   "Gymnasien mit 40,0 %, gefolgt von integrierten Gesamtschulen (20,2 %), Realschulen (13,5 %), Schularten "
-   "mit mehreren Bildungsgängen (9,7 %), Förderschulen (6,0 %) und Hauptschulen (5,9 %). Der Bericht zeigt "
-   "beide Sichten nebeneinander (eigenes Measure ohne Grundschulen).")
-pic("pbi/pbi_lf5.png",cap="Abb. 6 (LF5): Berichtsseite LF5 – Schulartmix je Schulart (DE 2023): links der "
-    "Gesamtmix, rechts die Sicht ohne Grundschulen (nur abschlussvergebende Schulen).")
-PL("Interpretation:","Erst die Fokus-Sicht macht die strukturelle Erklärung für die hohen Abiturquoten "
-   "sichtbar: Vier von zehn Schülern der weiterführenden Schulen besuchen ein Gymnasium, weitere zwei von "
-   "zehn eine integrierte Gesamtschule. Der starke Rückgang der klassischen Hauptschule (nur 5,9 %) zugunsten "
-   "integrierter und mehrgliedriger Schulformen verschiebt die Abschlusswege. Der Schulartmix ist damit die "
-   "INPUT-Seite, die die Abschlussstruktur prägt.")
-PL("Warum so:","Der Nenner des Anteils muss die Sammelkategorie 'Insgesamt' ausschließen, sonst zählt die "
-   "Gesamtsumme doppelt und alle Anteile halbieren sich. Für die Fokus-Sicht schließt ein zweites Measure "
-   "zusätzlich die Grundschulen aus dem Nenner aus, sodass sich die Anteile der abschlussvergebenden Schulen "
-   "wieder zu 100 % addieren; beide Visuals filtern auf die nationale Ebene, um Mehrfachzählung zu vermeiden.")
+PL("Ergebnis (Antwort: wer stellt die Abgänge ohne Hauptschulabschluss?):","Die eigentliche Antwort liefert "
+   "eine zweite, neu erschlossene offene Quelle (Destatis 21111-12 – Absolvierende/Abgehende nach Schulart und "
+   "Abschlussart, Landesebene 2023): Von den 55.705 Abgängen ohne Hauptschulabschluss in Deutschland entfallen "
+   "41,9 % (23.324) auf Förderschulen, 21,5 % auf integrierte Gesamtschulen, 15,5 % auf Schularten mit mehreren "
+   "Bildungsgängen und 12,7 % auf Hauptschulen – von Gymnasien (G8/G9) nur rund 3 %. Der Schulartmix prägt die "
+   "Abschlussverteilung also massiv.")
+pic("pbi/pbi_lf5.png",cap="Abb. 6 (LF5): Berichtsseite LF5 – links die Zusammensetzung der Schülerschaft nach "
+    "Schulart (Input, DE 2023), rechts welche Schulart die Abgänge ohne Hauptschulabschluss stellt (Antwort, "
+    "Destatis 21111-12).")
+PL("Interpretation:","Erst die Kreuzung von Schulart und Abschlussart beantwortet die Leitfrage direkt: nicht "
+   "die Größe einer Schulart entscheidet, sondern ihr Bildungsauftrag. Förderschulen und integrierte "
+   "Gesamtschulen stellen zusammen rund zwei Drittel aller Abgänge ohne Hauptschulabschluss, während Gymnasien "
+   "fast ausschließlich zur Hochschulreife führen. Die links gezeigte, gymnasiallastige Schülerstruktur ist die "
+   "Input-Seite, die rechte Verteilung die tatsächliche Wirkung je Schulart.")
+PL("Warum so / Vorbehalt:","Die linke Sicht (Schüleranteil je Schulart) schließt im Nenner die Sammelkategorie "
+   "'Insgesamt' aus, sonst zählt die Gesamtsumme doppelt. Die rechte Antwort stammt aus einer separaten "
+   "Fakttabelle (fact_abgaenge_schulart) und liegt nur auf Landesebene vor (keine Kreise); ihre "
+   "Schulart-Kategorien (u. a. Gymnasien G8/G9, Förderschulen) folgen der Schulstatistik und sind nicht 1:1 mit "
+   "der Schülerzahlen-Dimension. Der Ankerwert (Deutschland, ohne HSA, Summe über Schularten = 55.705) ist mit "
+   "der übrigen Story konsistent.")
 
 P("LF6 – Ändert sich die Wertung, wenn man relativ statt absolut zählt?",bold=True)
 PL("Ergebnis:","Ja, die Rangfolge kippt vollständig. Absolut führen die bevölkerungsreichen Länder: "

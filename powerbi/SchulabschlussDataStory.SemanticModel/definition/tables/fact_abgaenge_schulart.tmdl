@@ -1,0 +1,57 @@
+table fact_abgaenge_schulart
+	lineageTag: fac70000-5c00-4a17-9e01-000000000001
+
+	column jahr
+		dataType: int64
+		lineageTag: fac70000-5c00-4a17-9e01-000000000002
+		summarizeBy: none
+		sourceColumn: jahr
+
+	column region_code
+		dataType: string
+		lineageTag: fac70000-5c00-4a17-9e01-000000000003
+		summarizeBy: none
+		sourceColumn: region_code
+
+	column bundesland
+		dataType: string
+		lineageTag: fac70000-5c00-4a17-9e01-000000000004
+		summarizeBy: none
+		sourceColumn: bundesland
+
+	column schulart
+		dataType: string
+		lineageTag: fac70000-5c00-4a17-9e01-000000000005
+		summarizeBy: none
+		sourceColumn: schulart
+
+	column abschluss_key
+		dataType: string
+		lineageTag: fac70000-5c00-4a17-9e01-000000000006
+		summarizeBy: none
+		sourceColumn: abschluss_key
+
+	column anzahl
+		dataType: int64
+		lineageTag: fac70000-5c00-4a17-9e01-000000000007
+		summarizeBy: sum
+		sourceColumn: anzahl
+
+	partition fact_abgaenge_schulart = m
+		mode: import
+		source =
+				let
+				blmap = Table.FromRecords({[nm = "Schleswig-Holstein", cd = "01"], [nm = "Hamburg", cd = "02"], [nm = "Niedersachsen", cd = "03"], [nm = "Bremen", cd = "04"], [nm = "Nordrhein-Westfalen", cd = "05"], [nm = "Hessen", cd = "06"], [nm = "Rheinland-Pfalz", cd = "07"], [nm = "Baden-Württemberg", cd = "08"], [nm = "Bayern", cd = "09"], [nm = "Saarland", cd = "10"], [nm = "Berlin", cd = "11"], [nm = "Brandenburg", cd = "12"], [nm = "Mecklenburg-Vorpommern", cd = "13"], [nm = "Sachsen", cd = "14"], [nm = "Sachsen-Anhalt", cd = "15"], [nm = "Thüringen", cd = "16"], [nm = "Deutschland", cd = "DG"]}),
+				xls = Excel.Workbook(File.Contents(DataFolder & "statbericht_allgbild_2023-24.xlsx"), null, true),
+				sh = xls{[Item = "csv-21111-12", Kind = "Sheet"]}[Data],
+				prom = Table.PromoteHeaders(sh, [PromoteAllScalars=true]),
+				isIns = (v) => Text.Lower(Text.Trim(Text.From(if v = null then "" else v))) = "insgesamt",
+				f = Table.SelectRows(prom, each isIns([Status]) and isIns([Klassenstufe]) and isIns([Abschluss2]) and isIns([Geschlecht]) and not isIns([Schulart]) and not isIns([Abschluss])),
+				keyOf = (a) => let s = Text.Lower(Text.Trim(Text.From(if a = null then "" else a))) in if s = "ohne hauptschulabschluss" then "ohne_hauptschulabschluss" else if s = "hauptschulabschluss" or s = "mit hauptschulabschluss" then "mit_hauptschulabschluss" else if s = "mittlerer abschluss" then "mittlerer_abschluss" else if s = "fachhochschulreife" then "fachhochschulreife" else if s = "allgemeine hochschulreife" then "allgemeine_hochschulreife" else null,
+				codeOf = (g) => let m = Table.SelectRows(blmap, (z) => Text.Trim(z[nm]) = Text.Trim(Text.From(if g = null then "" else g))) in if Table.RowCount(m) > 0 then m{0}[cd] else null,
+				rec = Table.AddColumn(f, "r", each let k = keyOf([Abschluss]), code = codeOf([Bundesland]), a = fnToInt([Absolvierende_und_Abgehende_Anzahl]) in if k = null or code = null then null else [jahr = 2023, region_code = code, bundesland = Text.Trim([Bundesland]), schulart = Text.Trim([Schulart]), abschluss_key = k, anzahl = a]),
+				tbl = Table.FromRecords(List.RemoveNulls(rec[r])),
+				typed = Table.TransformColumnTypes(tbl, {{"jahr", Int64.Type}, {"region_code", type text}, {"bundesland", type text}, {"schulart", type text}, {"abschluss_key", type text}, {"anzahl", Int64.Type}})
+				in
+				typed
+

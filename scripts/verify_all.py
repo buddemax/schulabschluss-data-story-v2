@@ -242,7 +242,7 @@ tdir=os.path.join(PBI,"SchulabschlussDataStory.SemanticModel","definition","tabl
 da=open(os.path.join(tdir,"dim_abschluss.tmdl"),encoding="utf-8").read()
 nmeas=len(re.findall(r"^\tmeasure ",da,re.M))
 _fmtmeas=len(re.findall(r"^\tmeasure 'Farbe ",da,re.M))  # reine Formatierungs-Helfer (nicht analytisch)
-check("TMDL: 20 analytische Measures + Formatierungs-Helfer (inkl. LF4-Gap-Measures, Runde 3)", nmeas-_fmtmeas==20 and _fmtmeas>=6, f"analytisch={nmeas-_fmtmeas}, formatierung={_fmtmeas}")
+check("TMDL: 23 analytische Measures + Formatierungs-Helfer (inkl. Runde-5 LF5/Dot-Plot-Measures)", nmeas-_fmtmeas==23 and _fmtmeas>=6, f"analytisch={nmeas-_fmtmeas}, formatierung={_fmtmeas}")
 check("TMDL: LF4-Gap-Measures vorhanden (W3a)", "measure 'Gap ohne HSA (pp)'" in da and "measure 'Gap Abitur (pp)'" in da)
 check("TMDL: LF9 Risiko-Score-Measure (z-standardisiert) vorhanden", "measure 'Risiko-Score'" in da or "measure Risiko-Score" in da)
 check("TMDL: LF9 Risiko-Score ist 3-dimensional (inkl. Einkommen)", "Verf. Einkommen je EW" in da and "Risiko-Score" in da)
@@ -312,6 +312,44 @@ _baseog=sum(v for k,v in _agg.items() if k not in ("Insgesamt","Grundschulen"))
 _gymog=100*_agg["Gymnasien"]/_baseog
 check("LF5 ohne Grundschule: Gymnasien-Anteil ~40,0 %", abs(_gymog-40.0)<0.2, f"{_gymog:.1f} %")
 
+# --- Runde 5: LF5 korrekt beantwortet (Schulart×Abschluss, Destatis 21111-12) + Dot-Plots + neue Measures ---
+check("TMDL: neue Runde-5-Measures vorhanden (BL-Position, Abgänge/Anteil ohne HSA je Schulart, Farbe-Helfer)",
+      ("measure 'BL-Position'" in da or "measure BL-Position" in da) and all(("measure '"+_m+"'") in da for _m in ["Abgänge ohne HSA (Schulart)","Anteil ohne HSA je Schulart %","Farbe Schulart LF5 HSA","Farbe Schuljahr LF1"]))
+check("TMDL: Fakttabelle fact_abgaenge_schulart + im Modell referenziert",
+      os.path.exists(os.path.join(tdir,"fact_abgaenge_schulart.tmdl")) and "ref table fact_abgaenge_schulart" in mdl)
+check("TMDL: fact_abgaenge_schulart-Beziehungen (region_code→dim_region, abschluss_key→dim_abschluss)",
+      "fact_abgaenge_schulart.region_code" in rel and "fact_abgaenge_schulart.abschluss_key" in rel)
+check("Power Query: fact_abgaenge_schulart liest Destatis-Sheet csv-21111-12 direkt (Excel.Workbook)",
+      "csv-21111-12" in open(os.path.join(tdir,"fact_abgaenge_schulart.tmdl"),encoding="utf-8").read())
+# Datenanker gegen Rohquelle (Destatis 21111-12, Landesebene 2023): DE ohne HSA je Schulart
+import openpyxl as _oxl
+_ws12=_oxl.load_workbook(os.path.join(ROOT,"data","raw","statbericht_allgbild_2023-24.xlsx"),read_only=True,data_only=True)["csv-21111-12"]
+_r12=[[("" if _c is None else str(_c)) for _c in _row] for _row in _ws12.iter_rows(values_only=True)]
+_h12={_c.strip():_i for _i,_c in enumerate(_r12[0])}
+def _col12(_n,_ex=None):
+    for _c,_i in _h12.items():
+        if _n.lower() in _c.lower() and (_ex is None or _ex.lower() not in _c.lower()): return _i
+_iBL,_iSA,_iST,_iKL,_iAB,_iA2,_iGE=_col12("Bundesland"),_col12("Schulart"),_col12("Status"),_col12("Klassenstufe"),_col12("Abschluss","Abschluss2"),_col12("Abschluss2"),_col12("Geschlecht")
+_iV12=_col12("Absolvierende_und_Abgehende_Anzahl","auslaend")
+def _ins12(_v): return _v.strip().lower()=="insgesamt"
+_foe=0; _tothsa=0
+for _row in _r12[1:]:
+    if _row[_iBL]!="Deutschland" or _ins12(_row[_iSA]): continue
+    if not (_ins12(_row[_iST]) and _ins12(_row[_iKL]) and _ins12(_row[_iA2]) and _ins12(_row[_iGE])): continue
+    if _row[_iAB].strip()!="ohne Hauptschulabschluss": continue
+    _v12=int(_row[_iV12]) if _row[_iV12].strip().lstrip("-").isdigit() else 0
+    _tothsa+=_v12
+    if _row[_iSA]=="Förderschulen": _foe=_v12
+check("LF5-Anker (Destatis 21111-12, DE 2023): ohne HSA – Förderschulen=23324, Σ Schularten=55705", _foe==23324 and _tothsa==55705, f"Förderschulen={_foe} Σ={_tothsa}")
+# Report (.pbip-Quelle): LF5-Antwortchart + Dot-Plots live verdrahtet
+_lf5ans=_lf5read("5c05ohnegs00000000a5")
+check("LF5-Report: Antwortchart 'Abgänge ohne HSA je Schulart' (barChart) + Förderschul-Akzent verdrahtet",
+      '"visualType": "barChart"' in _lf5ans and "Abgänge ohne HSA (Schulart)" in _lf5ans and "Farbe Schulart LF5 HSA" in _lf5ans)
+_lf3sc5=open(os.path.join(PBI,"SchulabschlussDataStory.Report","definition","pages","e6a8516d8664d6ecae94","visuals","6852c1376c79a8b91b57","visual.json"),encoding="utf-8").read()
+_lf9sc5=open(os.path.join(PBI,"SchulabschlussDataStory.Report","definition","pages","7d13787a91e0b8cd5dd2","visuals","2d6e407f3e3c6e4bd0dc","visual.json"),encoding="utf-8").read()
+check("LF3/LF9-Report: Dot-Plots nutzen BL-Position auf X + region_code je Kreis (Streuung je Bundesland)",
+      "BL-Position" in _lf3sc5 and "region_code" in _lf3sc5 and "BL-Position" in _lf9sc5 and "region_code" in _lf9sc5)
+
 print("\n== 3c. Interaktivität (Karte + Slicer/Slider im Bericht) ==")
 import glob as _glob3
 _allvis=[json.load(open(_f,encoding="utf-8")) for _f in _glob3.glob(os.path.join(PBI,"SchulabschlussDataStory.Report","definition","pages","*","visuals","*","visual.json"))]
@@ -377,11 +415,11 @@ check("Schema-MD: DWH-Deliverables (Bus-Matrix, Additivität, SCD, Hierarchie) d
 _aa=open(os.path.join(ROOT,"analyseabfragen.md"),encoding="utf-8").read()
 _pbr=open(os.path.join(PBI,"README.md"),encoding="utf-8").read()
 _auf=open(os.path.join(ROOT,"powerbi_aufbauanleitung.md"),encoding="utf-8").read()
-check("Nebendoku: Measure-Zahl aktuell (20, kein 16/18-Rest)", "16 DAX-Measures" not in _aa and "18 Measures" not in _pbr and "11 Measures" not in _auf and "20 Measures" in _pbr and "20 analytische" in _pbr)
-check("powerbi/README listet fact_einkommen_kreis (8 Fakttabellen)", "fact_einkommen_kreis" in _pbr and "8 Fakttabellen" in _pbr)
+check("Nebendoku: Measure-Zahl aktuell (23, kein 16/18/20-Rest)", "16 DAX-Measures" not in _aa and "18 Measures" not in _pbr and "20 Measures" not in _pbr and "23 Measures" in _pbr and "23 analytische" in _pbr)
+check("powerbi/README listet fact_einkommen_kreis (9 Fakttabellen)", "fact_einkommen_kreis" in _pbr and "9 Fakttabellen" in _pbr)
 check("analyseabfragen ohne veralteten 2-dim-Rest ('Pirmasens 6,19')", "Pirmasens Risiko-Score 6,19" not in _aa)
 check("DOCX: OLAP/MDX-Reflexion + Bus-Matrix vorhanden", ("MDX" in dxml and "OLAP" in dxml and "Bus-Matrix" in dxml))
-check("DOCX: LF9 3-dim inkl. Einkommen (Gelsenkirchen #1, 8 Fakttabellen)", "Gelsenkirchen" in dxml and "Einkommen" in dxml and "8 Fakttabellen" in dxml)
+check("DOCX: LF9 3-dim inkl. Einkommen (Gelsenkirchen #1, 9 Fakttabellen)", "Gelsenkirchen" in dxml and "Einkommen" in dxml and "9 Fakttabellen" in dxml)
 check("Schema-MD + Quellen-Log dokumentieren die Einkommensquelle", "fact_einkommen_kreis" in _smd and "82411-01-03-4" in open(os.path.join(ROOT,"datenquellen_log.md"),encoding="utf-8").read())
 # DataFolder-Limitation transparent dokumentiert (statt verschwiegen)
 _pbreadme=open(os.path.join(PBI,"README.md"),encoding="utf-8").read()

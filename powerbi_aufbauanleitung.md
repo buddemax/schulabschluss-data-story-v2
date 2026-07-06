@@ -1,7 +1,7 @@
 # Power BI – Aufbauanleitung für die 9 Visuals (klick-genau)
 
 > Ziel: Den Report im bereits funktionierenden Projekt `powerbi/SchulabschlussDataStory.pbip` nachbauen.
-> Das **Datenmodell ist fertig und live verifiziert** (12 Tabellen: 8 Fakt + 4 Dimensionen, Beziehungen, Daten geladen). Es fehlen nur die Report-Visuals – die hier Schritt für Schritt.
+> Das **Datenmodell ist fertig und live verifiziert** (13 Tabellen: 9 Fakt + 4 Dimensionen, Beziehungen, Daten geladen). Es fehlen nur die Report-Visuals – die hier Schritt für Schritt.
 > Jede Visual-Beschreibung nennt am Ende einen **Soll-Wert zum Gegenprüfen** (aus `data/kpi_referenzwerte.json`, unabhängig aus den Quelldaten berechnet). Stimmt der Wert im Visual → korrekt gebaut.
 
 ## 0. Vorbereitung

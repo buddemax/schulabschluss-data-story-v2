@@ -135,6 +135,32 @@ table dim_abschluss
 	measure 'Farbe Streuung LF3' = IF(SELECTEDVALUE(dim_region[bundesland_code]) = "07", "#D55E00", "#8C8C8C")
 		lineageTag: b1f0c0de-1a2b-4c3d-9e8f-000000000f11
 
+	/// LF3/LF9 Dot-Plot: numerische X-Position des Bundeslands (1..16) aus dem AGS-Praefix bundesland_code,
+	/// damit der native Scatter je Land eine Wertachse zeichnet (ein Punkt je Kreis, vertikale Streuung je Land sichtbar).
+	measure BL-Position = VAR c = SELECTEDVALUE(dim_region[bundesland_code]) RETURN IF(NOT ISBLANK(c) && LEN(c) = 2, VALUE(c))
+		formatString: 0
+		lineageTag: b1f0c0de-1a2b-4c3d-9e8f-000000000f12
+
+	/// LF5 (korrekte Antwort auf REQ-014): Abgaenge ohne Hauptschulabschluss je Schulart (Destatis 21111-12, Landesebene 2023).
+	/// Ohne Land-Filter Default Deutschland (kein Doppelzaehlen ueber Land+DG), mit Land-Filter der jeweilige Landeswert.
+	measure 'Abgänge ohne HSA (Schulart)' = IF(ISFILTERED(dim_region[Land]) || ISFILTERED(fact_abgaenge_schulart[bundesland]), CALCULATE(SUM(fact_abgaenge_schulart[anzahl]), fact_abgaenge_schulart[abschluss_key] = "ohne_hauptschulabschluss"), CALCULATE(SUM(fact_abgaenge_schulart[anzahl]), fact_abgaenge_schulart[abschluss_key] = "ohne_hauptschulabschluss", fact_abgaenge_schulart[bundesland] = "Deutschland"))
+		formatString: 0
+		lineageTag: b1f0c0de-1a2b-4c3d-9e8f-000000000f13
+
+	/// LF5: Anteil einer Schulart an allen Abgaengen ohne HSA (Basis = alle Schularten im aktuellen Land-/DE-Filter), in Prozent.
+	measure 'Anteil ohne HSA je Schulart %' = DIVIDE([Abgänge ohne HSA (Schulart)], CALCULATE([Abgänge ohne HSA (Schulart)], ALL(fact_abgaenge_schulart[schulart]))) * 100
+		lineageTag: b1f0c0de-1a2b-4c3d-9e8f-000000000f14
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Formatierungs-Measure: LF5-Antwortchart, groesster Herkunftsbalken der Abgaenge ohne HSA (Foerderschulen) vermillion, Rest neutral.
+	measure 'Farbe Schulart LF5 HSA' = IF(SELECTEDVALUE(fact_abgaenge_schulart[schulart]) = "Förderschulen", "#D55E00", "#8C8C8C")
+		lineageTag: b1f0c0de-1a2b-4c3d-9e8f-000000000f15
+
+	/// Formatierungs-Measure: LF1-Linienchart, aktuelles Schuljahr 2023/24 Okabe-Ito-Blau (#0072B2), Vorjahr 2022/23 Orange (#E69F00).
+	measure 'Farbe Schuljahr LF1' = SWITCH(SELECTEDVALUE(dim_zeit[schuljahr]), "2023/24", "#0072B2", "2022/23", "#E69F00", "#8C8C8C")
+		lineageTag: b1f0c0de-1a2b-4c3d-9e8f-000000000f16
+
 	column abschluss_key
 		dataType: string
 		lineageTag: b309a523-0fb9-4a93-9edd-fa7a57765fc4

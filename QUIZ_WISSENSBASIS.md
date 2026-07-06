@@ -180,7 +180,7 @@ Optionale Modi, die der Nutzer anfragen kann: **„Prüfungssimulation"** (10 ge
 8 Rohdateien in `data/raw`: Abgänge allgemeinbildend (21111-02-06-4), Schulen/Schüler (21111-01-03-4), berufliche Abschlüsse (21121-02-02-4), Arbeitslose/Jugend-ALQ (13211-02-05-4), Bevölkerung (12411-02-03-4), Einkommen VGRdL (82411-01-03-4), Ausgaben je Schüler (21711 XLSX), Statistischer Bericht Abgänge BL (statbericht XLSX). Login-pflichtige GENESIS-Tabelle über offenen Bericht umgangen.
 
 ## 4.4 Datenmodell
-- **8 Fakttabellen** (Abgänge, Schule, Arbeitsmarkt, Ausgaben, Ausgaben×Schulart + 3 Hilfsfakten: Bevölkerung, berufliche Abgänge, Einkommen) + **4 Dimensionen** (Region, Zeit, Abschluss, Schulart).
+- **9 Fakttabellen** (Abgänge, Abgänge×Schulart, Schule, Arbeitsmarkt, Ausgaben, Ausgaben×Schulart + 3 Hilfsfakten: Bevölkerung, berufliche Abgänge, Einkommen) + **4 Dimensionen** (Region, Zeit, Abschluss, Schulart).
 - **`dim_region` = konforme Dimension** über `region_code` (AGS) an allen Fakten, **1:n Single-Direction**, reines Sternschema (kein m:n).
 - **Region-Hierarchie** Land → Regierungsbezirk → Kreis (aus AGS). **SCD Typ 1** (Gebietsstand 2023). Bus-Matrix + Additivitätsklassifikation dokumentiert.
 - **Aufbereitung 100 % in Power Query M** aus `data/raw`; zwei kleine Referenz-Dimensionen (`dim_zeit`, `dim_abschluss`) als statische `#table`.

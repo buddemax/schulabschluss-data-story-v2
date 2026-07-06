@@ -101,7 +101,7 @@ erDiagram
 | **Schulart** | `dim_schulart` (12) | schulart | – |
 
 ## Beziehungen & Modellierungsregeln (REQ-038) – wie LIVE umgesetzt
-- Zentrale Verbindungsdimension: **Region** (`region_code`) an allen 8 Fakttabellen (1:n) – d. h. 5 physische Fakten (4 Kern-Fakten der S10-Vision inkl. Ausgaben nach Schulart) + 3 Hilfsfakten (Bevölkerung, berufliche Abgänge, Einkommen).
+- Zentrale Verbindungsdimension: **Region** (`region_code`) an allen 9 Fakttabellen (1:n) – d. h. 6 physische Fakten (4 Kern-Fakten der S10-Vision inkl. Ausgaben nach Schulart und Abgänge nach Schulart × Abschlussart, LF5) + 3 Hilfsfakten (Bevölkerung, berufliche Abgänge, Einkommen).
 - **Zeit** (`dim_zeit[jahr]`) ist **aktiv nur an `fact_abgaenge`** verknüpft – das ist die einzige echte Mehrjahres-Analyse (Schuljahre 2022/23 + 2023/24). Die übrigen Fakten sind **Einzeljahr-Snapshots** (Schule 2023, Arbeitsmarkt 2025, Bevölkerung als 2023-gefilterte Hilfsgröße) bzw. **Mehrjahres-Ø** (Ausgaben 2010–2024) und benötigen keine Zeit-Beziehung. Bezugsjahr der abgängebasierten Visuals = **2023** (Bericht-Filter, DQ11).
 - **Abschluss** an Abgänge; **Schulart** an Schule.
 - **Ausgaben** (gesamt + nach Schulart) sind auf Bundesland-/Deutschland-Ebene verfügbar; den Tabellen wurde ein **`region_code`** ergänzt (Name→AGS), sodass die Beziehung als sauberes **`region_code` → `dim_region[region_code]` (\*:1, Single-Direction)** läuft – kein m:n und kein Klartext-Namensschlüssel (M6 behoben, vgl. DQ9). Bei `fact_ausgaben_schulart` dient `schulart` als native Spalte (Achse für LF7), ohne eigene Beziehung zu `dim_schulart`. Auswertung auf BL/DE-Ebene (Visual-Filter `ebene=BL` bzw. `bundesland=Deutschland`).
