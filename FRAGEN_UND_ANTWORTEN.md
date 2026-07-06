@@ -114,7 +114,7 @@ Guter Punkt – und genau deshalb formulieren wir vorsichtig. Alle unsere Daten 
 ## F. Interaktivität & Bericht
 
 **Was macht den Bericht interaktiv?**
-Zwei Deutschlandkarten (Land- und Kreisebene), 15 Slicer (Bundesland, Ost/West, Stadt/Landkreis, Stadtstaat), ein Einkommens-Schieberegler und Drilldown über die Region-Hierarchie. Alle Visuals cross-filtern sich.
+Eine Deutschlandkarte auf Kreisebene (LF2, Blasengröße = Quote ohne HSA), sechs gezielt eingesetzte Slicer (Schuljahr auf LF1, Bundesland-Einzelauswahl auf LF4–LF7 und LF9, Einkommens-Schieberegler auf LF9) und Drilldown über die Region-Hierarchie. Alle Visuals einer Seite cross-filtern sich.
 
 **Zeig mal live, wie man den LF8-Confounder sieht.**
 Auf der LF8-Seite den Stadtstaat-Slicer auf „Flächenland" stellen – die Trendlinie kippt sofort ins Negative. Genau der Punkt der Leitfrage.

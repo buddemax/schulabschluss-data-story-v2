@@ -170,7 +170,7 @@ Optionale Modi, die der Nutzer anfragen kann: **„Prüfungssimulation"** (10 ge
 | LF2 | Wo ist der Anteil ohne HSA am höchsten? | Kreis-Hotspots bis ~17 % (Anhalt-Bitterfeld 16,78 %, Pirmasens 16,50 %) |
 | LF3 | Länder- oder Kreisproblem? | beides; starke Streuung *innerhalb* der Länder (RLP σ 2,84) |
 | LF4 | Geschlechterunterschied? | Jungen öfter ohne HSA (8,4 % vs. 5,8 %), Mädchen öfter Abitur (37,1 % vs. 29,3 %) |
-| LF5 | Prägt der Schulartmix die Abschlüsse? | ohne Grundschule dominieren Gymnasien (40 %) + Gesamtschulen (20 %) |
+| LF5 | Prägt der Schulartmix die Abschlüsse? | ja, massiv — 42 % (23.324) der Abgänge ohne HSA kommen von Förderschulen, 22 % von integrierten Gesamtschulen (Destatis 21111-12, DE 2023) |
 | LF6 | Relativ statt absolut? | Rangfolge kippt komplett (absolut NRW, relativ Sachsen-Anhalt) |
 | LF7 | Verteilung der Bildungsausgaben? | steigen mit Schulart (Grundschule 8.400 € → Gesamtschule 11.600 €) |
 | LF8 | Mehr Geld = bessere Abschlüsse? | **Nein** — r=+0,61 ist Stadtstaaten-Artefakt (ohne SS r=−0,36, n.s.) |
@@ -187,10 +187,10 @@ Optionale Modi, die der Nutzer anfragen kann: **„Prüfungssimulation"** (10 ge
 
 ## 4.5 Berechnungen
 - **4 DAX-Berechnungsspalten** in `dim_region`: `stadtstaat`, `Land`, `Regierungsbezirk`, `Kreis`.
-- **18 DAX-Measures**, u. a. `Quote ohne HSA %`, `Abiturquote %`, `Schüleranteil %` (+ ohne Grundschule), `StdAbw Quote ohne HSA (Kreise)`, `Ohne HSA je 1000 (15-18)`, Ausgaben-Ø-Measures, `Jugend-ALQ Ø`, `Verf. Einkommen je EW Ø`, **`Risiko-Score`** (3-dim z-standardisiert).
+- **23 analytische DAX-Measures** (+ 11 Formatierungs-Measures), u. a. `Quote ohne HSA %`, `Abiturquote %`, `Schüleranteil %` (+ ohne Grundschule), `StdAbw Quote ohne HSA (Kreise)`, `Ohne HSA je 1000 (15-18)`, `Abgänge ohne HSA (Schulart)` (LF5-Antwort), `BL-Position` (LF3/LF9-Dot-Plots), Ausgaben-Ø-Measures, `Jugend-ALQ Ø`, `Verf. Einkommen je EW Ø`, **`Risiko-Score`** (3-dim z-standardisiert).
 
 ## 4.6 Interaktivität
-2 Deutschlandkarten (Land- + Kreisebene, Bubble = Quote), 15 Slicer (Bundesland, Ost/West, Stadt/Landkreis, Stadtstaat), Einkommens-Schieberegler (Between), Drilldown über die Hierarchie, Okabe-Ito-Theme.
+1 Deutschlandkarte (Kreisebene LF2, Bubble = Quote ohne HSA), 6 Slicer (Schuljahr LF1; Bundesland-Einzelauswahl LF4–LF7/LF9), Einkommens-Schieberegler (Between, LF9), Drilldown über die Hierarchie, Okabe-Ito-Theme.
 
 ## 4.7 Prozess (Phasen)
 Vision/Leitfragen → Datenbeschaffung → Datenqualität → dimensionale Modellierung → KPIs/Measures → Visualisierung → Story/Doku. Dazu Iterationen: Aufbereitung nach Power Query verlagert, LF5-Fokussicht, Interaktivität, zwei Runden kritisches Review.

@@ -59,7 +59,7 @@ Jugend-ALQ Ø = AVERAGE ( fact_arbeitsmarkt_2025[jugend_alq_15_25] )
 ```
 > Format je %-Measure: Measure markieren → **Measuretools → Format** „% “ bzw. eine Dezimalstelle.
 >
-> **WICHTIGER TIPP (aus dem Live-Bau gelernt):** Für den **Werte-/X-Achse-Brunnen** immer ein **Measure** per Häkchen verwenden – dann platziert Power BI es korrekt. Eine **rohe numerische Spalte** (z. B. `ausgaben_je_schueler`, `jugend_alq_15_25`) per Häkchen landet fälschlich in der **Legende**. Deshalb gibt es oben die Ø-Measures. (Alle 18 Measures sind im Projekt bereits angelegt.)
+> **WICHTIGER TIPP (aus dem Live-Bau gelernt):** Für den **Werte-/X-Achse-Brunnen** immer ein **Measure** per Häkchen verwenden – dann platziert Power BI es korrekt. Eine **rohe numerische Spalte** (z. B. `ausgaben_je_schueler`, `jugend_alq_15_25`) per Häkchen landet fälschlich in der **Legende**. Deshalb gibt es oben die Ø-Measures. (Alle 23 analytischen Measures sind im Projekt bereits angelegt.)
 >
 > **STATUS (Phase 5 abgeschlossen): Alle 9/9 Visuals sind LIVE gebaut** – Seiten benannt **LF1 … LF9**. Verfeinerungen: LF4 (Filter `geschlecht ≠ insgesamt`), LF5 (`ebene=DE`, Schulart `≠ Insgesamt`, Measure-Nenner korrigiert), LF7 (`bundesland ≠ Deutschland`), LF8 (neu: Streudiagramm Ausgaben×Abitur, `ebene=BL`, Trendlinie), LF9 (Datenfehler behoben – s. u.).
 >

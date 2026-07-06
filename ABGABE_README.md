@@ -34,9 +34,9 @@
 
 ## Power-BI-Stand (Phase 5 abgeschlossen)
 - [x] PBIP in Power BI Desktop geöffnet, lädt + rendert + speichert (REQ-041).
-- [x] **18 DAX-Measures** angelegt (inkl. 3-dimensionalem Risiko-Score für LF9 mit Einkommensdimension, Kreis-Standardabweichung für LF3, Einkommens-Measure), je gegen Referenzwert geprüft (REQ-093, Gate 4).
-- [x] **Alle 9 Report-Seiten gebaut** und benannt **LF1 … LF9** (REQ-072, Gate 5):
- - LF1 Quote ohne HSA (BL) · LF2 Quote ohne HSA (Kreise) · LF3 ohne HSA × Abitur (Kreise) · LF4 Geschlechter-Gap · LF5 Schulartmix · LF6 Ohne HSA je 1000 (15-18) · LF7 Ausgaben nach Schulart (DE) + nach Bundesland · LF8 Ausgaben×Abitur (Trendlinie) · LF9 Risiko ohne HSA × ALQ
+- [x] **23 analytische DAX-Measures (+ 11 Formatierungs-Measures)** angelegt (inkl. 3-dimensionalem Risiko-Score für LF9 mit Einkommensdimension, Kreis-Standardabweichung für LF3, Einkommens-Measure, LF5-Antwort `Abgänge ohne HSA (Schulart)`, Dot-Plot-Position `BL-Position`), je gegen Referenzwert geprüft (REQ-093, Gate 4).
+- [x] **Alle 10 Report-Seiten gebaut** (Überblick + **LF1 … LF9**, REQ-072, Gate 5):
+ - LF1 Quote ohne HSA (BL) · LF2 Quote ohne HSA (Kreise) · LF3 Streuung je Bundesland (Dot-Plot, ein Punkt je Kreis) · LF4 Geschlechter-Gap · LF5 Schulartmix (Antwort: Abgänge ohne HSA je Schulart) · LF6 Ohne HSA je 1000 (15-18) · LF7 Ausgaben nach Schulart (DE) + nach Bundesland · LF8 Ausgaben×Abitur (Trendlinie) · LF9 Risiko-Score je Bundesland (Dot-Plot)
  - Verfeinerungen: LF4 ohne „insgesamt", LF5 (`ebene=DE`, ohne „Insgesamt", Measure-Nenner korrigiert), LF7 modell-gestützt nach Schulart (DE 2023) + Bundesland ohne „Deutschland", LF8 `ebene=BL` + Ausgaben auf jahr=2023 gepinnt (Stadtstaaten-Confounder ehrlich ausgewiesen).
 - [x] **Datenfehler behoben:** ×10-Dezimalfehler `jugend_alq_15_25`/`alq_insg` (de-DE-Locale) via en-US-Typcast in Power Query; verifiziert gegen die Referenzwerte (`dq_report.md` → DQ8).
 

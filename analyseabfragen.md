@@ -92,7 +92,7 @@ Schüleranteil ohne Grundschule % =
    dim_schulart[schulart] <> "Insgesamt",
    dim_schulart[schulart] <> "Grundschulen" ) ) * 100
 ```
-**Referenzwert (ohne Grundschule):** Gymnasien 40,0 % · Integr. Gesamtschulen 20,2 % · Realschulen 13,5 % · mehrere Bildungsgänge 9,7 % · Förderschulen 6,0 % · Hauptschulen 5,9 % · Orientierungsstufe 2,1 % · Waldorfschulen 1,5 % (Basis 5.695.735 Schüler, Summe ≈ 100 %). → Der hohe Gymnasial-/Gesamtschulanteil (zusammen ~60 %) erklärt die hohen Abiturquoten.
+**Referenzwert (ohne Grundschule):** Gymnasien 40,0 % · Integr. Gesamtschulen 20,2 % · Realschulen 13,5 % · mehrere Bildungsgänge 9,7 % · Förderschulen 6,0 % · Hauptschulen 5,9 % · Orientierungsstufe 2,1 % · Waldorfschulen 1,5 % (Basis 5.695.735 Schüler, Summe ≈ 100 %). → Das ist die **Input-Struktur** der Schülerschaft (gymnasiallastig), nicht die gemessene Erfolgsquote je Schulart. Die eigentliche LF5-Antwort liefert die separate Fakttabelle `fact_abgaenge_schulart` (Destatis 21111-12, Landesebene 2023): Von 55.705 Abgängen ohne Hauptschulabschluss in Deutschland entfallen **41,9 % (23.324) auf Förderschulen**, 21,5 % auf integrierte Gesamtschulen, 15,5 % auf Schularten mit mehreren Bildungsgängen, 12,7 % auf Hauptschulen — von Gymnasien nur ~3 %. Measure `Abgänge ohne HSA (Schulart)` = `CALCULATE(SUM(fact_abgaenge_schulart[anzahl]), fact_abgaenge_schulart[abschluss_key]="ohne_hauptschulabschluss")` (mit Deutschland-Default, kein Doppelzählen über Land+DG).
 
 ## LF6 – Relativ statt absolut (ändert sich die Wertung?)
 **KPI:** absolute `Abgänge ohne HSA` vs. je 1.000 der 15-bis-18-Bevölkerung.

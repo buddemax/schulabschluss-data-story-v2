@@ -1,57 +1,211 @@
-# Schulabschluss ist nicht nur Ländersache
+<div align="center">
 
-Eine **Self-Service-BI Data Story** über Schulabschlüsse in Deutschland – von der Bundesland- bis auf die Kreisebene, verknüpft mit Schulstruktur, Bildungsausgaben, Arbeitsmarkt und Einkommen. Umgesetzt in **Power BI Desktop** mit ausschließlich **offenen Daten** (Destatis / Regionalstatistik, Datenlizenz Deutschland 2.0).
+# 🎓 Schulabschluss ist nicht nur Ländersache
 
-> Studienprojekt · HTW Berlin · Modul **W2-AA Analytische Anwendungen** (Prof. Dr. Kempa) · Team: Max Budde, John Kanto, Aaron Ziegler.
+### Eine Self-Service-BI Data Story über Bildungsungleichheit in Deutschland – von der Bundesland- bis auf die Kreisebene
 
-## Leitthese
-Bildungserfolg ist kein reines Länderphänomen – er wird **lokal** entschieden. Der Bundesland-Durchschnitt gibt nur den Rahmen; wo Bildung wirklich gelingt oder scheitert, zeigt sich erst auf Kreisebene.
+![Power BI](https://img.shields.io/badge/Power%20BI-Desktop-F2C811?logo=powerbi&logoColor=black)
+![Power Query M](https://img.shields.io/badge/Power%20Query-M-4B8BBE)
+![Python](https://img.shields.io/badge/Python-Pr%C3%BCfsuite-3776AB?logo=python&logoColor=white)
+![Open Data](https://img.shields.io/badge/Daten-DL--DE%202.0%20%2F%20Destatis-2E7D32)
+![Tests](https://img.shields.io/badge/verify__all-107%2F107%20gr%C3%BCn-brightgreen)
 
-## Die 9 Leitfragen
-| | Frage | Kern-Ergebnis |
-|--|--|--|
-| LF1 | Welche Bundesländer führen bei Abgängen ohne Abschluss? | Sachsen-Anhalt (12,66 % 2023), steigend |
-| LF2 | Wo ist der Anteil ohne Hauptschulabschluss am höchsten? | Kreis-Hotspots bis ~17 % (Anhalt-Bitterfeld, Pirmasens) |
-| LF3 | Länder- oder Kreisproblem? | beides – starke Streuung *innerhalb* der Länder (σ RLP 2,84) |
-| LF4 | Unterschied Jungen/Mädchen? | Jungen öfter ohne HSA (8,4 % vs. 5,8 %), Mädchen öfter Abitur |
-| LF5 | Prägt der Schulartmix die Abschlüsse? | ja, massiv – 42 % der Abgänge ohne HSA kommen von Förderschulen (Destatis 21111-12, DE 2023) |
-| LF6 | Ändert sich die Wertung relativ statt absolut? | ja – Rangfolge kippt komplett |
-| LF7 | Wie verteilen sich die Bildungsausgaben? | steigen mit der Schulart (GS 8.400 € → IGS 11.600 €) |
-| LF8 | Mehr Geld = bessere Abschlüsse? | **nein** – r=+0,61 ist ein Stadtstaaten-Artefakt (ohne SS r=−0,36, n.s.) |
-| LF9 | Welche Kreise verbinden Bildungsrisiko, Arbeitslosigkeit, niedriges Einkommen? | 3-dim Risiko-Score: Gelsenkirchen, Pirmasens, Mansfeld-Südharz |
+**Max Budde · John Kanto · Aaron Ziegler**
+HTW Berlin · Modul **W2-AA Analytische Anwendungen** · Prof. Dr. Martin Kempa
 
-Methodischer Grundsatz durchgehend: **Korrelation ≠ Kausalität** (Konfidenzintervalle, p-Werte, Confounder offen ausgewiesen).
+</div>
 
-## Technischer Aufbau
-- **Datenaufbereitung komplett in Power Query (M)** – lädt die offenen Rohdateien **direkt aus `data/raw`** (Windows-1252-CSV + Destatis-XLSX) und transformiert dort (Encoding, Missing-Handling, Wide→Long, AGS-Ableitung, Dezimal-Locale). Kein vorgelagertes Cleaning außerhalb des BI-Werkzeugs.
-- **Dimensionales Sternschema (Kimball)** in TMDL: 9 Fakttabellen + 4 Dimensionen, konforme Region-Dimension über `region_code`, Region-Hierarchie Land→Regierungsbezirk→Kreis, SCD Typ 1, Bus-Matrix, Additivitätsklassifikation.
-- **18 DAX-Measures** (Quoten, Anteile, Streuung, Korrelation, z-standardisierter 3-dim Risiko-Score).
-- **Interaktiver Bericht** (9 Seiten LF1–LF9): 2 Deutschlandkarten (Bundesland- + Kreisebene), 15 Slicer (Bundesland, Ost/West, Stadt/Landkreis, Stadtstaat), Einkommens-Schieberegler, Drilldown; barrierearmes Okabe-Ito-Theme.
+![Überblicksseite des Berichts](charts/pbi/pbi_intro.png)
 
-## Repo-Struktur
+---
+
+> ### 💡 Unsere Leitthese
+> **Bildungserfolg ist kein reines Länderphänomen – er wird *lokal* entschieden.**
+> Der Bundesland-Durchschnitt gibt nur den Rahmen vor. Wo und für wen Bildung wirklich gelingt oder scheitert, zeigt sich erst auf der Kreisebene. Genau dorthin folgen wir den Daten – und verknüpfen sie mit Schulstruktur, Bildungsausgaben, Arbeitsmarkt und Einkommen.
+
+Wir sind ein dreiköpfiges Team im Modul *Analytische Anwendungen* und haben diese Data Story vollständig mit **Power BI Desktop** und **ausschließlich offenen Daten** (Destatis / Regionalstatistik, Datenlizenz Deutschland 2.0) umgesetzt. Der rote Faden ist ein Daten-Flow in vier Stufen – **INPUT → OUTPUT → ÜBERGANG → ERGEBNIS** –, dem der Bericht von Anfang bis Ende folgt.
+
+<div align="center">
+
+| 🧱 Modell | 📊 Bericht | 🎨 Gestaltung | ✅ Qualität |
+|:--:|:--:|:--:|:--:|
+| 9 Fakttabellen · 4 Dimensionen | 10 Seiten · 61 Visuals | Okabe-Ito-Farbvertrag | 107/107 Tests grün |
+| 34 Measures (23 analytisch + 11 Formatierung) | 1 Karte · 6 Slicer | CVD- & WCAG-geprüft | jede KPI rohdaten-nachgerechnet |
+
+</div>
+
+---
+
+## 🔍 Die Data Story in 9 Leitfragen
+
+### Block 1 · Der Befund – *wo und wie stark?*
+
+#### LF1 — Welche Bundesländer führen bei Abgängen ohne Abschluss?
+**Unsere Antwort:** Sachsen-Anhalt steht an der Spitze (**12,66 %** Abgänge ohne Hauptschulabschluss, 2023) – und die Quote ist gegenüber dem Vorjahr **gestiegen**. Es folgen ostdeutsche Länder, Bremen und Schleswig-Holstein; Bayern liegt mit **~5,4 %** am niedrigsten. Die beiden Schuljahre 2022/23 und 2023/24 zeichnen wir als Vergleichspaar (Blau/Orange) auf einer bei null beginnenden Achse.
+
+![LF1](charts/pbi/pbi_lf1.png)
+
+#### LF2 — Wo ist der Anteil ohne Hauptschulabschluss am höchsten?
+**Unsere Antwort:** Auf Kreisebene schießen einzelne Hotspots bis **~17 %** (Anhalt-Bitterfeld 16,8 %, Pirmasens 16,5 %) – weit über jedem Landesschnitt. Die Deutschlandkarte (Blasengröße = Quote) macht die räumliche Ballung sichtbar.
+
+![LF2](charts/pbi/pbi_lf2.png)
+
+#### LF3 — Länder- oder Kreisproblem? Wie stark streuen die Kreise?
+**Unsere Antwort:** Es ist **beides**. Unser Dot-Plot legt einen Punkt je Kreis über die Bundesländer – und zeigt: *innerhalb* der Länder streuen die Kreise stark (Rheinland-Pfalz: Standardabweichung **2,84 pp**). Der Landesschnitt verdeckt große kommunale Unterschiede – Bildungsrisiko ist auch ein Kreisproblem.
+
+![LF3](charts/pbi/pbi_lf3.png)
+
+### Block 2 · Die Struktur – *wodurch geprägt?*
+
+#### LF4 — Schneiden Jungen und Mädchen unterschiedlich ab?
+**Unsere Antwort:** Ein klares, **strukturelles** Gefälle (kein regionaler Effekt): Jungen bleiben häufiger ohne HSA (**8,4 % vs. 5,8 %**), Mädchen erreichen häufiger das Abitur (**37,1 % vs. 29,3 %**). Zwei Delta-Karten fassen den Gap in Prozentpunkten (2,6 / 7,8 pp).
+
+![LF4](charts/pbi/pbi_lf4.png)
+
+#### LF5 — Prägt der Schulartmix die Abschlussverteilung?
+**Unsere Antwort:** Ja, **massiv** – und das konnten wir erst mit einer zusätzlich erschlossenen Quelle wirklich beantworten (siehe Abschnitt *Hürden*, Punkt 2). Von **55.705** Abgängen ohne Hauptschulabschluss in Deutschland (2023) entfallen **41,9 % (23.324) auf Förderschulen**, 22 % auf integrierte Gesamtschulen, 16 % auf Schularten mit mehreren Bildungsgängen – von Gymnasien praktisch keine. Links zeigen wir die Input-Struktur der Schülerschaft, rechts die tatsächliche Wirkung je Schulart.
+
+![LF5](charts/pbi/pbi_lf5.png)
+
+#### LF6 — Ändert sich die Wertung, wenn man relativ statt absolut zählt?
+**Unsere Antwort:** Die Rangfolge **kippt komplett**. Absolut führen die bevölkerungsreichen Länder (NRW), pro 1.000 der 15- bis 18-Jährigen führt **Sachsen-Anhalt (41,6)**. Die Bezugsgröße entscheidet über das Ranking – die relative Betrachtung ist die fairere.
+
+![LF6](charts/pbi/pbi_lf6.png)
+
+### Block 3 · Das Ökonomische – *was hängt zusammen?*
+
+#### LF7 — Wie verteilen sich die Bildungsausgaben?
+**Unsere Antwort:** Die Ausgaben je Schüler steigen mit der Schulart – von der Grundschule (**8.400 €**) bis zur integrierten Gesamtschule (**11.600 €**, Deutschland 2023). Zwischen den Ländern reicht die Spanne bis zu den Stadtstaaten, die am meisten ausgeben (Berlin ~13.500 €).
+
+![LF7](charts/pbi/pbi_lf7.png)
+
+#### LF8 — Mehr Geld = bessere Abschlüsse?
+**Unsere Antwort:** **Nein.** Der scheinbar positive Zusammenhang (r = **+0,61**) ist ein **Stadtstaaten-Artefakt**: Klammert man die drei Stadtstaaten aus, kippt er ins Nicht-Signifikante (r = **−0,36**, n. s.). Wir weisen den Confounder offen aus, statt einen bequemen Schluss zu ziehen.
+
+![LF8](charts/pbi/pbi_lf8.png)
+
+#### LF9 — Welche Kreise verbinden Bildungsrisiko, Arbeitslosigkeit und niedriges Einkommen?
+**Unsere Antwort:** Unser **3-dimensionaler Risiko-Score** (Bildungsrisiko + Jugendarbeitslosigkeit + niedriges Einkommen, z-standardisiert über 398 Kreise) führt **Gelsenkirchen (8,08)** vor Pirmasens und Mansfeld-Südharz. Der Dot-Plot je Bundesland zeigt: Hochrisiko-Kreise liegen in **West wie Ost**. Tabelle und Methodik-Box machen die Berechnung transparent.
+
+![LF9](charts/pbi/pbi_lf9.png)
+
+> **Durchgehender Grundsatz: Korrelation ≠ Kausalität.** Konfidenz-Vorbehalte, Confounder und der ökologische Fehlschluss (Kreis- vs. Individualebene) sind im Bericht offen ausgewiesen.
+
+---
+
+## 🧱 Das Datenmodell
+
+Wir haben ein **dimensionales Sternschema (Kimball)** direkt in TMDL gepflegt: **9 Fakttabellen** an **4 konformen Dimensionen**, alle über `region_code` (AGS) 1:n und in einer Richtung verbunden – ein reines Sternschema ohne m:n.
+
+![Sternschema](charts/schema_stern.png)
+
+- **Dimensionen (4):** `dim_region` (mit Hierarchie Land → Regierungsbezirk → Kreis, SCD Typ 1), `dim_zeit`, `dim_abschluss`, `dim_schulart`.
+- **Fakten (9):** `fact_abgaenge`, `fact_abgaenge_schulart` *(LF5-Antwort, neu)*, `fact_schule_2023`, `fact_arbeitsmarkt_2025`, `fact_ausgaben_je_schueler`, `fact_ausgaben_schulart` + drei Hilfsfakten (`fact_bevoelkerung_2023_2024`, `fact_abgaenge_beruflich_2023`, `fact_einkommen_kreis`).
+- **34 Measures** in `dim_abschluss.tmdl`: **23 analytische** (Quoten, Anteile, Streuung, 3-dim Risiko-Score, Dot-Plot-Position) + **11 Formatierungs-Measures** (`Farbe …`, Conditional Formatting „nach Feldwert").
+- **Aufbereitung zu 100 % in Power Query (M)** aus `data/raw` – Encoding, Missing-Handling, Wide→Long, AGS-Ableitung und Dezimal-Locale passieren im Modell, es gibt **kein vorgelagertes Cleaning** außerhalb des BI-Werkzeugs.
+
+---
+
+## 🎨 Gestaltung & Farbvertrag
+
+Damit die Visualisierungen **nicht manipulativ** wirken, folgen wir einem berichtsweiten Farbvertrag nach anerkannten Standards (Okabe-Ito/CUD, IBCS, WCAG, Datawrapper):
+
+| Farbe | Bedeutung |
+|--|--|
+| 🟧 Vermillion `#D55E00` | Fokus / Risiko (der eine Akzent je Visual) |
+| ⬜ Neutralgrau `#8C8C8C` | Kontext (alles Übrige) |
+| 🟦🟧 Blau `#0072B2` / Orange `#E69F00` | Vergleichspaar (die zwei direkt gegenübergestellten Größen) |
+
+Jede Farbe hat berichtsweit **eine** Bedeutung, ist **farbfehlsichtigkeits-** und **kontrastgeprüft**, und Achsen beginnen bei null. Details in [`BEFUNDE_UND_KORREKTUREN.md`](BEFUNDE_UND_KORREKTUREN.md).
+
+---
+
+## 🧗 Hürden – und wie wir sie gelöst haben
+
+Diese Story war kein gerader Weg. Die lehrreichsten Stolpersteine:
+
+1. **Die Dezimal-Falle (Faktor 10).** Unsere Quell-CSVs nutzen den **Punkt** als Dezimaltrennzeichen, unser Modell läuft aber auf Gebietsschema **de-DE**. Beim ersten Laden waren dadurch alle Quoten um den Faktor 10 verfälscht. Gelöst durch bewusstes **en-US-Parsing** in Power Query – seitdem stimmen die Kennzahlen mit den amtlichen Werten überein.
+
+2. **Die LF5-Datenlücke.** Zunächst zeigte LF5 nur, *wie viele Schüler* es je Schulart gibt – nicht, *wer* die Abschlüsse (nicht) erreicht: Die Abgangsdaten kannten keine Schulart. Statt die Frage schönzureden, haben wir eine **zweite offene Quelle** erschlossen (Destatis 21111-12: Abgänge nach Schulart × Abschlussart) und als eigene Fakttabelle ins Modell integriert. Erst damit beantwortet LF5 die Leitfrage wirklich – und liefert den stärksten Befund der Story (Förderschulen 42 %).
+
+3. **Login-Sperre bei GENESIS.** Eine gewünschte GENESIS-Tabelle war anmeldepflichtig. Statt Zugangsdaten zu hinterlegen, haben wir denselben Datenstand aus dem **frei verfügbaren Statistischen Bericht** gezogen – konsequent nur offene Daten, keine Anmeldung.
+
+4. **Dot-Plots im nativen Power BI.** Ein echter Streifen-/Dot-Plot mit Bundesländern auf der X-Achse ist im nativen Streudiagramm nicht vorgesehen (die X-Achse muss numerisch sein). Wir haben die Bundesländer über ein **Positions-Measure** (01–16 aus dem AGS) auf eine Wertachse gelegt – so entstehen je Land vertikale Punktbänder mit **einem Punkt je Kreis**, und die Streuung wird direkt lesbar (LF3, LF9).
+
+5. **Farben, die still verschwinden.** „Farbe nach Feldwert" greift in Power BI nur mit dem exakt richtigen Selektor – sonst bleibt die Einfärbung **wirkungslos, ohne jede Fehlermeldung**. Wir haben alle Akzente über dedizierte `Farbe …`-Measures verdrahtet und **jede Farbe am gerenderten Bericht** kontrolliert, statt dem JSON zu vertrauen.
+
+6. **Doppelzählung über die Ebenen.** Unsere Fakttabellen enthalten Deutschland, Bundesländer und Kreise in *einer* Tabelle. Ohne Ebenen-Filter summieren absolute Kennzahlen doppelt. Wir filtern konsequent auf die passende Ebene bzw. nutzen `ISFILTERED`-Defaults (Deutschland), damit nichts doppelt zählt.
+
+7. **Export- und Bild-Tücken.** Der PBIP↔PBIX-Export scheiterte zeitweise an Dateisperren (OneDrive, offene Instanzen), und das Berichts-PDF rendert einen „Power BI Desktop"-Stempel mit. Wir haben einen **reproduzierbaren Export- und Zuschnitt-Workflow** gebaut (alte Instanzen beenden, PDF → PyMuPDF/PIL-Crop), damit die Berichtsbilder in DOCX/PPTX sauber sind.
+
+8. **Ehrlich bleiben.** An mehreren Stellen war die bequeme Interpretation die falsche – der LF8-Stadtstaaten-Confounder, LF5 (Struktur vs. gemessene Wirkung), der ökologische Fehlschluss auf Kreisebene. Wir haben diese Vorbehalte **offen ausgewiesen**, statt sie zu verschweigen.
+
+---
+
+## ✅ Qualitätssicherung
+
+Wir haben nach dem Prinzip **„nicht verifizierbar = FAIL"** gearbeitet:
+
+- **Binäre Akzeptanztest-Suite** (`scripts/verify_all.py`): rechnet **jede KPI unabhängig aus den Rohdaten nach** (Ground Truth) und prüft Modell, `.pbix` und Doku auf Konsistenz – aktueller Stand **107/107 grün**.
+- **Mehrere Prüfrunden mit adversarialem Gegenlesen:** jede Aussage wird gegen Rohdaten *und* den gerenderten Bericht geprüft; Zahlen im Bericht sind zusätzlich live in Power BI abgeglichen.
+- **Reproduzierbarkeit:** Das Modell lädt die offenen Rohdaten direkt aus `data/raw`; `data/clean/` und `data/kpi_referenzwerte.json` dienen **nur als Prüfbeleg**, nicht als Modellquelle.
+
+```bash
+python scripts/verify_all.py    # binäre Prüfsuite (KPIs · Modell · .pbix · Doku-Konsistenz) – alle grün
+```
+
+---
+
+## ▶️ Projekt öffnen & reproduzieren
+
+1. **Power BI Desktop** → `powerbi/SchulabschlussDataStory.pbip` öffnen (Vorschaufunktion *„Power BI Project (.pbip)"* aktiviert).
+2. Parameter **`DataFolder`** auf den lokalen `data/raw/`-Pfad setzen (`expressions.tmdl`) und **Aktualisieren**.
+3. Für die Karte: *Optionen → Sicherheit → „Verwenden von Kartenvisuals und Flächenkartogrammen"* aktivieren (Bing-Geokodierung öffentlicher Gebietsnamen).
+- Alternativ öffnet die self-contained **`.pbix`** ohne Pfad – die Daten sind eingebettet.
+
+Die Python-Skripte dienen ausschließlich **Aufbereitungs-Vorlage, Referenzwert-Berechnung und Verifikation**; die BI-Umsetzung selbst (Aufbereitung, Modell, Measures, Visuals) liegt vollständig in Power BI.
+
+---
+
+## 📚 Datenquellen (offene Daten, DL-DE 2.0 / Destatis)
+
+| Fluss-Stufe | Quelle | Ebene | Jahr |
+|--|--|--|--|
+| INPUT | Ausgaben je Schüler nach Schulart (Destatis 21711, XLSX) | Bundesland | 2023 |
+| INPUT | Schulen & Schüler nach Schulart (21111-01-03-4) | Kreis | 2023 |
+| OUTPUT | Abgänge allgemeinbildender Schulen (21111-02-06-4) | DE/BL/RB/Kreis | 2023 |
+| OUTPUT | **Abgänge nach Schulart × Abschlussart** (Statist. Bericht 21111-12, XLSX) | Bundesland | 2022 & 2023 |
+| ÜBERGANG | Berufliche Schulabschlüsse (21121-02-02-4) | Kreis | 2023 |
+| ERGEBNIS | Jugend-Arbeitslosenquote (13211-02-05-4) | Kreis | 2025 |
+| ERGEBNIS | Verfügbares Einkommen je Einwohner, VGRdL (82411-01-03-4) | Kreis | 2021 |
+| Hilfsgröße | Bevölkerung nach Altersgruppen (12411-02-03-4) | Kreis | 2023 |
+
+Abruf 06/2026. Nur öffentlich zugängliche Daten – keine Anmeldung, keine personenbezogenen Daten.
+
+---
+
+## 📁 Repo-Struktur
+
 ```
 powerbi/            Power-BI-Projekt (PBIP): TMDL-Modell + Power-Query-M + Report-Definition + .pbix
 data/raw/           offene Rohdaten (Regionalstatistik-CSV, Destatis-XLSX) – Modellquelle
 data/clean/         bereinigte Tabellen – nur Prüfbeleg (NICHT Modellquelle)
-data/kpi_referenzwerte.json   unabhängig berechnete Referenzwerte für die Prüfsuite
 scripts/            Reproduktions- & Prüf-Skripte (Python); verify_all.py = Ground-Truth-Testsuite
-charts/pbi/         in DOCX/PPTX eingebettete Power-BI-Berichtsseiten
+charts/pbi/         die in DOCX/PPTX & hier eingebetteten Power-BI-Berichtsseiten
 Schulabschluss_DataStory_Dokumentation.docx   ausführliche Doku (roter Faden)
-Schulabschluss_DataStory_Praesentation.pptx   Präsentation (14 Folien)
-*.md                Schema, Analyseabfragen (DAX), Datenqualität, Aufbauanleitung, Traceability …
+Schulabschluss_DataStory_Praesentation.pptx   Präsentation
+*.md                Schema, Analyseabfragen (DAX), Datenqualität, Befunde, Traceability …
 ```
 
-## Projekt öffnen
-1. **Power BI Desktop** → `powerbi/SchulabschlussDataStory.pbip` öffnen (Vorschaufunktion „Power BI Project (.pbip)" aktiviert).
-2. Parameter **`DataFolder`** auf den lokalen `data/raw/`-Pfad setzen (`expressions.tmdl` bzw. Power-Query-Parameter) und **Aktualisieren**.
-3. Für die Karten: *Optionen → Sicherheit → „Verwenden von Kartenvisuals und Flächenkartogrammen"* aktivieren (Bing-Geokodierung öffentlicher Gebietsnamen).
-- Alternativ öffnet die self-contained **`.pbix`** ohne Pfad (Daten eingebettet).
+---
 
-## Reproduzierbarkeit
-```bash
-python scripts/verify_all.py    # binäre Akzeptanztest-Suite (KPIs, Modell, .pbix, Doku-Konsistenz) – alle grün
-```
-Die Suite rechnet alle KPIs unabhängig aus den Daten nach (Ground Truth) und prüft Modell/.pbix/Doku auf Konsistenz. Die Python-Skripte dienen ausschließlich **Aufbereitungs-Vorlage, Referenzwert-Berechnung und Verifikation** – die BI-Umsetzung selbst (Aufbereitung, Modell, Measures, Visuals) liegt vollständig in Power BI.
+<div align="center">
 
-## Datenquellen
-Regionalstatistik.de (Tabellen 21111-02-06-4, 21111-01-03-4, 21121-02-02-4, 13211-02-05-4, 12411-02-03-4, 82411-01-03-4) und Destatis (Statistischer Bericht Allgemeinbildende Schulen; Ausgaben je Schüler 5217109247005). Abruf 06/2026. Nur öffentlich zugängliche Daten (DL-DE 2.0 / Destatis).
+### 👥 Team
+
+**Max Budde** · **John Kanto** · **Aaron Ziegler**
+HTW Berlin · W2-AA Analytische Anwendungen · Prof. Dr. Martin Kempa · 2026
+
+*Bildungserfolg wird lokal entschieden – und mit offenen Daten sichtbar.*
+
+</div>
