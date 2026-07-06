@@ -20,3 +20,7 @@ desktop.ini
 
 # LibreOffice/Office Sperrdateien
 .~lock.*#
+
+# Sensible/fremde PDFs nicht ins Repo
+immabescheinigung*.pdf
+0[1-6]_*.pdf
