@@ -127,3 +127,25 @@ B1 (Jahr-Filter/Slicer), B2 (ebene-Filter), B4 (löst sich mit B1/B2), B5 (Entst
 - **W8** — r-Werte LF9 (−0,49/−0,59) und LF1-Zahl (Bayern 5,4 %) in GT/`kpi_referenzwerte.json` belegen oder aus dem Text streichen.
 - **LF3** — `page.displayName` an Streuungs-Inhalt angleichen (Report-Metadaten).
 - Hinweis: Die Filter-Fixes B1/B2 sind reine **Report-Klicks** (Visual-/Seiten-Filter); die zugrunde liegenden Measures im Modell müssen NICHT umgeschrieben werden.
+
+---
+
+## 5) Runde 3 – Entscheidungsprotokoll & Umsetzung (Abschluss-Runde)
+
+**Panel-Entscheidungen (je 2 Bewerter, danach nicht wieder geöffnet):**
+- **LF9(a) Top-10-Akzent statt Farbverlauf:** binäres Vermillion pop-t auf Präsentations-Distanz, ein Akzent je Visual = Design-Identität; ein 398-Punkte-Gradient wäscht aus. Schwelle `Score ≥ 5,5` trennt exakt Platz 10 (5,57) von Platz 11 (5,44).
+- **LF9(d) Scatter bleibt Haupt-Visual:** die danebenstehende Top-10-Tabelle IST bereits das Ranking-Visual (jetzt mit Datenbalken); ein zusätzlicher Score-Balkenchart wäre eine Doppelung.
+- **LF1 Linie BEHALTEN (W3b):** zwei Jahrgangslinien über absteigend sortierte Länder sind als Profil lesbar; Dumbbell bräuchte ein Custom Visual (Login), die native Alternative (gruppierte Balken) würde den linken Balkenchart duplizieren.
+- **LF2 Karte BEHALTEN + Werkzeug-Grenze (W3c):** ein echtes Kreis-Choropleth braucht in Power BI entweder die Shape Map mit externem Kreis-TopoJSON (= neue Datenquelle) oder die Filled Map, die nur **Namen** geokodiert (9 Doppelnamen-Problem – Team-Leitplanke: AGS-Matching). Beides verworfen; die Bubble-Größe-als-Rate-Grenze ist als Werkzeug-Grenze dokumentiert, der Spitzenreiter Anhalt-Bitterfeld wird stattdessen im Top-15-Balken akzentuiert.
+- **Kür 16 Slicer-Sync bewusst NICHT:** jede Seite beantwortet eine eigene Leitfrage; ein über Seiten mitwandernder Landesfilter würde Folgeseiten unbemerkt umfiltern (Live-Vortrags-Falle). Stattdessen einheitliche Position/Breite (x=980, w=300).
+- **Kür 15 Navigations-Buttons weggelassen:** das Seitenregister übernimmt die Navigation; die Fluss-Boxen der Einstiegsseite leiten inhaltlich.
+- **Kür 17 Drillthrough „Kreissteckbrief" verschoben** (Zeit vor Deadline; LF3-Boxplot-Login noch offen).
+- **Kür 18 Beruflich-Tabelle:** bleibt Modellbestandteil (ÜBERGANG-Stufe, in Doku/Modell ausgewiesen); kein neues Visual (Umfang = 9 LF).
+
+**Umgesetzt (alle live in Power BI verifiziert, verify_all 98/98):**
+- **LF9 sichtbar & erklärbar:** Top-10-Risiko-Kreise vermillion im Scatter (`Farbe Risiko LF9`), Datenbalken (vermillion) auf der Score-Spalte, Methodik-Textbox (z-Standardisierung in Worten, „kein Individualmaß"), Score+Einkommen im Tooltip.
+- **W3a LF4:** Card-Wall (4 KPI) → 2 Delta-Karten `Gap ohne HSA (pp)` = 2,6 und `Gap Abitur (pp)` = 7,8 (neue analytische Measures, Guards 18→20 nachgezogen).
+- **W9 LF7:** Achse auf `dim_region[Land]` – 16 Länder, Werte identisch (live geprüft).
+- **S3:** Akzentfarben LF2 (Anhalt-Bitterfeld), LF5 (Grundschulen/Gymnasien), LF6 (Sachsen-Anhalt vermillion + NRW blau = Rangwechsel-Story).
+- **S4/K1/K2:** Slicer-Spalte vereinheitlicht, linke Ränder auf x=24, 16-px-Lücken, Unterkanten auf 696, leere Filter-Stubs entfernt.
+- **Kür 14/15:** Quellenzeile auf allen 9 LF-Seiten; Einstiegsseite „Überblick & Leseführung" (These, 4 Fluss-Stufen, Leseführung).
