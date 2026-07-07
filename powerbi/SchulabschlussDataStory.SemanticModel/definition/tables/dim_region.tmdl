@@ -49,13 +49,6 @@ table dim_region
 
 		annotation SummarizationSetBy = Automatic
 
-	/// Bundesland-Kürzel (SH…TH) aus dem AGS – kompaktes Achsenlabel für die LF3/LF9-Dot-Plots
-	column 'Land-Kürzel' = SWITCH(dim_region[bundesland_code], "01", "SH", "02", "HH", "03", "NI", "04", "HB", "05", "NW", "06", "HE", "07", "RP", "08", "BW", "09", "BY", "10", "SL", "11", "BE", "12", "BB", "13", "MV", "14", "SN", "15", "ST", "16", "TH", BLANK())
-		lineageTag: 09b47569-5b42-4ced-b37d-ac50e3c95ff1
-		summarizeBy: none
-
-		annotation SummarizationSetBy = Automatic
-
 	column Regierungsbezirk = VAR rb = LOOKUPVALUE(dim_region[region], dim_region[region_code], LEFT(dim_region[region_code],3)) RETURN IF(ISBLANK(rb), "ohne Regierungsbezirk", rb)
 		lineageTag: 50b14a7c-099e-48a1-9ae4-4d7a12a743b0
 		summarizeBy: none
@@ -64,6 +57,13 @@ table dim_region
 
 	column Kreis = IF(dim_region[ebene]="KR", dim_region[region], BLANK())
 		lineageTag: 0193cc62-9356-48fe-b87f-3f830695b7d8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Bundesland-Kürzel (SH…TH) aus dem AGS – kompaktes Achsenlabel für die LF3/LF9-Dot-Plots
+	column Land-Kürzel = SWITCH(dim_region[bundesland_code], "01", "SH", "02", "HH", "03", "NI", "04", "HB", "05", "NW", "06", "HE", "07", "RP", "08", "BW", "09", "BY", "10", "SL", "11", "BE", "12", "BB", "13", "MV", "14", "SN", "15", "ST", "16", "TH", BLANK())
+		lineageTag: 09b47569-5b42-4ced-b37d-ac50e3c95ff1
 		summarizeBy: none
 
 		annotation SummarizationSetBy = Automatic

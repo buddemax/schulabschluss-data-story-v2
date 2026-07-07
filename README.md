@@ -41,7 +41,7 @@ Wir sind ein dreiköpfiges Team im Modul *Analytische Anwendungen* und haben die
 ### Block 1 · Der Befund – *wo und wie stark?*
 
 #### LF1 — Welche Bundesländer führen bei Abgängen ohne Abschluss?
-**Unsere Antwort:** Sachsen-Anhalt steht an der Spitze (**12,66 %** Abgänge ohne Hauptschulabschluss, 2023) – und die Quote ist gegenüber dem Vorjahr **gestiegen**. Es folgen ostdeutsche Länder, Bremen und Schleswig-Holstein; Bayern liegt mit **~5,4 %** am niedrigsten. Die beiden Schuljahre 2022/23 und 2023/24 zeichnen wir als Vergleichspaar (Blau/Orange) auf einer bei null beginnenden Achse.
+**Unsere Antwort:** Sachsen-Anhalt steht an der Spitze (**12,66 %** Abgänge ohne Hauptschulabschluss, 2023) – und die Quote ist gegenüber dem Vorjahr **gestiegen**. Es folgen die ostdeutschen Länder, Bremen und Schleswig-Holstein; Bayern liegt mit **~5,4 %** am niedrigsten. Die beiden Schuljahre 2022/23 und 2023/24 zeichnen wir als Vergleichspaar (Blau/Orange) auf einer bei null beginnenden Achse; das Schuljahr fürs linke Ranking wählt ein Slicer direkt neben dem Diagramm (Vorauswahl 2023/24), der Jahresvergleich rechts bleibt davon unberührt.
 
 ![LF1](charts/pbi/pbi_lf1.png)
 

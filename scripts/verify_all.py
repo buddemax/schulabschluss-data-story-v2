@@ -205,7 +205,7 @@ pages=[_pj(pid).get("displayName","") for pid in order]
 check(".pbix 10 Seiten: Überblick + LF1→LF9 in Reihenfolge", len(pages)==10 and pages[0].startswith("Überblick") and all(pages[i+1].startswith(f"LF{i+1}") for i in range(9)), " | ".join(p[:6] for p in pages))
 rf=_rd("Report/definition/report.json")
 _jahrv=sum(1 for n in _names if n.endswith("visual.json") and '"Property": "jahr"' in _rd(n) and "2023L" in _rd(n))
-check(".pbix: Jahr=2023 pro Visual gepinnt (ersetzt report-weiten Filter; >=10 Visuals)", _jahrv>=10, f"{_jahrv} Visuals")
+check(".pbix: Jahr=2023 pro Visual gepinnt (ersetzt report-weiten Filter; >=9 Visuals – LF1-Balken steuert das Jahr bewusst über den Schuljahr-Slicer mit Vorauswahl 2023/24)", _jahrv>=9, f"{_jahrv} Visuals")
 # Visual-Texte je Seite (für Substring-Checks)
 _vis={pid:[_rd(n) for n in _names if n.startswith(f"Report/definition/pages/{pid}/visuals/") and n.endswith("visual.json")] for pid in order}
 # Guard gegen veralteten .pbix-Export (A1): Visual-Zahl muss dem aktuellen .pbip-Report entsprechen
