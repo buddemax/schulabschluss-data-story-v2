@@ -29,7 +29,7 @@ Wir sind ein dreiköpfiges Team im Modul *Analytische Anwendungen* und haben die
 
 | 🧱 Modell | 📊 Bericht | 🎨 Gestaltung | ✅ Qualität |
 |:--:|:--:|:--:|:--:|
-| 9 Fakttabellen · 4 Dimensionen | 10 Seiten · 62 Visuals | Okabe-Ito-Farbvertrag | 108/108 Tests grün |
+| 9 Fakttabellen · 4 Dimensionen | 10 Seiten · 62 Visuals | Okabe-Ito-Farbvertrag | 109/109 Tests grün |
 | 34 Measures (23 analytisch + 11 Formatierung) | 1 Karte · 6 Slicer | CVD- & WCAG-geprüft | jede KPI rohdaten-nachgerechnet |
 
 </div>
@@ -63,7 +63,7 @@ Wir sind ein dreiköpfiges Team im Modul *Analytische Anwendungen* und haben die
 ![LF4](charts/pbi/pbi_lf4.png)
 
 #### LF5 — Prägt der Schulartmix die Abschlussverteilung?
-**Unsere Antwort:** Ja, **massiv** – und das konnten wir erst mit einer zusätzlich erschlossenen Quelle wirklich beantworten (siehe Abschnitt *Hürden*, Punkt 2). Von **55.705** Abgängen ohne Hauptschulabschluss in Deutschland (2023) entfallen **41,9 % (23.324) auf Förderschulen**, 22 % auf integrierte Gesamtschulen, 16 % auf Schularten mit mehreren Bildungsgängen – von Gymnasien praktisch keine. Links zeigen wir die Input-Struktur der Schülerschaft, rechts die tatsächliche Wirkung je Schulart.
+**Unsere Antwort:** Ja, **massiv** – und das konnten wir erst mit einer zusätzlich erschlossenen Quelle wirklich beantworten (siehe Abschnitt *Hürden*, Punkt 2). Von **55.705** Abgängen ohne Hauptschulabschluss in Deutschland (2023) entfallen **41,9 % (23.324) auf Förderschulen**, 22 % auf integrierte Gesamtschulen, 16 % auf Schularten mit mehreren Bildungsgängen – von Gymnasien praktisch keine. Links zeigen wir die Input-Struktur der Schülerschaft, rechts die tatsächliche Wirkung je Schulart. Ein **Bundesland-Filter wirkt bewusst nur auf das rechte Diagramm** – so lässt sich die Schulart-Struktur der Abgänge ohne HSA je Land betrachten, während links die bundesweite Schülerstruktur als feste Referenz bestehen bleibt (die Schülerzahlen-Quelle liegt nur für Deutschland vor).
 
 ![LF5](charts/pbi/pbi_lf5.png)
 

@@ -369,6 +369,10 @@ _lf4dir=os.path.join(PBI,"SchulabschlussDataStory.Report","definition","pages","
 _lf4card=open(os.path.join(_lf4dir,"f7d446b62a0475f6cb2d","visual.json"),encoding="utf-8").read()
 check("LF4-Report: Bundesland-Slicer (Land) + Karten auf ebene IN (DE,BL) umgestellt (Runde 7)",
       os.path.exists(os.path.join(_lf4dir,"bslf4land00000000001","visual.json")) and "'BL'" in _lf4card and "'DE'" in _lf4card)
+# LF5 (Runde 8): Bundesland-Slicer wirkt nur auf das rechte Diagramm (Abgaenge ohne HSA je Schulart); links (Schuelerschaft, nur DE) via NoFilter entkoppelt
+_lf5pg=open(os.path.join(PBI,"SchulabschlussDataStory.Report","definition","pages","a0c706439d9e1475cc04","page.json"),encoding="utf-8").read()
+check("LF5-Report: Bundesland-Slicer filtert nur rechts (links Schuelerschaft = NoFilter, Runde 8)",
+      '"5c55a0d500000000aa55"' in _lf5pg and '"79c517a0308302d76186"' in _lf5pg and '"NoFilter"' in _lf5pg)
 # LF9-Faerbung: Schwelle 5,5 muss exakt die Top-10 treffen (Marge 5,57 vs. 5,44 - Drift-Warnung bei Datenaenderung)
 _n_ueber = sum(1 for v in _score.values() if v >= 5.5)
 check("LF9 Top-10-Schwelle 5,5 trifft exakt 10 Kreise (Farbe Risiko LF9)", _n_ueber == 10, f"{_n_ueber} Kreise >= 5,5")

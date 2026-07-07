@@ -247,12 +247,15 @@ PL("Ergebnis (Antwort: wer stellt die Abgänge ohne Hauptschulabschluss?):","Die
    "Abschlussverteilung also massiv.")
 pic("pbi/pbi_lf5.png",cap="Abb. 6 (LF5): Berichtsseite LF5 – links die Zusammensetzung der Schülerschaft nach "
     "Schulart (Input, DE 2023), rechts welche Schulart die Abgänge ohne Hauptschulabschluss stellt (Antwort, "
-    "Destatis 21111-12).")
+    "Destatis 21111-12; rechtes Diagramm je Bundesland filterbar, linkes bleibt bundesweit).")
 PL("Interpretation:","Erst die Kreuzung von Schulart und Abschlussart beantwortet die Leitfrage direkt: nicht "
    "die Größe einer Schulart entscheidet, sondern ihr Bildungsauftrag. Förderschulen und integrierte "
    "Gesamtschulen stellen zusammen rund zwei Drittel aller Abgänge ohne Hauptschulabschluss, während Gymnasien "
    "fast ausschließlich zur Hochschulreife führen. Die links gezeigte, gymnasiallastige Schülerstruktur ist die "
-   "Input-Seite, die rechte Verteilung die tatsächliche Wirkung je Schulart.")
+   "Input-Seite, die rechte Verteilung die tatsächliche Wirkung je Schulart. Ein Bundesland-Filter wirkt "
+   "bewusst nur auf das rechte Diagramm – so lässt sich die Schulart-Struktur der Abgänge ohne HSA je Land "
+   "betrachten (z. B. Bayern mit deutlich stärkerer Hauptschul-Komponente), während links die bundesweite "
+   "Schülerstruktur als feste Referenz bestehen bleibt (die Schülerzahlen-Quelle liegt nur für Deutschland vor).")
 PL("Warum so / Vorbehalt:","Die linke Sicht (Schüleranteil je Schulart) schließt im Nenner die Sammelkategorie "
    "'Insgesamt' aus, sonst zählt die Gesamtsumme doppelt. Die rechte Antwort stammt aus einer separaten "
    "Fakttabelle (fact_abgaenge_schulart) und liegt nur auf Landesebene vor (keine Kreise); ihre "
