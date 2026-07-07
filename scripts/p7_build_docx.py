@@ -226,10 +226,12 @@ P("LF4 – Schneiden Jungen und Mädchen unterschiedlich ab?",bold=True)
 PL("Ergebnis:","Ja, mit einem deutlichen und gegenläufigen Gefälle. Ohne Hauptschulabschluss bleiben Jungen "
    "mit 8,40 % gegenüber Mädchen mit 5,78 % (Jungen rund 45 % häufiger). Beim Abitur ist es umgekehrt: Mädchen "
    "erreichen 37,12 %, Jungen 29,34 % (Mädchen rund 26 % häufiger).")
-pic("pbi/pbi_lf4.png",cap="Abb. 5 (LF4): Berichtsseite LF4 – Geschlechtergefälle ohne HSA und beim Abitur (DE 2023).")
+pic("pbi/pbi_lf4.png",cap="Abb. 5 (LF4): Berichtsseite LF4 – Abweichung zwischen den Geschlechtern (ohne HSA 2,6 pp, Abitur 7,8 pp) "
+    "mit Bundesland-Filter (Standard: Deutschland).")
 PL("Interpretation:","Das Geschlecht wirkt an beiden Enden der Verteilung. Jungen sind am unteren Ende "
    "überrepräsentiert, Mädchen am oberen. Das ist ein struktureller, kein regionaler Effekt und tritt über "
-   "alle Länder hinweg auf.")
+   "alle Länder hinweg auf. Über den Bundesland-Filter der Seite lässt sich das je Land nachvollziehen: die "
+   "Abweichung ohne HSA reicht von 1,6 pp (Saarland) bis 4,8 pp (Sachsen-Anhalt), die Richtung bleibt überall gleich.")
 PL("Warum so:","Wir behandeln Geschlecht als Attribut (degenerate dimension) in der Abgänge-Tabelle, nicht als "
    "eigene Dimension. Das reicht für den Geschlechter-Vergleich und hält das Sternschema schlank.")
 

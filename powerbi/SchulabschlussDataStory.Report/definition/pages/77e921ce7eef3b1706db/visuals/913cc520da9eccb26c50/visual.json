@@ -3,9 +3,9 @@
   "name": "913cc520da9eccb26c50",
   "position": {
     "x": 24,
-    "y": 93.75,
+    "y": 90,
     "z": 1000,
-    "height": 52.5,
+    "height": 62,
     "width": 906,
     "tabOrder": 1000
   },
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Erkenntnis LF4: Deutlicher Gap. Jungen häufiger ohne Abschluss (8,4 % vs. 5,8 %), Mädchen häufiger Abitur (37,1 % vs. 29,3 %). Ein struktureller, kein regionaler Effekt."
+                    "value": "Erkenntnis LF4: Deutliche Abweichung zwischen den Geschlechtern. Jungen häufiger ohne Abschluss (8,4 % vs. 5,8 %), Mädchen häufiger Abitur (37,1 % vs. 29,3 %). Struktureller, kein regionaler Effekt – je Bundesland über den Filter rechts prüfbar."
                   }
                 ]
               }

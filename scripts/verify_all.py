@@ -363,8 +363,12 @@ _slf=[_slfield(v) for v in _slicers]
 _mapdump=[json.dumps(m,ensure_ascii=False) for m in _maps]
 check("Karte(n) mit 'Quote ohne HSA %' vorhanden", len(_maps)>=1 and all("Quote ohne HSA %" in d for d in _mapdump), f"{len(_maps)} Karten")
 check("Slicer für Interaktivität vorhanden (≥6; bewusst entschlackt)", len(_slicers)>=6, f"{len(_slicers)}: {sorted(set(_slf))}")
-# LF4-Land-Slicer in der Audit-Runde entfernt (Visuals sind ebene='DE'-gepinnt -> Auswahl leerte die Seite)
+# LF4 (Runde 7): Land-Slicer reaktiviert; LF4-Visuals von ebene='DE' auf ebene IN (DE,BL) umgestellt -> Deutschland-Default + Drilldown je Bundesland
 check("Land-Slicer auf mehreren Seiten (≥4)", _slf.count("Land")>=4, f"{_slf.count('Land')}× Land")
+_lf4dir=os.path.join(PBI,"SchulabschlussDataStory.Report","definition","pages","77e921ce7eef3b1706db","visuals")
+_lf4card=open(os.path.join(_lf4dir,"f7d446b62a0475f6cb2d","visual.json"),encoding="utf-8").read()
+check("LF4-Report: Bundesland-Slicer (Land) + Karten auf ebene IN (DE,BL) umgestellt (Runde 7)",
+      os.path.exists(os.path.join(_lf4dir,"bslf4land00000000001","visual.json")) and "'BL'" in _lf4card and "'DE'" in _lf4card)
 # LF9-Faerbung: Schwelle 5,5 muss exakt die Top-10 treffen (Marge 5,57 vs. 5,44 - Drift-Warnung bei Datenaenderung)
 _n_ueber = sum(1 for v in _score.values() if v >= 5.5)
 check("LF9 Top-10-Schwelle 5,5 trifft exakt 10 Kreise (Farbe Risiko LF9)", _n_ueber == 10, f"{_n_ueber} Kreise >= 5,5")

@@ -29,7 +29,7 @@ Wir sind ein dreiköpfiges Team im Modul *Analytische Anwendungen* und haben die
 
 | 🧱 Modell | 📊 Bericht | 🎨 Gestaltung | ✅ Qualität |
 |:--:|:--:|:--:|:--:|
-| 9 Fakttabellen · 4 Dimensionen | 10 Seiten · 61 Visuals | Okabe-Ito-Farbvertrag | 107/107 Tests grün |
+| 9 Fakttabellen · 4 Dimensionen | 10 Seiten · 62 Visuals | Okabe-Ito-Farbvertrag | 108/108 Tests grün |
 | 34 Measures (23 analytisch + 11 Formatierung) | 1 Karte · 6 Slicer | CVD- & WCAG-geprüft | jede KPI rohdaten-nachgerechnet |
 
 </div>
@@ -58,7 +58,7 @@ Wir sind ein dreiköpfiges Team im Modul *Analytische Anwendungen* und haben die
 ### Block 2 · Die Struktur – *wodurch geprägt?*
 
 #### LF4 — Schneiden Jungen und Mädchen unterschiedlich ab?
-**Unsere Antwort:** Ein klares, **strukturelles** Gefälle (kein regionaler Effekt): Jungen bleiben häufiger ohne HSA (**8,4 % vs. 5,8 %**), Mädchen erreichen häufiger das Abitur (**37,1 % vs. 29,3 %**). Zwei Delta-Karten fassen den Gap in Prozentpunkten (2,6 / 7,8 pp).
+**Unsere Antwort:** Ein klares, **strukturelles** Gefälle (kein regionaler Effekt): Jungen bleiben häufiger ohne HSA (**8,4 % vs. 5,8 %**), Mädchen erreichen häufiger das Abitur (**37,1 % vs. 29,3 %**). Zwei große KPI-Karten zeigen die **Abweichung zwischen den Geschlechtern** in Prozentpunkten (ohne HSA **2,6 pp** / Abitur **7,8 pp**). Über einen **Bundesland-Filter** (Standard: Deutschland) lässt sich das Gefälle je Land prüfen – es reicht von 1,6 pp (Saarland) bis 4,8 pp (Sachsen-Anhalt), die Richtung bleibt überall gleich.
 
 ![LF4](charts/pbi/pbi_lf4.png)
 

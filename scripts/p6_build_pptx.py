@@ -108,7 +108,7 @@ lf_slide("TEIL 1 · BEFUND",BLUE,"LF2/LF3 — Es ist auch ein Kreisproblem","pbi
 
 # TEIL 2 — STRUKTUR
 lf_slide("TEIL 2 · STRUKTUR",ORANGE,"LF4 — Jungen öfter ohne Abschluss, Mädchen öfter Abitur","pbi/pbi_lf4.png",
-    [("Ohne HSA: Jungen 8,4 % vs. Mädchen 5,8 %",True),("Abitur: Mädchen 37,1 % vs. Jungen 29,3 %",True),("Geschlechtergefälle in beide Richtungen",False),("Deutschland, Abgangsjahr 2023",False)],
+    [("Ohne HSA: Jungen 8,4 % vs. Mädchen 5,8 %",True),("Abitur: Mädchen 37,1 % vs. Jungen 29,3 %",True),("Abweichung zwischen den Geschlechtern in beide Richtungen",False),("Standard Deutschland – je Bundesland filterbar (2023)",False)],
     "+7,8 pp","Abitur-Vorsprung der Mädchen (DE 2023)")
 # LF5 ohne eigenes Chart -> Stat-Layout
 s=slide()
