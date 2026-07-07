@@ -66,7 +66,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Einkommen je Einwohner (€)'"
+                  "Value": "'Verfügbares Einkommen je Einwohner (Euro)'"
                 }
               }
             }

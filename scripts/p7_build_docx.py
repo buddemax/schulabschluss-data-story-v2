@@ -322,13 +322,14 @@ PL("Ergebnis:","Wir fassen alle drei Dimensionen der Ergebnis-Stufe in einem z-s
    "2025) und niedriges verfügbares Einkommen je Einwohner (VGRdL 2021). Die höchsten Werte erreichen "
    "Gelsenkirchen (8,1), Pirmasens (7,4), Mansfeld-Südharz (6,6), Stendal (6,0) und Bremerhaven (6,0).")
 pic("pbi/pbi_lf9.png",cap="Abb. 10 (LF9): Berichtsseite LF9 – Bildungsrisiko × Jugendarbeitslosigkeit je Kreis "
-    "und dreidimensionales Risiko-Score-Ranking (inkl. Einkommen); Spitze: Gelsenkirchen (rund 8,1). Interaktiv "
-    "filterbar über einen Bundesland-Slicer und einen Einkommens-Schieberegler.")
+    "und dreidimensionales Risiko-Score-Ranking (inkl. verfügbarem Einkommen je Einwohner); Spitze: Gelsenkirchen "
+    "(rund 8,1). Punktdiagramm (Verteilung), Ranking-Tabelle und ein Balkendiagramm der höchsten Risiko-Kreise; "
+    "interaktiv filterbar über einen Bundesland-Slicer und einen Schieberegler für das verfügbare Einkommen.")
 PL("Interpretation:","Die drei Merkmale ballen sich in denselben Kreisen: strukturschwache Städte und Kreise im "
    "Ruhrgebiet, in Rheinland-Pfalz, Sachsen-Anhalt und an der Unterweser. Niedriges Einkommen korreliert "
    "erwartungsgemäß mit hohem Bildungsrisiko (r = −0,49) und hoher Jugendarbeitslosigkeit (r = −0,59); die "
    "Merkmale zeigen also in dieselbe Richtung. Mit der Einkommensdimension rückt Gelsenkirchen (verfügbares "
-   "Einkommen nur rund 17.900 € je Einwohner) an die Spitze, und Bremerhaven kommt neu in die Spitzengruppe. "
+   "Einkommen nur rund 17.900 Euro je Einwohner) an die Spitze, und Bremerhaven kommt neu in die Spitzengruppe. "
    "Diese Kreise sind konkrete Kandidaten für gezielte Förderung.")
 PL("Warum wir es so gemacht haben:","Um drei sehr unterschiedliche Größen (Prozent, Prozent, Euro) vergleichbar "
    "zu machen, standardisieren wir jede über die 398 Kreise mit allen drei Kennzahlen (z-Wert je Kreis). Das "

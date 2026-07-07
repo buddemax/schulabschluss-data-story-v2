@@ -388,6 +388,13 @@ _lf9sc = open(os.path.join(PBI, "SchulabschlussDataStory.Report", "definition", 
 _lf9tb = open(os.path.join(PBI, "SchulabschlussDataStory.Report", "definition", "pages", "7d13787a91e0b8cd5dd2", "visuals", "d2a6d9721a7261bd0032", "visual.json"), encoding="utf-8").read()
 check("LF9-Report: Scatter-Faerbung (Farbe Risiko LF9 + Selector) + Datenbalken verdrahtet",
       "Farbe Risiko LF9" in _lf9sc and "dataViewWildcard" in _lf9sc and "dataBars" in _lf9tb)
+# LF9 (Runde 10): Balkendiagramm Top-10-Risiko-Kreise ergaenzt; Einkommen -> "Verfügbares Einkommen je Einwohner (Euro)" (Euro statt €-Zeichen)
+_lf9dir=os.path.join(PBI,"SchulabschlussDataStory.Report","definition","pages","7d13787a91e0b8cd5dd2","visuals")
+_lf9bar=os.path.join(_lf9dir,"b9balken00000000001","visual.json")
+_lf9barok=os.path.exists(_lf9bar) and '"visualType": "barChart"' in open(_lf9bar,encoding="utf-8").read() and "Risiko-Score" in open(_lf9bar,encoding="utf-8").read()
+_lf9slic=open(os.path.join(_lf9dir,"5c99e1c0de000000aa19","visual.json"),encoding="utf-8").read()
+check("LF9-Report: Balkendiagramm (höchste Risiko-Kreise) + 'Verfügbares Einkommen je Einwohner (Euro)' ohne €-Zeichen (Runde 10)",
+      _lf9barok and "Verfügbares Einkommen je Einwohner (Euro)" in _lf9slic and "€" not in _lf9slic and "€" not in _lf9tb)
 _slider=[v for v in _slicers if _slfield(v)=="einkommen_je_ew"]
 check("Einkommens-Slider (Between/Range) vorhanden", len(_slider)>=1 and any("Between" in json.dumps(v,ensure_ascii=False) for v in _slider))
 

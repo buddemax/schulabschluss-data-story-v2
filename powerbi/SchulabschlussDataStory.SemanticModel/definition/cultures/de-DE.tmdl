@@ -36,7 +36,17 @@ cultureInfo de-DE
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "Einkommen €/EW": {
+			          "Verfügbares Einkommen je Einwohner (Euro)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Verf. Einkommen (Euro/EW)": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",

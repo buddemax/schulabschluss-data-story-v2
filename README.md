@@ -29,7 +29,7 @@ Wir sind ein dreiköpfiges Team im Modul *Analytische Anwendungen* und haben die
 
 | 🧱 Modell | 📊 Bericht | 🎨 Gestaltung | ✅ Qualität |
 |:--:|:--:|:--:|:--:|
-| 9 Fakttabellen · 4 Dimensionen | 10 Seiten · 63 Visuals | Okabe-Ito-Farbvertrag | 110/110 Tests grün |
+| 9 Fakttabellen · 4 Dimensionen | 10 Seiten · 64 Visuals | Okabe-Ito-Farbvertrag | 111/111 Tests grün |
 | 34 Measures (23 analytisch + 11 Formatierung) | 1 Karte · 6 Slicer | CVD- & WCAG-geprüft | jede KPI rohdaten-nachgerechnet |
 
 </div>
@@ -85,7 +85,7 @@ Wir sind ein dreiköpfiges Team im Modul *Analytische Anwendungen* und haben die
 ![LF8](charts/pbi/pbi_lf8.png)
 
 #### LF9 — Welche Kreise verbinden Bildungsrisiko, Arbeitslosigkeit und niedriges Einkommen?
-**Unsere Antwort:** Unser **3-dimensionaler Risiko-Score** (Bildungsrisiko + Jugendarbeitslosigkeit + niedriges Einkommen, z-standardisiert über 398 Kreise) führt **Gelsenkirchen (8,08)** vor Pirmasens und Mansfeld-Südharz. Der Dot-Plot je Bundesland zeigt: Hochrisiko-Kreise liegen in **West wie Ost**. Tabelle und Methodik-Box machen die Berechnung transparent.
+**Unsere Antwort:** Unser **3-dimensionaler Risiko-Score** (Bildungsrisiko + Jugendarbeitslosigkeit + niedriges **verfügbares Einkommen je Einwohner**, z-standardisiert über 398 Kreise) führt **Gelsenkirchen (8,08)** vor Pirmasens und Mansfeld-Südharz. Der Dot-Plot je Bundesland zeigt: Hochrisiko-Kreise liegen in **West wie Ost**. Ein **Balkendiagramm** der höchsten Risiko-Kreise, die Ranking-Tabelle und die Methodik-Box machen die Berechnung transparent; über Slicer und einen Einkommens-Schieberegler ist die Seite interaktiv.
 
 ![LF9](charts/pbi/pbi_lf9.png)
 
