@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Erkenntnis LF9: Bildungsrisiko, Jugendarbeitslosigkeit und niedriges Einkommen fallen räumlich zusammen (Einkommen korreliert mit Bildungsrisiko r=-0,49 und Jugend-ALQ r=-0,59). Der 3-dimensionale Risiko-Score (z-standardisiert, n=398) streut breit über die Bundesländer – ein Punkt je Kreis – und führt Gelsenkirchen (8,1) vor Pirmasens, Mansfeld-Südharz, Stendal und Bremerhaven; Hochrisiko-Kreise liegen in West wie Ost. Datenstände: ohne HSA 2023, Jugend-ALQ 2025, Einkommen 2021."
+                    "value": "Erkenntnis LF9: Bildungsrisiko, Jugendarbeitslosigkeit und niedriges Einkommen fallen räumlich zusammen (Einkommen korreliert mit dem Bildungsrisiko (r=-0,49) und der Jugendarbeitslosenquote (r=-0,59)). Der dreidimensionale Risiko-Score (z-standardisiert, n=398) streut breit über die Bundesländer, mit einem Punkt je Kreis, und führt Gelsenkirchen (8,1) vor Pirmasens, Mansfeld-Südharz, Stendal und Bremerhaven; Hochrisiko-Kreise liegen in West wie Ost. Datenstände: ohne HSA 2023, Jugendarbeitslosigkeit 2025, Einkommen 2021."
                   }
                 ]
               }

@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "dim_region.region",
-              "nativeQueryRef": "region"
+              "nativeQueryRef": "region",
+              "displayName": "Kreis"
             },
             {
               "field": {

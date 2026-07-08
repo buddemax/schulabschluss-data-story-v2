@@ -100,7 +100,7 @@ PL("Beispiel und Cross-Source-Prüfung:","Für Schleswig-Holstein ergeben sich 2
    "2.499 Abgänger ohne Hauptschulabschluss. Derselbe Wert (2.499) folgt unabhängig aus der Regionalstatistik "
    "und aus dem Statistischen Bericht. Solche Querabgleiche haben wir genutzt, um die Aufbereitung abzusichern.")
 P("Power Query (M) lädt die offenen Rohdateien direkt (Windows-1252-CSV der Regionalstatistik und die "
-  "Destatis-XLSX) und führt sämtliche Aufbereitungsschritte im Modell aus – es gibt keine vorgelagerte "
+  "Destatis-XLSX) und führt sämtliche Aufbereitungsschritte im Modell aus; es gibt keine vorgelagerte "
   "Bereinigung außerhalb des BI-Werkzeugs. Die wichtigsten Transformationen:")
 for t in [
  "Encoding Windows-1252 nach UTF-8 (geprüft über eine Mojibake-Gegenprobe).",
@@ -193,7 +193,7 @@ PL("Interpretation:","Es gibt ein stabiles Muster aus ostdeutschen Flächenländ
    "wird erkennbar durch landesspezifische Strukturen geprägt.")
 PL("Warum so:","Wir zeigen bewusst beide Schuljahre, weil erst der Vergleich den Trend sichtbar macht; genau "
    "dafür ist die Zeitdimension aktiv an den Abgängen verknüpft. Die Bundeslandebene beantwortet aber nur den "
-   "Rahmen, nicht das ganze Bild – das führt direkt zu LF2 und LF3.")
+   "Rahmen, nicht das ganze Bild; das führt direkt zu LF2 und LF3.")
 
 P("LF2 – Wo ist der Anteil ohne Hauptschulabschluss am höchsten?",bold=True)
 PL("Ergebnis:","Auf Kreisebene liegen die Spitzenwerte bei rund 15 bis 17 %, also etwa dreimal so hoch wie in "
@@ -240,10 +240,10 @@ PL("Ergebnis (Gesamtmix):","Von allen Schülern entfallen 35,2 % auf Grundschule
    "auf integrierte Gesamtschulen, 8,8 % auf Realschulen, 6,3 % auf Schularten mit mehreren Bildungsgängen, "
    "3,9 % auf Förderschulen und nur noch 3,8 % auf Hauptschulen.")
 PL("Ergebnis (Antwort: wer stellt die Abgänge ohne Hauptschulabschluss?):","Die eigentliche Antwort liefert "
-   "eine zweite, neu erschlossene offene Quelle (Destatis 21111-12 – Absolvierende/Abgehende nach Schulart und "
+   "eine zweite, neu erschlossene offene Quelle (Destatis 21111-12: Absolvierende/Abgehende nach Schulart und "
    "Abschlussart, Landesebene 2023): Von den 55.705 Abgängen ohne Hauptschulabschluss in Deutschland entfallen "
    "41,9 % (23.324) auf Förderschulen, 21,5 % auf integrierte Gesamtschulen, 15,5 % auf Schularten mit mehreren "
-   "Bildungsgängen und 12,7 % auf Hauptschulen – von Gymnasien (G8/G9) nur rund 3 %. Der Schulartmix prägt die "
+   "Bildungsgängen und 12,7 % auf Hauptschulen, von Gymnasien (G8/G9) nur rund 3 %. Der Schulartmix prägt die "
    "Abschlussverteilung also massiv.")
 pic("pbi/pbi_lf5.png",cap="Abb. 6 (LF5): Berichtsseite LF5 – links die Zusammensetzung der Schülerschaft nach "
     "Schulart (Input, DE 2023), rechts welche Schulart die Abgänge ohne Hauptschulabschluss stellt (Antwort, "
@@ -253,7 +253,7 @@ PL("Interpretation:","Erst die Kreuzung von Schulart und Abschlussart beantworte
    "Gesamtschulen stellen zusammen rund zwei Drittel aller Abgänge ohne Hauptschulabschluss, während Gymnasien "
    "fast ausschließlich zur Hochschulreife führen. Die links gezeigte, gymnasiallastige Schülerstruktur ist die "
    "Input-Seite, die rechte Verteilung die tatsächliche Wirkung je Schulart. Ein Bundesland-Filter wirkt "
-   "bewusst nur auf das rechte Diagramm – so lässt sich die Schulart-Struktur der Abgänge ohne HSA je Land "
+   "bewusst nur auf das rechte Diagramm, so lässt sich die Schulart-Struktur der Abgänge ohne HSA je Land "
    "betrachten (z. B. Bayern mit deutlich stärkerer Hauptschul-Komponente), während links die bundesweite "
    "Schülerstruktur als feste Referenz bestehen bleibt (die Schülerzahlen-Quelle liegt nur für Deutschland vor).")
 PL("Warum so / Vorbehalt:","Die linke Sicht (Schüleranteil je Schulart) schließt im Nenner die Sammelkategorie "
@@ -273,7 +273,7 @@ PL("Interpretation:","Absolutzahlen bilden vor allem die Bevölkerungsgröße ab
    "in kleinen ostdeutschen Ländern und Bremen.")
 PL("Warum so:","Als Bezugsgröße nutzen wir die Bevölkerung der 15- bis 18-Jährigen aus der Hilfsfakttabelle, "
    "gepinnt auf 2023. Die methodische Kernbotschaft von LF6 ist bewusst gewählt: Die Bezugsgröße entscheidet "
-   "über die Aussage – ein Muster, das für die spätere Interpretation von LF8 wichtig ist.")
+   "über die Aussage, ein Muster, das für die spätere Interpretation von LF8 wichtig ist.")
 
 H("4.3 Das Ökonomische: Was hängt zusammen? (INPUT-Kosten und ERGEBNIS)",2)
 P("LF7 – Wie verteilen sich die Bildungsausgaben nach Bereich?",bold=True)
@@ -303,10 +303,10 @@ PL("Was wir tatsächlich herausgefunden haben:","Dieser Eindruck ist ein Stadtst
    "Flächenländern ins Negative (r = −0,36) und ist nicht mehr signifikant. Wir haben die Punkte deshalb im "
    "Live-Visual nach Stadtstaat und Flächenland eingefärbt und einen Stadtstaat/Flächenland-Slicer ergänzt: "
    "Blendet man die drei Stadtstaaten aus, kippt die Trendlinie im Bericht unmittelbar sichtbar ins Negative. "
-   "Beide Achsen sind über getrennte Jahresfilter fest auf 2023 gepinnt – einen für die Ausgaben-Quelle (die die "
+   "Beide Achsen sind über getrennte Jahresfilter fest auf 2023 gepinnt, einen für die Ausgaben-Quelle (die die "
    "Jahre 2010–2024 enthält) und einen für die Abgänge-Quelle (2022/2023); da nur letztere an der Zeit-Dimension "
    "hängt, sind zwei Filter nötig und nicht redundant.")
-PL("Womit wir das belegen – und womit nicht:","Für einen belastbaren Beleg ist die Datenlage schlicht zu dünn. "
+PL("Womit wir das belegen, und womit nicht:","Für einen belastbaren Beleg ist die Datenlage schlicht zu dünn. "
    "Ausgaben liegen nur je Bundesland vor, also nur 16 Datenpunkte. Entsprechend breit sind die "
    "Konfidenzintervalle: für alle 16 Länder reicht das 95%-Intervall von +0,17 bis +0,85, für die 13 "
    "Flächenländer von −0,76 bis +0,24 und schließt damit die Null ein. Ein einfacher Zusammenhang nach dem "
@@ -314,7 +314,7 @@ PL("Womit wir das belegen – und womit nicht:","Für einen belastbaren Beleg is
    "Kausalität, und der eigentliche Confounder ist hier der Stadtstaat-Status.")
 PL("Warum wir es trotzdem zeigen:","Ein ehrlich ausgewiesenes Nicht-Ergebnis ist selbst ein Ergebnis. LF8 "
    "widerlegt eine naheliegende, aber falsche These und schärft den Blick dafür, dass Bildungserfolg weniger an "
-   "der reinen Ausgabenhöhe hängt als an den lokalen Strukturen – die Brücke zu LF9.")
+   "der reinen Ausgabenhöhe hängt als an den lokalen Strukturen; das ist die Brücke zu LF9.")
 
 P("LF9 – Welche Kreise verbinden Bildungsrisiko, Arbeitslosigkeit und niedriges Einkommen?",bold=True)
 PL("Ergebnis:","Wir fassen alle drei Dimensionen der Ergebnis-Stufe in einem z-standardisierten Risiko-Score "
@@ -344,7 +344,7 @@ PL("Grenzen, ehrlich benannt:","Die Datenstände unterscheiden sich (ohne HSA 20
    "2021, da dies die aktuellste VGRdL-Veröffentlichung ist). Der Score ist deshalb als Strukturindikator zu "
    "lesen, nicht als tagesaktuelle Momentaufnahme. Der Kern-Zusammenhang Bildungsrisiko und "
    "Jugendarbeitslosigkeit ist über alle 398 Kreise hoch signifikant (r = +0,58, p < 0,001, 95%-Intervall "
-   "+0,51 bis +0,64) und – anders als bei LF8 mit nur 16 Ländern – durch die große Kreiszahl eng geschätzt. "
+   "+0,51 bis +0,64) und, anders als bei LF8 mit nur 16 Ländern, durch die große Kreiszahl eng geschätzt. "
    "Auch hier gilt jedoch: ein statistischer Zusammenhang ist kein Kausalnachweis.")
 
 P("Übergang: Was leisten die beruflichen Schulen?",bold=True)
@@ -387,7 +387,7 @@ PL("Methodischer Grundsatz:","Korrelation ≠ Kausalität. Sowohl bei LF8 als au
    "(Stadtstaat-Status bzw. regionale Wirtschaftsstruktur). Alle Korrelationsaussagen sind daher als Hinweise "
    "auf Strukturzusammenhänge zu lesen, nicht als Kausalnachweise.")
 PL("Aggregatebene (ökologischer Fehlschluss):","Alle Auswertungen liegen auf Gebietsebene (Bundesland bzw. "
-   "Kreis) vor. Ein Zusammenhang zwischen Regionen darf nicht auf Einzelpersonen übertragen werden – dass in "
+   "Kreis) vor. Ein Zusammenhang zwischen Regionen darf nicht auf Einzelpersonen übertragen werden; dass in "
    "einkommensschwächeren Kreisen mehr Jugendliche ohne Abschluss bleiben, ist eine Aussage über Kreise, nicht "
    "über einzelne Schülerinnen und Schüler (ökologischer Fehlschluss). Der Risiko-Score (LF9) ist bewusst als "
    "regionaler Strukturindikator formuliert, nicht als individuelle Prognose. Aggregatzusammenhänge können sich "

@@ -363,12 +363,13 @@ _slf=[_slfield(v) for v in _slicers]
 _mapdump=[json.dumps(m,ensure_ascii=False) for m in _maps]
 check("Karte(n) mit 'Quote ohne HSA %' vorhanden", len(_maps)>=1 and all("Quote ohne HSA %" in d for d in _mapdump), f"{len(_maps)} Karten")
 check("Slicer für Interaktivität vorhanden (≥6; bewusst entschlackt)", len(_slicers)>=6, f"{len(_slicers)}: {sorted(set(_slf))}")
-# LF4 (Runde 7): Land-Slicer reaktiviert; LF4-Visuals von ebene='DE' auf ebene IN (DE,BL) umgestellt -> Deutschland-Default + Drilldown je Bundesland
+# LF4: Land-Slicer je Bundesland; ab Runde 12 OHNE Deutschland-Vorauswahl (Deutschland aus der Liste ausgeschlossen, Header "Bundesland"); Karten weiter ebene IN (DE,BL)
 check("Land-Slicer auf mehreren Seiten (≥4)", _slf.count("Land")>=4, f"{_slf.count('Land')}× Land")
 _lf4dir=os.path.join(PBI,"SchulabschlussDataStory.Report","definition","pages","77e921ce7eef3b1706db","visuals")
 _lf4card=open(os.path.join(_lf4dir,"f7d446b62a0475f6cb2d","visual.json"),encoding="utf-8").read()
-check("LF4-Report: Bundesland-Slicer (Land) + Karten auf ebene IN (DE,BL) umgestellt (Runde 7)",
-      os.path.exists(os.path.join(_lf4dir,"bslf4land00000000001","visual.json")) and "'BL'" in _lf4card and "'DE'" in _lf4card)
+_lf4slic=open(os.path.join(_lf4dir,"bslf4land00000000001","visual.json"),encoding="utf-8").read()
+check("LF4-Report: Bundesland-Slicer OHNE Deutschland-Auswahl (excl_de, Header 'Bundesland') + Karten ebene IN (DE,BL) (Runde 12)",
+      "'BL'" in _lf4card and "'DE'" in _lf4card and "excl_de_LF4" in _lf4slic and "Standard: Deutschland" not in _lf4slic)
 # LF5 (Runde 8): Bundesland-Slicer wirkt nur auf das rechte Diagramm (Abgaenge ohne HSA je Schulart); links (Schuelerschaft, nur DE) via NoFilter entkoppelt
 _lf5pg=open(os.path.join(PBI,"SchulabschlussDataStory.Report","definition","pages","a0c706439d9e1475cc04","page.json"),encoding="utf-8").read()
 check("LF5-Report: Bundesland-Slicer filtert nur rechts (links Schuelerschaft = NoFilter, Runde 8)",

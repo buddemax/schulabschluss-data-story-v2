@@ -40,7 +40,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "0 = Durchschnitt · Rot = Top-10-Risiko (Score ≥ 5,5). Strukturindikator je Region, kein Individualmaß.",
+                    "value": "0 = Durchschnitt. Farblich hervorgehoben sind die zehn höchsten Risikokreise (Score ab 5,5). Strukturindikator je Region, kein Individualmaß.",
                     "textStyle": {
                       "fontSize": "9pt",
                       "fontWeight": "bold"

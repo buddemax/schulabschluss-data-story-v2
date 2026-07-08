@@ -75,7 +75,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Abweichung zwischen den Geschlechtern – Abitur (pp)'"
+                  "Value": "'Abweichung zwischen den Geschlechtern: Abitur (pp)'"
                 }
               }
             },

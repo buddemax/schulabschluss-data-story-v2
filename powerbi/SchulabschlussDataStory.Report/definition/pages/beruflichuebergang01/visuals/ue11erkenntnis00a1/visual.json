@@ -21,8 +21,7 @@
                   {
                     "value": "Berufliche Schulen sind ein wichtiger Aufstiegspfad.",
                     "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "12pt"
+                      "fontWeight": "bold"
                     }
                   }
                 ]
@@ -37,10 +36,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Ein großer Teil der Abgängerinnen und Abgänger erreicht hier einen mittleren Abschluss, die Fachhochschulreife oder sogar die allgemeine Hochschulreife und nicht nur den Hauptschulabschluss.",
-                    "textStyle": {
-                      "fontSize": "11pt"
-                    }
+                    "value": "Ein großer Teil der Abgängerinnen und Abgänger erreicht hier einen mittleren Abschluss, die Fachhochschulreife oder sogar die allgemeine Hochschulreife und nicht nur den Hauptschulabschluss."
                   }
                 ]
               },
@@ -54,10 +50,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Wie sich diese Abschlüsse verteilen, unterscheidet sich deutlich von Bundesland zu Bundesland.",
-                    "textStyle": {
-                      "fontSize": "11pt"
-                    }
+                    "value": "Wie sich diese Abschlüsse verteilen, unterscheidet sich deutlich von Bundesland zu Bundesland."
                   }
                 ]
               }

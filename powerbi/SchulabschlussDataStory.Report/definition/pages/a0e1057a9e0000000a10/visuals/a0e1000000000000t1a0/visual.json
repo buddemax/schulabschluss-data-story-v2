@@ -22,7 +22,8 @@
                     "value": "Schulabschluss ist nicht nur Ländersache",
                     "textStyle": {
                       "fontSize": "26pt",
-                      "fontWeight": "bold"
+                      "fontWeight": "bold",
+                      "fontFamily": "Arial"
                     }
                   }
                 ]
@@ -30,7 +31,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Eine Self-Service-BI-Data-Story mit offenen Daten – neun Leitfragen von den Bildungsausgaben bis zum Arbeitsmarkt.",
+                    "value": "Eine Datengeschichte aus offenen Daten mit Self-Service-BI. Neun Leitfragen von den Bildungsausgaben bis zum Arbeitsmarkt.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
