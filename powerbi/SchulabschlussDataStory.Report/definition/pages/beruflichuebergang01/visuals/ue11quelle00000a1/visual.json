@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "ue11quelle00000a1",
+  "position": {
+    "x": 24,
+    "y": 697,
+    "z": 8500,
+    "height": 23,
+    "width": 1200,
+    "tabOrder": 8500
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Quelle: Statistische Ämter des Bundes und der Länder, Regionalstatistik (21121: Absolventen/Abgänger beruflicher Schulen nach Abschlussart), Datenlizenz Deutschland 2.0, 2023.",
+                    "textStyle": {
+                      "fontSize": "8pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

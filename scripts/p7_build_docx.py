@@ -347,6 +347,21 @@ PL("Grenzen, ehrlich benannt:","Die Datenstände unterscheiden sich (ohne HSA 20
    "+0,51 bis +0,64) und – anders als bei LF8 mit nur 16 Ländern – durch die große Kreiszahl eng geschätzt. "
    "Auch hier gilt jedoch: ein statistischer Zusammenhang ist kein Kausalnachweis.")
 
+P("Übergang: Was leisten die beruflichen Schulen?",bold=True)
+PL("Ergebnis:","Die Übergangsstufe zeigt eine gute Nachricht: Berufliche Schulen wirken als Aufstiegspfad. Ein "
+   "großer Teil der Abgängerinnen und Abgänger erreicht dort einen mittleren Abschluss, die Fachhochschulreife oder "
+   "sogar die allgemeine Hochschulreife und eben nicht nur den Hauptschulabschluss.")
+pic("pbi/pbi_uebergang.png",cap="Abb. 11 (Übergang): Eigene Berichtsseite mit der beruflichen Abschlussverteilung je "
+    "Bundesland (2023) als zu 100 Prozent gestapelte Säule. Die vier Abschlussarten summieren sich sauber auf die "
+    "Gesamtzahl (keine versteckte Restkategorie); die Farben laufen aufsteigend nach Abschlusshöhe.")
+PL("Interpretation:","Der Abschlussmix fällt je Bundesland deutlich unterschiedlich aus. In einigen Ländern erreichen "
+   "an beruflichen Schulen überdurchschnittlich viele die Fachhochschulreife oder die allgemeine Hochschulreife, in "
+   "anderen überwiegen die mittleren Abschlüsse. Weil die Darstellung auf 100 Prozent normiert ist, zeigt sie den Mix "
+   "unabhängig von der Größe des Landes und macht die Länder direkt vergleichbar.")
+PL("Warum so:","Wir nutzen die Tabelle der Regionalstatistik zu Absolventen und Abgängern beruflicher Schulen nach "
+   "Abschlussart (21121) und filtern bewusst auf die Landesebene, weil die Quelle auch Kreis-, Regierungsbezirks- und "
+   "Bundeswerte enthält; ohne diesen Filter würden sich die Ebenen doppelt zählen.")
+
 # ===================== 5. DATENQUALITÄT =====================
 H("5. Datenqualität und Verlässlichkeit")
 P("Weil die Aussagen nur so gut sind wie die Daten, haben wir die Qualität systematisch geprüft und die "

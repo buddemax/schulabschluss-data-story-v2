@@ -202,7 +202,7 @@ pmeta=json.loads(_rd("Report/definition/pages/pages.json")); order=pmeta["pageOr
 def _pj(pid): return json.loads(_rd(f"Report/definition/pages/{pid}/page.json"))
 pages=[_pj(pid).get("displayName","") for pid in order]
 # Seit Runde 3: Einstiegsseite "Überblick & Leseführung" vor LF1 (Kür-Punkt 15)
-check(".pbix 10 Seiten: Überblick + LF1→LF9 in Reihenfolge", len(pages)==10 and pages[0].startswith("Überblick") and all(pages[i+1].startswith(f"LF{i+1}") for i in range(9)), " | ".join(p[:6] for p in pages))
+check(".pbix 11 Seiten: Überblick + LF1→LF9 + Übergang (Berufliche Schulen) in Reihenfolge", len(pages)==11 and pages[0].startswith("Überblick") and all(pages[i+1].startswith(f"LF{i+1}") for i in range(9)) and pages[10].startswith("Übergang"), " | ".join(p[:6] for p in pages))
 rf=_rd("Report/definition/report.json")
 _jahrv=sum(1 for n in _names if n.endswith("visual.json") and '"Property": "jahr"' in _rd(n) and "2023L" in _rd(n))
 check(".pbix: Jahr=2023 pro Visual gepinnt (ersetzt report-weiten Filter; >=9 Visuals – LF1-Balken steuert das Jahr bewusst über den Schuljahr-Slicer mit Vorauswahl 2023/24)", _jahrv>=9, f"{_jahrv} Visuals")
@@ -395,6 +395,24 @@ _lf9barok=os.path.exists(_lf9bar) and '"visualType": "barChart"' in open(_lf9bar
 _lf9slic=open(os.path.join(_lf9dir,"5c99e1c0de000000aa19","visual.json"),encoding="utf-8").read()
 check("LF9-Report: Balkendiagramm (höchste Risiko-Kreise) + 'Verfügbares Einkommen je Einwohner (Euro)' ohne €-Zeichen (Runde 10)",
       _lf9barok and "Verfügbares Einkommen je Einwohner (Euro)" in _lf9slic and "€" not in _lf9slic and "€" not in _lf9tb)
+# Übergang-Seite (Runde 11): 100%-gestapelte Säule berufliche Abschlussverteilung je Bundesland aus fact_abgaenge_beruflich_2023
+_ubdir=os.path.join(PBI,"SchulabschlussDataStory.Report","definition","pages","beruflichuebergang01","visuals")
+_ubchart=""
+if os.path.isdir(_ubdir):
+    for _d in os.listdir(_ubdir):
+        _f=os.path.join(_ubdir,_d,"visual.json")
+        if os.path.exists(_f):
+            _c=open(_f,encoding="utf-8").read()
+            if "hundredPercentStackedColumnChart" in _c: _ubchart=_c
+check("Übergang-Report: 100%-Säule berufliche Abschlüsse je Land (4 Serien, ohne insgesamt, ebene=BL, X=Land, Runde 11)",
+      bool(_ubchart) and all(_x in _ubchart for _x in ["mit_hauptschulabschluss","mit_mittlerem_abschluss","fachhochschulreife","allg_hochschulreife"])
+      and '"Property": "insgesamt"' not in _ubchart and "'BL'" in _ubchart and "dim_region.Land" in _ubchart)
+_ber=rd("fact_abgaenge_beruflich_2023.csv"); _berbl=[r for r in _ber if r.get("ebene")=="BL"]
+def _bn(v):
+    try: return int(float((v or "0").replace(",",".")))
+    except: return 0
+_berok=all(abs((_bn(r["mit_hauptschulabschluss"])+_bn(r["mit_mittlerem_abschluss"])+_bn(r["fachhochschulreife"])+_bn(r["allg_hochschulreife"]))-_bn(r["insgesamt"]))<=6 for r in _berbl)
+check("Übergang-Daten: 16 BL, vier Abschluss-Spalten = insgesamt (max ±6 Rundung, keine Restkategorie)", len(_berbl)==16 and _berok, f"{len(_berbl)} BL, Summenkontrolle ok={_berok}")
 _slider=[v for v in _slicers if _slfield(v)=="einkommen_je_ew"]
 check("Einkommens-Slider (Between/Range) vorhanden", len(_slider)>=1 and any("Between" in json.dumps(v,ensure_ascii=False) for v in _slider))
 

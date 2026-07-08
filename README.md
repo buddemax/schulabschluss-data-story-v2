@@ -29,7 +29,7 @@ Wir sind ein dreiköpfiges Team im Modul *Analytische Anwendungen* und haben die
 
 | 🧱 Modell | 📊 Bericht | 🎨 Gestaltung | ✅ Qualität |
 |:--:|:--:|:--:|:--:|
-| 9 Fakttabellen · 4 Dimensionen | 10 Seiten · 64 Visuals | Okabe-Ito-Farbvertrag | 111/111 Tests grün |
+| 9 Fakttabellen · 4 Dimensionen | 11 Seiten · 68 Visuals | Okabe-Ito-Farbvertrag | 113/113 Tests grün |
 | 34 Measures (23 analytisch + 11 Formatierung) | 1 Karte · 6 Slicer | CVD- & WCAG-geprüft | jede KPI rohdaten-nachgerechnet |
 
 </div>
@@ -88,6 +88,13 @@ Wir sind ein dreiköpfiges Team im Modul *Analytische Anwendungen* und haben die
 **Unsere Antwort:** Unser **3-dimensionaler Risiko-Score** (Bildungsrisiko + Jugendarbeitslosigkeit + niedriges **verfügbares Einkommen je Einwohner**, z-standardisiert über 398 Kreise) führt **Gelsenkirchen (8,08)** vor Pirmasens und Mansfeld-Südharz. Der Dot-Plot je Bundesland zeigt: Hochrisiko-Kreise liegen in **West wie Ost**. Ein **Balkendiagramm** der höchsten Risiko-Kreise, die Ranking-Tabelle und die Methodik-Box machen die Berechnung transparent; über Slicer und einen Einkommens-Schieberegler ist die Seite interaktiv.
 
 ![LF9](charts/pbi/pbi_lf9.png)
+
+### Block 4 · Der Übergang – *und was kommt danach?*
+
+#### Übergang — Was leisten die beruflichen Schulen?
+**Unsere Antwort:** Berufliche Schulen wirken als **Aufstiegspfad**: Ein großer Teil der Abgängerinnen und Abgänger erreicht dort einen mittleren Abschluss, die Fachhochschulreife oder sogar die allgemeine Hochschulreife und nicht nur den Hauptschulabschluss. Die **zu 100 % gestapelte Säule** zeigt den Abschlussmix je Bundesland unabhängig von der Landesgröße; er fällt deutlich unterschiedlich aus. Die vier Abschlussarten summieren sich sauber auf die Gesamtzahl (keine versteckte Restkategorie), die Verteilung ist also ehrlich vollständig.
+
+![Übergang](charts/pbi/pbi_uebergang.png)
 
 > **Durchgehender Grundsatz: Korrelation ≠ Kausalität.** Konfidenz-Vorbehalte, Confounder und der ökologische Fehlschluss (Kreis- vs. Individualebene) sind im Bericht offen ausgewiesen.
 
