@@ -1,6 +1,15 @@
 {
   "name": "Okabe-Ito (barrierearm)",
-  "dataColors": ["#E69F00", "#0072B2", "#009E73", "#D55E00", "#56B4E9", "#CC79A7", "#F0E442", "#000000"],
+  "dataColors": [
+    "#0072B2",
+    "#D55E00",
+    "#8C8C8C",
+    "#009E73",
+    "#56B4E9",
+    "#E69F00",
+    "#CC79A7",
+    "#F0E442"
+  ],
   "good": "#009E73",
   "neutral": "#E69F00",
   "bad": "#D55E00",

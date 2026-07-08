@@ -157,9 +157,13 @@ table dim_abschluss
 	measure 'Farbe Schulart LF5 HSA' = IF(SELECTEDVALUE(fact_abgaenge_schulart[schulart]) = "Förderschulen", "#D55E00", "#8C8C8C")
 		lineageTag: b1f0c0de-1a2b-4c3d-9e8f-000000000f15
 
-	/// Formatierungs-Measure: LF1-Linienchart, aktuelles Schuljahr 2023/24 Okabe-Ito-Blau (#0072B2), Vorjahr 2022/23 Orange (#E69F00).
-	measure 'Farbe Schuljahr LF1' = SWITCH(SELECTEDVALUE(dim_zeit[schuljahr]), "2023/24", "#0072B2", "2022/23", "#E69F00", "#8C8C8C")
+	/// Formatierungs-Measure: LF1-Linienchart, aktuelles Schuljahr 2023/24 Okabe-Ito-Blau (#0072B2), Vorjahr 2022/23 gedaempft grau (#8C8C8C) - einheitliches Vermillion/Blau/Grau-Farbsystem im ganzen Bericht.
+	measure 'Farbe Schuljahr LF1' = SWITCH(SELECTEDVALUE(dim_zeit[schuljahr]), "2023/24", "#0072B2", "2022/23", "#8C8C8C", "#8C8C8C")
 		lineageTag: b1f0c0de-1a2b-4c3d-9e8f-000000000f16
+
+	/// Formatierungs-Measure: LF8-Scatter, die drei Stadtstaaten (der Confounder) vermillion hervorgehoben, Flaechenlaender grau - vereinheitlicht LF8 mit dem Fokus/Kontext-Farbsystem statt Theme-Default Orange/Blau.
+	measure 'Farbe Stadtstaat LF8' = IF(SELECTEDVALUE(dim_region[stadtstaat]) = "Stadtstaat", "#D55E00", "#8C8C8C")
+		lineageTag: b1f0c0de-1a2b-4c3d-9e8f-000000000f17
 
 	column abschluss_key
 		dataType: string

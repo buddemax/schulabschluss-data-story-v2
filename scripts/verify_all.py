@@ -381,6 +381,10 @@ _lf8sc=open(os.path.join(_lf8dir,"ae0c1c8278c9dd1a3a20","visual.json"),encoding=
 check("LF8-Report: Stadtstaat-Slicer vorhanden + 2 bewusste Jahresfilter (Ausgaben- & Abgaenge-Fakttabelle, Runde 9)",
       os.path.exists(os.path.join(_lf8dir,"b8stadtstaat00000001","visual.json"))
       and "fact_ausgaben_je_schueler" in _lf8sc and "fact_abgaenge" in _lf8sc and _lf8sc.count('"jahr"')>=4)
+# Runde 13: einheitliches Farbsystem im ganzen Bericht - Vermillion (Fokus/Risiko), Blau (primaer/sekundaer), Grau (Kontext); Orange als aktive Diagrammfarbe entfernt
+_lf4col=open(os.path.join(_lf4dir,"d96dbc5aa3afd6b99fd5","visual.json"),encoding="utf-8").read()
+check("Farbsystem einheitlich: LF8 Stadtstaat-Vermillion + LF4 Blau/Vermillion explizit + LF1 ohne Orange (#E69F00), keine Inline-Orange-Diagrammfarbe (Runde 13)",
+      "measure 'Farbe Stadtstaat LF8'" in da and "Farbe Stadtstaat LF8" in _lf8sc and "#0072B2" in _lf4col and "#D55E00" in _lf4col and "#E69F00" not in da)
 # LF9-Faerbung: Schwelle 5,5 muss exakt die Top-10 treffen (Marge 5,57 vs. 5,44 - Drift-Warnung bei Datenaenderung)
 _n_ueber = sum(1 for v in _score.values() if v >= 5.5)
 check("LF9 Top-10-Schwelle 5,5 trifft exakt 10 Kreise (Farbe Risiko LF9)", _n_ueber == 10, f"{_n_ueber} Kreise >= 5,5")
