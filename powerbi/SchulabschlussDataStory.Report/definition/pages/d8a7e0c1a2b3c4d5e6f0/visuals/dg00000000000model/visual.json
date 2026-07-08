@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "dg00000000000model",
+  "position": {
+    "x": 24,
+    "y": 530,
+    "z": 1000,
+    "height": 150,
+    "width": 604,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Modellierung  ",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "fontWeight": "bold",
+                      "color": "#0072B2"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "4 Dimensionen: Region, Zeit, Abschluss, Schulart. Geschlecht und Alter sind Attribute, keine eigene Dimension.",
+                    "textStyle": {
+                      "fontSize": "9.5pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "6 Fakten (u. a. Abgänge, Schule, Arbeitsmarkt, Ausgaben) und 3 Hilfsfakten (Bevölkerung, berufliche Abgänge, Einkommen).",
+                    "textStyle": {
+                      "fontSize": "9.5pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Beziehungen 1:n, Single-Direction. Zeit aktiv nur an fact_abgaenge (einzige Mehrjahres-Analyse).",
+                    "textStyle": {
+                      "fontSize": "9.5pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Gebietsstand 2023 (SCD Typ 1). Region-Hierarchie: Land, Regierungsbezirk, Kreis.",
+                    "textStyle": {
+                      "fontSize": "9.5pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

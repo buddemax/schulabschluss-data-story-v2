@@ -1,11 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
-  "name": "a0e1000000000000b1a0",
+  "name": "fz000000000blk300001",
   "position": {
-    "x": 24,
-    "y": 290,
+    "x": 924,
+    "y": 168,
     "z": 1200,
-    "height": 190,
+    "height": 248,
     "width": 284,
     "tabOrder": 1200
   },
@@ -19,32 +19,35 @@
               {
                 "textRuns": [
                   {
-                    "value": "1 · INPUT",
+                    "value": "4",
                     "textStyle": {
                       "fontSize": "13pt",
-                      "fontWeight": "bold"
+                      "fontWeight": "bold",
+                      "color": "#D55E00"
                     }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
+                  },
                   {
-                    "value": "Ausgaben & Schulstruktur: Was fließt ins System, und wie unterschiedlich ist es aufgebaut?",
+                    "value": "  ",
                     "textStyle": {
-                      "fontSize": "10pt"
+                      "fontSize": "13pt"
                     }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
+                  },
                   {
-                    "value": "→ Seiten LF5, LF7, LF8",
+                    "value": "Risiko verdichtet sich",
                     "textStyle": {
-                      "fontSize": "10pt",
+                      "fontSize": "12pt",
                       "fontWeight": "bold",
                       "color": "#0072B2"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Bildungsrisiko, Jugendarbeitslosigkeit und niedriges Einkommen fallen räumlich zusammen (LF9). Hotspots liegen im westdeutschen Ruhrgebiet und in ostdeutschen Kreisen.",
+                    "textStyle": {
+                      "fontSize": "10pt"
                     }
                   }
                 ]

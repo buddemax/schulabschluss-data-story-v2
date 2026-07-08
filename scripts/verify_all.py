@@ -202,8 +202,19 @@ pmeta=json.loads(_rd("Report/definition/pages/pages.json")); order=pmeta["pageOr
 def _pj(pid): return json.loads(_rd(f"Report/definition/pages/{pid}/page.json"))
 pages=[_pj(pid).get("displayName","") for pid in order]
 # Seit Runde 3: Einstiegsseite "Überblick & Leseführung" vor LF1 (Kür-Punkt 15)
-check(".pbix 11 Seiten: Überblick + LF1→LF9 + Übergang (Berufliche Schulen) in Reihenfolge", len(pages)==11 and pages[0].startswith("Überblick") and all(pages[i+1].startswith(f"LF{i+1}") for i in range(9)) and pages[10].startswith("Übergang"), " | ".join(p[:6] for p in pages))
+check(".pbix 13 Seiten: Gliederung + Datengrundlage + LF1→LF9 + Übergang + Fazit in Reihenfolge", len(pages)==13 and pages[0].startswith("Überblick") and pages[1].startswith("Datengrundlage") and all(pages[i+2].startswith(f"LF{i+1}") for i in range(9)) and pages[11].startswith("Übergang") and pages[12].startswith("Fazit"), " | ".join(p[:8] for p in pages))
 rf=_rd("Report/definition/report.json")
+# Visual-Texte je Seite bereits unten; für die Runde-14-Rahmenchecks vorziehen
+_vis14={pid:[_rd(n) for n in _names if n.startswith(f"Report/definition/pages/{pid}/visuals/") and n.endswith("visual.json")] for pid in order}
+_intro14="".join(_vis14[order[0]])
+_dgp=[pid for pid in order if _pj(pid).get("displayName","").startswith("Datengrundlage")]
+_dgraw="".join("".join(_vis14[pid]) for pid in _dgp)
+_fzp=[pid for pid in order if _pj(pid).get("displayName","").startswith("Fazit")]
+_fzraw="".join("".join(_vis14[pid]) for pid in _fzp)
+# Runde 14: Data-Story-Rahmen (Gliederung, Datengrundlage mit Schema+Beispielen, Fazit)
+check("Gliederung: Intro-Seite nennt Agenda (Datengrundlage/Fazit + LF-Zuordnung, Runde 14)", ("Datengrundlage" in _intro14 and "Fazit" in _intro14 and "LF5" in _intro14 and "LF9" in _intro14))
+check("Datengrundlage-Seite: Sternschema-Bild + Beispieltabelle fact_abgaenge (Schema und Beispiele, Runde 14)", bool(_dgp) and "ResourcePackageItem" in _dgraw and '"visualType": "tableEx"' in _dgraw and "fact_abgaenge" in _dgraw and "label_regio" in _dgraw)
+check("Fazit-Seite: Antwort auf die These + Korrelation-Vorbehalt (Runde 14)", bool(_fzp) and "Antwort auf die These" in _fzraw and "Korrelation" in _fzraw)
 _jahrv=sum(1 for n in _names if n.endswith("visual.json") and '"Property": "jahr"' in _rd(n) and "2023L" in _rd(n))
 check(".pbix: Jahr=2023 pro Visual gepinnt (ersetzt report-weiten Filter; >=9 Visuals – LF1-Balken steuert das Jahr bewusst über den Schuljahr-Slicer mit Vorauswahl 2023/24)", _jahrv>=9, f"{_jahrv} Visuals")
 # Visual-Texte je Seite (für Substring-Checks)

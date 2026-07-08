@@ -1,0 +1,67 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "dg00000000000measnote",
+  "position": {
+    "x": 652,
+    "y": 506,
+    "z": 1000,
+    "height": 172,
+    "width": 604,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Kennzahlen  ",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "fontWeight": "bold",
+                      "color": "#0072B2"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Nicht-additive Werte (Quoten, Durchschnitte) sind DAX-Measures und werden je Kontext neu berechnet, nie als Spalte vorsummiert.",
+                    "textStyle": {
+                      "fontSize": "9.5pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Beispiel: Quote ohne HSA % = Abgänge ohne Hauptschulabschluss / Abgänge insgesamt.",
+                    "textStyle": {
+                      "fontSize": "9.5pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Additive Mengen (anzahl) sind über alle Dimensionen summierbar; Bestände (Bevölkerung) nur über Region, nicht über Zeit.",
+                    "textStyle": {
+                      "fontSize": "9.5pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

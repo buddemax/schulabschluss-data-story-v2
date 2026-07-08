@@ -188,5 +188,26 @@ ax.set_title("Sternschema: 6 Fakten (4 Kern + Ausgaben-Schulart + Abgänge-Schul
 fig.text(0.01,0.01,"Alle Fakten *:1 (Single-Direction) zu dim_region über region_code · dim_zeit→fact_abgaenge · dim_schulart→fact_schule · kein m:n (M6 behoben, DQ9)",fontsize=7.5,color=C["grau"])
 fig.tight_layout(rect=[0,0.03,1,1]); fig.savefig(os.path.join(OUT,"schema_stern.png")); plt.close(fig)
 
+# ---- Sternschema-Diagramm, praesentationsfertig (Datengrundlage-Seite im Power-BI-Bericht) ----
+# Wie oben, aber jargonfrei (kein "M6/DQ9"), Hilfsfakten in Grau statt Gruen, Titel/Fusszeile fuer die Story.
+fig,ax=plt.subplots(figsize=(10,6.2)); ax.axis("off")
+_dims=[("dim_region",0.4,4.7),("dim_zeit",0.4,3.5),("dim_abschluss",0.4,2.3),("dim_schulart",0.4,1.1)]
+_facts=[("fact_abgaenge",6.2,5.5),("fact_abgaenge_schulart",6.2,4.76),("fact_schule_2023",6.2,4.02),
+        ("fact_arbeitsmarkt_2025",6.2,3.29),("fact_ausgaben_je_schueler",6.2,2.55),("fact_ausgaben_schulart",6.2,1.81),
+        ("fact_bevoelkerung  ·  Hilf",6.2,1.07),("fact_abgaenge_beruflich  ·  Hilf",6.2,0.34),
+        ("fact_einkommen_kreis  ·  Hilf",6.2,-0.4)]
+def _boxr(x,y,t,c):
+    ax.add_patch(plt.Rectangle((x,y),3.2,0.66,facecolor=c,edgecolor="white",zorder=2))
+    ax.text(x+1.6,y+0.33,t,ha="center",va="center",color="white",fontsize=9.5,fontweight="bold",zorder=3)
+for di,fi in rels:
+    _,dx,dy=_dims[di]; _,fx,fy=_facts[fi]
+    ax.plot([dx+3.2,fx],[dy+0.33,fy+0.33],color="#8C8C8C",lw=0.8,zorder=1)
+for t,x,y in _dims: _boxr(x,y,t,C["blau"])
+for t,x,y in _facts: _boxr(x,y,t, "#8C8C8C" if "Hilf" in t else C["gruen"])
+ax.set_xlim(0,9.8); ax.set_ylim(-0.7,6.3)
+ax.set_title("Sternschema: 4 Dimensionen  ·  6 Fakten + 3 Hilfsfakten",loc="left",fontsize=13,fontweight="bold",color="#3A3A3A")
+fig.text(0.01,0.015,"Alle Fakten *:1 (Single-Direction) über region_code an der konformen Dimension Region.  dim_zeit aktiv nur an fact_abgaenge (Mehrjahres-Analyse).",fontsize=8,color="#8C8C8C")
+fig.tight_layout(rect=[0,0.035,1,1]); fig.savefig(os.path.join(OUT,"schema_stern_report.png"),dpi=150,facecolor="white"); plt.close(fig)
+
 print("Charts erzeugt:")
 for f in sorted(os.listdir(OUT)): print("  charts/"+f)

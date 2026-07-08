@@ -36,6 +36,18 @@
                     }
                   }
                 ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "→ Seiten LF1 bis LF4, LF6",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "fontWeight": "bold",
+                      "color": "#0072B2"
+                    }
+                  }
+                ]
               }
             ]
           }

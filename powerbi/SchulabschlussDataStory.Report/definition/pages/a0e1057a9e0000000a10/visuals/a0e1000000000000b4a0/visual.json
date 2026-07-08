@@ -36,6 +36,18 @@
                     }
                   }
                 ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "→ Seite LF9 (Risiko-Score)",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "fontWeight": "bold",
+                      "color": "#0072B2"
+                    }
+                  }
+                ]
               }
             ]
           }

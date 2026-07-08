@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
-  "name": "a0e1000000000000b3a0",
+  "name": "fz000000000blk200001",
   "position": {
     "x": 624,
-    "y": 290,
-    "z": 1400,
-    "height": 190,
+    "y": 168,
+    "z": 1200,
+    "height": 248,
     "width": 284,
-    "tabOrder": 1400
+    "tabOrder": 1200
   },
   "visual": {
     "visualType": "textbox",
@@ -19,32 +19,35 @@
               {
                 "textRuns": [
                   {
-                    "value": "3 · ÜBERGANG",
+                    "value": "3",
                     "textStyle": {
                       "fontSize": "13pt",
-                      "fontWeight": "bold"
+                      "fontWeight": "bold",
+                      "color": "#D55E00"
                     }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
+                  },
                   {
-                    "value": "Von der Schule in Ausbildung und Arbeitsmarkt: Was bedeutet der fehlende Abschluss für den nächsten Schritt?",
+                    "value": "  ",
                     "textStyle": {
-                      "fontSize": "10pt"
+                      "fontSize": "13pt"
                     }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
+                  },
                   {
-                    "value": "→ Seite Übergang (berufliche Schulen)",
+                    "value": "Geld und Übergang",
                     "textStyle": {
-                      "fontSize": "10pt",
+                      "fontSize": "12pt",
                       "fontWeight": "bold",
                       "color": "#0072B2"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Höhere Ausgaben je Schüler bedeuten nicht automatisch bessere Abschlüsse; ein robuster Zusammenhang fehlt (LF7, LF8). Berufliche Schulen holen viele Abschlüsse nach (Übergang).",
+                    "textStyle": {
+                      "fontSize": "10pt"
                     }
                   }
                 ]

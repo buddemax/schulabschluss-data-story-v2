@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "fz0000000000000quel",
+  "position": {
+    "x": 24,
+    "y": 690,
+    "z": 700,
+    "height": 26,
+    "width": 1232,
+    "tabOrder": 700
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Datenbasis: ausschließlich offene amtliche Daten (Statistische Ämter des Bundes und der Länder, Destatis, VGRdL). Lizenz: Datenlizenz Deutschland 2.0.",
+                    "textStyle": {
+                      "fontSize": "8pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

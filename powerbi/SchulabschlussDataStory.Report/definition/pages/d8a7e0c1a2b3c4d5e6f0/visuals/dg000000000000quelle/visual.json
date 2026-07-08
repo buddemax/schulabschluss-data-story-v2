@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "dg000000000000quelle",
+  "position": {
+    "x": 24,
+    "y": 690,
+    "z": 700,
+    "height": 26,
+    "width": 1232,
+    "tabOrder": 700
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Datenbasis: offene amtliche Daten (Statistische Ämter des Bundes und der Länder: Regionalstatistik; Destatis; VGRdL). Lizenz: Datenlizenz Deutschland 2.0. Aufbereitung: Power Query M direkt aus data/raw.",
+                    "textStyle": {
+                      "fontSize": "8pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

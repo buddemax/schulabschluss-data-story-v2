@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
-  "name": "a0e1000000000000h1a0",
+  "name": "dg00000000000000lead",
   "position": {
     "x": 24,
-    "y": 505,
-    "z": 1600,
-    "height": 56,
-    "width": 1000,
-    "tabOrder": 1600
+    "y": 82,
+    "z": 1000,
+    "height": 58,
+    "width": 1180,
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,16 +19,16 @@
               {
                 "textRuns": [
                   {
-                    "value": "Leseführung: ",
+                    "value": "Datengrundlage: ",
                     "textStyle": {
-                      "fontSize": "10pt",
+                      "fontSize": "11pt",
                       "fontWeight": "bold"
                     }
                   },
                   {
-                    "value": "Auf diese Übersicht folgt die Datengrundlage (Schema und Beispiele), danach die neun Leitfragen LF1 bis LF9 mit der Übergangsseite und am Ende das Fazit. Jede Leitfrage-Seite zeigt oben die Erkenntnis in einem Satz, darunter die Belege und unten die Quelle.",
+                    "value": "Die Datengeschichte steht auf einem Sternschema aus vier Dimensionen und sechs Fakten (plus drei Hilfsfakten). Alle Fakten hängen über den Regionalschlüssel region_code an der konformen Dimension Region. Verwendet werden ausschließlich offene amtliche Daten.",
                     "textStyle": {
-                      "fontSize": "10pt"
+                      "fontSize": "11pt"
                     }
                   }
                 ]

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "dg0000000000tabtitle",
+  "position": {
+    "x": 652,
+    "y": 150,
+    "z": 1000,
+    "height": 46,
+    "width": 604,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Beispielzeilen  ",
+                    "textStyle": {
+                      "fontSize": "12pt",
+                      "fontWeight": "bold",
+                      "color": "#0072B2"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "aus fact_abgaenge, verknüpft mit Region, Zeit und Abschluss (Sachsen-Anhalt, 2023)",
+                    "textStyle": {
+                      "fontSize": "9.5pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
