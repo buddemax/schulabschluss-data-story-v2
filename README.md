@@ -153,7 +153,7 @@ Diese Story war kein gerader Weg. Die lehrreichsten Stolpersteine:
 
 Wir haben nach dem Prinzip **„nicht verifizierbar = FAIL"** gearbeitet:
 
-- **Binäre Akzeptanztest-Suite** (`scripts/verify_all.py`): rechnet **jede KPI unabhängig aus den Rohdaten nach** (Ground Truth) und prüft Modell, `.pbix` und Doku auf Konsistenz: aktueller Stand **113/113 grün**.
+- **Binäre Akzeptanztest-Suite** (`scripts/verify_all.py`): rechnet **jede KPI unabhängig aus den Rohdaten nach** (Ground Truth) und prüft Modell, `.pbix` und Doku auf Konsistenz: aktueller Stand **117/117 grün**.
 - **Mehrere Prüfrunden mit adversarialem Gegenlesen:** jede Aussage wird gegen Rohdaten *und* den gerenderten Bericht geprüft; Zahlen im Bericht sind zusätzlich live in Power BI abgeglichen.
 - **Reproduzierbarkeit:** Das Modell lädt die offenen Rohdaten direkt aus `data/raw`; `data/clean/` und `data/kpi_referenzwerte.json` dienen **nur als Prüfbeleg**, nicht als Modellquelle.
 
@@ -199,6 +199,7 @@ data/raw/           offene Rohdaten (Regionalstatistik-CSV, Destatis-XLSX), Mode
 data/clean/         bereinigte Tabellen, nur Prüfbeleg (NICHT Modellquelle)
 scripts/            Reproduktions- & Prüf-Skripte (Python); verify_all.py = Ground-Truth-Testsuite
 charts/pbi/         die in DOCX/PPTX & hier eingebetteten Power-BI-Berichtsseiten
+PROZESS.md          ausführliche Prozessdoku: Aufbereitung, Berechnung, Diagramm-Anlage je Leitfrage
 Schulabschluss_DataStory_Dokumentation.docx   ausführliche Doku (roter Faden)
 Schulabschluss_DataStory_Praesentation.pptx   Präsentation
 *.md                Schema, Analyseabfragen (DAX), Datenqualität, Befunde, Traceability …
