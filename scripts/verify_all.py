@@ -163,6 +163,12 @@ _gp5=all(any(n.startswith("Gelsenkirchen") for n in _topn(w,5)) and any(n.starts
 _gp3=all(any(n.startswith("Gelsenkirchen") for n in _topn(w,3)) or any(n.startswith("Pirmasens") for n in _topn(w,3)) for w in _wv)
 _gp1=_topn((1,1,1),2)[0].startswith("Gelsenkirchen") and _topn((1,1,1),2)[1].startswith("Pirmasens")
 check("LF9 Sensitivität belegt: Gelsenkirchen & Pirmasens in allen 7 Gewichtungen Top-5 (min. einer Top-3; gleichgewichtet #1/#2)", _gp5 and _gp3 and _gp1)
+# LF9-Gewichtung (Step 7): Doku begründet die 1:1:1-Wahl theoriefrei UND trennt sie klar von der Sensitivität (Absicherung != Begründung)
+_aa9=open(os.path.join(ROOT,"analyseabfragen.md"),encoding="utf-8").read()
+_dq9=open(os.path.join(ROOT,"dq_report.md"),encoding="utf-8").read()
+check("LF9-Gewichtung begründet (theoriefrei/sparsam) und von Sensitivität getrennt (Doku)",
+      "Begründung der Gleichgewichtung" in _aa9 and "theoriefrei" in _aa9 and "aus dem Ergebnis der Sensitivitätsanalyse" in _aa9
+      and "Begründung vs. Sensitivität" in _dq9 and "kein Argument für" in _dq9)
 _perbl={}
 for rc,q in _kq.items(): _perbl.setdefault(_blc.get(rc),[]).append(q)
 _rlp=_st.stdev(_perbl.get("07",[]))

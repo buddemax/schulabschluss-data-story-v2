@@ -82,7 +82,7 @@ Drei Kennzahlen (Quote ohne HSA, Jugend-ALQ, verfügbares Einkommen) werden übe
 Nach der z-Standardisierung sind alle dimensionslos und vergleichbar (Mittel 0, Streuung 1). Genau dafür ist der z-Score da.
 
 **Ist die Rangliste nicht willkürlich (Gewichtung)?**
-Wir haben es geprüft: Über sieben Gewichtungen bleiben **Gelsenkirchen und Pirmasens durchgängig in den Top-5**, in jeder Variante ist mindestens einer der beiden in den Top-3, und bei Gleichgewichtung (unser Score) stehen sie auf Platz 1 und 2. Die Kernaussage ist robust, nur die hinteren Ränge verschieben sich.
+Zwei getrennte Punkte. **Warum gleich gewichtet:** Weil es keinen sachlichen Grund gibt, eine der drei (z-standardisierten) Dimensionen als wichtiger anzusetzen. Gleiche Gewichte sind die sparsamste, theoriefreie Wahl – jede ungleiche Gewichtung würde eine Vorabannahme über Wichtigkeit unterstellen, die wir bewusst nicht treffen. **Und ist das Ergebnis stabil:** Ja – wir haben es zusätzlich geprüft: Über sieben Gewichtungen bleiben **Gelsenkirchen und Pirmasens durchgängig in den Top-5**, in jeder Variante ist mindestens einer der beiden in den Top-3, und bei Gleichgewichtung stehen sie auf Platz 1 und 2. Diese Sensitivitätsanalyse **begründet** die Gleichgewichtung nicht, sondern **sichert** sie ab: die Kernaussage ist robust, nur die hinteren Ränge verschieben sich.
 
 **LF6: Warum kippt die Rangfolge absolut vs. relativ?**
 Absolut dominieren einfach die bevölkerungsreichen Länder (NRW). Erst **pro Kopf** (je 1.000 der 15–18-Jährigen) sieht man, wo das Problem wirklich groß ist – kleine Ost-Länder und Bremen. Das ist die methodische Kernbotschaft: die Bezugsgröße entscheidet.
