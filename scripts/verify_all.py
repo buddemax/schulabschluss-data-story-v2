@@ -395,6 +395,9 @@ _lf8sc=open(os.path.join(_lf8dir,"ae0c1c8278c9dd1a3a20","visual.json"),encoding=
 check("LF8-Report: Stadtstaat-Slicer vorhanden + 2 bewusste Jahresfilter (Ausgaben- & Abgaenge-Fakttabelle, Runde 9)",
       os.path.exists(os.path.join(_lf8dir,"b8stadtstaat00000001","visual.json"))
       and "fact_ausgaben_je_schueler" in _lf8sc and "fact_abgaenge" in _lf8sc and _lf8sc.count('"jahr"')>=4)
+# Zeitbasis LF8 (Step 5): X-Achse bindet das explizite 2023-Measure (nicht den frei benannten Ø-Measure) -> Ausgaben & Outcome auf demselben Jahr 2023
+check("LF8-Report: X-Achse = Measure 'Ausgaben je Schüler (2023)' (Zeitbasis explizit, kein Mehrjahres-Ø)",
+      "Ausgaben je Schüler (2023)" in _lf8sc and "Ausgaben je Schüler Ø" not in _lf8sc)
 # Runde 13: einheitliches Farbsystem im ganzen Bericht - Vermillion (Fokus/Risiko), Blau (primaer/sekundaer), Grau (Kontext); Orange als aktive Diagrammfarbe entfernt
 _lf4col=open(os.path.join(_lf4dir,"d96dbc5aa3afd6b99fd5","visual.json"),encoding="utf-8").read()
 check("Farbsystem einheitlich: LF8 Stadtstaat-Vermillion + LF4 Blau/Vermillion explizit + LF1 ohne Orange (#E69F00), keine Inline-Orange-Diagrammfarbe (Runde 13)",

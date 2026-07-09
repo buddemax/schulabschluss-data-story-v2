@@ -118,7 +118,7 @@ Ohne HSA je 1000 (15-18) =
 
 > **Ehrliche Kernaussage (Phase-6-Korrektur):** Der positive Gesamteindruck ist ein **Stadtstaaten-Artefakt**: Berlin/Hamburg/Bremen verbinden hohe (struktur-/stadtbedingte) Ausgaben mit hohen Abiturquoten und ziehen die Trendlinie. Unter den **13 Flächenländern verschwindet/kehrt** sich der Zusammenhang um (n.s.). Bei n=16 ist **keine** der Korrelationen robust belegt → **kein** Befund „mehr Geld ⇒ mehr Abitur". Visual: Stadtstaaten farblich getrennt, beide Trendlinien + p-Werte ausgewiesen (`charts/LF8_ausgaben_vs_abitur.png`).
 
-*(Power-BI-Umsetzung: Scatter, Stadtstaaten via Farb-Legende `dim_region[stadtstaat]` (Stadtstaat/Flächenland) getrennt; Ausgaben-Visual auf `jahr=2023` gefiltert → Live-Wert == Referenz +0,611.)*
+*(Power-BI-Umsetzung: Scatter, Stadtstaaten via Farb-Legende `dim_region[stadtstaat]` (Stadtstaat/Flächenland) getrennt; **X-Achse = Measure `Ausgaben je Schüler (2023)`** (`CALCULATE(AVERAGE(...), jahr=2023)`, zusätzlich Visual-Filter `jahr=2023`) → Ausgaben und Abiturquote liegen auf demselben Outcome-Jahr 2023, Live-Wert == Referenz +0,611. Zuvor war der frei benannte Ø-Measure gebunden, der nur wegen des Visual-Filters 2023 traf – jetzt zeitbasis-explizit und filter-robust.)*
 
 ## LF9 – Kreise: Bildungsrisiko + Arbeitslosigkeit + niedriges Einkommen (Risiko-Score)
 **KPI:** z-standardisierter Score aus `Quote ohne HSA %` (2023) + `Jugend-ALQ 15-25` (2023) + verfügbarem Einkommen je Einwohner (VGRdL, 2021, invertiert: niedriges Einkommen = hohes Risiko). Damit deckt LF9 alle drei in der Leitfrage genannten Dimensionen ab.

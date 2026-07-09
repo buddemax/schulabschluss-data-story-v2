@@ -60,11 +60,11 @@
                       "Entity": "dim_abschluss"
                     }
                   },
-                  "Property": "Ausgaben je Schüler Ø"
+                  "Property": "Ausgaben je Schüler (2023)"
                 }
               },
-              "queryRef": "dim_abschluss.Ausgaben je Schüler Ø",
-              "nativeQueryRef": "Ausgaben je Schüler Ø",
+              "queryRef": "dim_abschluss.Ausgaben je Schüler (2023)",
+              "nativeQueryRef": "Ausgaben je Schüler (2023)",
               "active": true
             }
           ]
@@ -396,7 +396,7 @@
                 "Entity": "dim_abschluss"
               }
             },
-            "Property": "Ausgaben je Schüler Ø"
+            "Property": "Ausgaben je Schüler (2023)"
           }
         },
         "type": "Advanced"
