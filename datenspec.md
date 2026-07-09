@@ -93,8 +93,10 @@
 | 13 (Streuung Kreise innerhalb Bundesland) | LF3 |
 | 14 (Geschlechtergefälle) | LF4 |
 | 15 (Schulartmix → Abschlussverteilung) | LF5 |
-| 18 (relativ vs. absolut / Quote pro Kohorte) | LF6 |
+| 18 (relativ vs. absolut / je 1.000 der 15- bis unter 18-Jährigen) | LF6 |
 | 10 (Ausgaben nach Aufgabenbereich) | LF7 |
 | 1, 2, 3 (Ausgaben ↔ Abschlüsse, Effizienz) | LF8 |
 | 8 (kumulierte Risikoregionen) | LF9 |
 | 4,5,6,7,9,16,17 | erweiterte/ökonomische Vertiefung (Scope-Entscheidung Check-in 1) |
+
+> **Methodenhinweis LF6 (Frage 18):** Die relative Kennzahl `Ohne HSA je 1000 (15-18)` ist eine **bevölkerungsnormierte Rate** = Abgänger:innen ohne HSA eines Jahres (Fluss) ÷ Bevölkerungsbestand der 15- bis unter 18-Jährigen (Nenner, drei Altersjahrgänge 15/16/17) × 1.000. Bezugsgröße ist damit der Bevölkerungsbestand, **keine individuelle Kohortenwahrscheinlichkeit** (echte Kohortenquote bräuchte den vollständigen Verbleib eines Geburtsjahrgangs). Für den Zweck von LF6 – zeigen, dass sich das Ranking der Bundesländer zwischen Absolutzahl und bevölkerungsnormierter Rate verschiebt – ist die Rate ausreichend und korrekt.
