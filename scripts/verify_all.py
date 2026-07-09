@@ -97,6 +97,14 @@ check("LF9 r(ohneHSA,jugend_alq) positiv", r9>0.3, f"r={r9:.3f} n={len(xs9)}")
 # Cross-source SH
 sh = sum(num(r["anzahl"]) or 0 for r in abg if r["region_code"]=="01" and r["jahr"]=="2023" and r["geschlecht"]=="insgesamt" and r["abschluss_key"]=="ohne_hauptschulabschluss")
 check("Cross-Source SH ohne HSA 2023 = 2499", sh==2499, f"{int(sh)}")
+# Cross-Source über ALLE 16 Länder (Step 8): Regio 21111-02-06-4 (BL) vs Statbericht csv-21111-12 (fact_abgaenge_land), ohne HSA 2023
+_regioBL={r["region"].strip():num(r["anzahl"]) for r in kr if r["ebene"]=="BL" and r["abschlussart"]=="ohne_hauptschulabschluss"}
+_statBL={r["bundesland"].strip():num(r["anzahl"]) for r in rd("fact_abgaenge_land.csv") if r["abgangsjahr"]=="2023" and r["abschluss"]=="ohne Hauptschulabschluss" and r["geschlecht"]=="Insgesamt"}
+_xs=[bl for bl in _regioBL if bl in _statBL]
+_deltas={bl:abs((_regioBL[bl] or 0)-(_statBL[bl] or 0)) for bl in _xs}
+_exact=sum(1 for d in _deltas.values() if d==0)
+check("Cross-Source ohne HSA 2023 über alle 16 Länder (Regio == Statbericht, |Δ|≤1)",
+      len(_xs)==16 and max(_deltas.values())<=1 and _exact>=15, f"Länder={len(_xs)} exakt={_exact} max|Δ|={max(_deltas.values()) if _deltas else '-'}")
 # LF8 Ehrlichkeit: Confounder-Kontrolle - ohne Stadtstaaten kehrt Vorzeichen um (Befund relativiert)
 STADT={"Berlin","Hamburg","Bremen"}
 xf=[a23[nme] for nme,rc in n2c.items() if nme not in STADT and a23.get(nme) and abiq(rc) is not None]

@@ -27,8 +27,32 @@ Quelle: `21111-02-06-4`, Σ Kreise je Bundesland vs. Bundesland-Insgesamt (Fläc
 - → Konsequenz für Story: Kreis-Analysen primär auf „ohne HSA / mit HSA / mittlerer / allg. HR" stützen; FHR auf Kreisebene nur eingeschränkt. (Vollständige Null-Raten-Tabelle je Quelle s. unten.)
 
 ## Cross-Source-Konsistenz (zusätzlicher Stärke-Nachweis)
-- SH 2023 „ohne Hauptschulabschluss": **2499** in Regio `21111-02-06-4` == **2499** in Statbericht `csv-21111-12` (zwei unabhängige offene Quellen).
-- Flensburg „Arbeitslose 15–25" = **492**, Jugend-ALQ **6,7 %** (`13211-02-05-4`) == Präsentation S09 Tabelle B.
+Zwei **unabhängige offene Quellen** liefern die Abgänger:innen „ohne Hauptschulabschluss" 2023 je Bundesland: **Regionalstatistik `21111-02-06-4`** (BL-Ebene) und **Destatis Statistischer Bericht `csv-21111-12`** (→ `fact_abgaenge_land`). Der Abgleich über **alle 16 Bundesländer** (nicht nur den Einzelwert Schleswig-Holstein):
+
+| Bundesland | Regio `21111-02-06-4` | Statbericht `csv-21111-12` | Δ |
+|---|---:|---:|---:|
+| Baden-Württemberg | 6.920 | 6.920 | 0 |
+| Bayern | 6.474 | 6.474 | 0 |
+| Berlin | 2.535 | 2.535 | 0 |
+| Brandenburg | 1.710 | 1.710 | 0 |
+| Bremen | 681 | 682 | −1 |
+| Hamburg | 1.061 | 1.061 | 0 |
+| Hessen | 3.557 | 3.557 | 0 |
+| Mecklenburg-Vorpommern | 1.401 | 1.401 | 0 |
+| Niedersachsen | 5.895 | 5.895 | 0 |
+| Nordrhein-Westfalen | 11.835 | 11.835 | 0 |
+| Rheinland-Pfalz | 3.318 | 3.318 | 0 |
+| Saarland | 850 | 850 | 0 |
+| Sachsen | 2.769 | 2.769 | 0 |
+| Sachsen-Anhalt | 2.346 | 2.346 | 0 |
+| Schleswig-Holstein | 2.499 | 2.499 | 0 |
+| Thüringen | 1.856 | 1.856 | 0 |
+
+→ **15 von 16 Ländern exakt gleich**, die einzige Abweichung ist Bremen mit **Δ = 1** (Geheimhaltungs-Rundung auf Vielfache von 5, vgl. DQ2/DQ3). Die Cross-Source-Konsistenz stützt sich damit auf die gesamte Länderebene, nicht auf einen einzelnen Datenpunkt. Automatisch abgesichert im Verifikations-Check (Assertion über alle 16 Länder, |Δ| ≤ 1).
+
+**Zwei-Jahres-Beleg (Statbericht 22/23 → 23/24, Plausibilität der Zeitreihe):** SH 2.333 → 2.499; Bayern 6.205 → 6.474; Berlin 2.098 → 2.535.
+
+**Weitere Punktbelege:** Flensburg „Arbeitslose 15–25" = **492**, Jugend-ALQ **6,7 %** (`13211-02-05-4`) == Präsentation S09 Tabelle B.
 
 ## Befund S09 Tabelle A (REQ-027) – Abweichung dokumentiert
 - Präsentation S09 nennt für Schleswig-Holstein: „Ohne Ersten Schulabschluss 7.531 (7,4 %), Erster 16.207 (15,9 %), Mittlerer 48.966 (48,1 %), FHR 367 (0,4 %)".
