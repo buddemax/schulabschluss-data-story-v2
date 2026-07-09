@@ -87,5 +87,14 @@ Quelle: `21111-02-06-4`, Σ Kreise je Bundesland vs. Bundesland-Insgesamt (Fläc
 - **Befund:** `fact_abgaenge` enthält 2022+2023, `fact_bevoelkerung_2023_2024` enthält 2023+2024. Messgrößen ohne Jahresfilter summierten beide Jahre: `Bev 15-18` ergab DE **4,69 Mio** statt **2,34 Mio** (2023); abgängebasierte Quoten poolten 2022+2023 (z. B. Sachsen-Anhalt 11,98 % statt 12,66 % für 2023). LF1/LF2 hatten bereits korrekt `dim_zeit[jahr]=2023`, LF4/LF6/LF8 nicht.
 - **Fix:** (1) Measure `Bev 15-18` auf `fact_bevoelkerung[jahr]=2023` gepinnt; (2) Bericht-Filter `dim_zeit[jahr]=2023` (Filter für alle Seiten) → vereinheitlicht alle abgängebasierten Visuals auf das Bezugsjahr 2023, konsistent mit allen Referenzwerten. (Ausgaben bleiben bewusst als Mehrjahres-Ø; Arbeitsmarkt 2023; Schule 2023.)
 
+## DQ12 LF9-Risiko-Score: einheitliche Grundgesamtheit der z-Standardisierung (REQ-060) – GRÜN
+- **Anforderung:** Ein aus mehreren Kennzahlen zusammengesetzter z-Score darf nur über Kreise gerechnet werden, für die **alle** Eingangsgrößen vorliegen – sonst beziehen sich die z-Werte je Größe auf unterschiedliche Grundgesamtheiten und sind nicht addierbar.
+- **Abdeckung je Größe (Kreisebene 2023, Gebietsstand `dim_region`):** Quote ohne HSA **398**, Jugend-ALQ **398**, verfügbares Einkommen **445** von 471 KR. **Tripel-Schnittmenge (alle drei nicht-`null`) = 398 Kreise.** Bindende Restriktion ist die Quote ohne HSA (FHR/kleine Kreise teils geheim); alle 398 Kreise mit Quote haben auch ALQ und Einkommen (keine Kreise nur in Teilmengen: q∩a\e = q∩e\a = a∩e\q = 0).
+- **Umsetzung (Inner Join, nicht je Größe getrennt):**
+  - DAX `Risiko-Score` (`dim_abschluss`): `pop = FILTER(VALUES(dim_region[region_code]), NOT ISBLANK([Quote ohne HSA %]) && NOT ISBLANK([Jugend-ALQ Ø]) && NOT ISBLANK([Verf. Einkommen je EW Ø]))`; **Mittelwerte und Stichproben-σ (`STDEVX.S`) werden ausschließlich über `pop` gebildet** – d. h. identische Grundgesamtheit für alle drei z-Terme.
+  - Ground-Truth (`p4_kpis_groundtruth.py`) spiegelt dies mit `merge(...).dropna(subset=[quote_ohne_hsa, jugend_alq_15_25, einkommen_je_ew])` vor der z-Standardisierung.
+- **Gebietsstand:** Aufgelöste Alt-Kreise (Reformen vor 2023) tragen keine 2023-Fakten; ihre Leerzeilen in der BA-Arbeitsmarkttabelle werden in Power Query/Pipeline verworfen (`fnToInt([Column4]) <> null`). Damit rechnet der Score über genau **eine** konsistente Kreismenge (n = 398), verankert per `verify_all.py` (`len(_both)==398`).
+- **Ergebnis:** GRÜN – z-Standardisierung und Score über identische Schnittmenge; die überall genannte Zahl „398 Kreise" ist die reale Tripel-Grundgesamtheit.
+
 ## Clean-Artefakte (Endstand)
 `data/clean/`: fact_abgaenge_land, fact_abgaenge_kreis_2023, fact_schule_2023, fact_arbeitsmarkt_2023, fact_bevoelkerung_2023_2024, fact_abgaenge_beruflich_2023, fact_ausgaben_je_schueler, dim_region, dim_zeit, dim_abschluss, dim_schulart.
