@@ -30,7 +30,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Drei Kennzahlen je Kreis werden z-standardisiert (Abstand vom Durchschnitt der 398 Kreise in Standardabweichungen) und addiert: (1) Quote ohne Hauptschulabschluss 2023, (2) Jugend-Arbeitslosenquote 2025, (3) verfügbares Einkommen 2021 (invertiert).",
+                    "value": "Drei Kennzahlen je Kreis werden z-standardisiert (Abstand vom Durchschnitt der 398 Kreise in Standardabweichungen) und addiert: (1) Quote ohne Hauptschulabschluss 2023, (2) Jugend-Arbeitslosenquote 2023, (3) verfügbares Einkommen 2021 (invertiert).",
                     "textStyle": {
                       "fontSize": "9pt"
                     }

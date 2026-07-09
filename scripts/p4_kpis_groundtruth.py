@@ -28,7 +28,7 @@ dim_region = L("dim_region.csv")
 abg = L("fact_abgaenge.csv")                       # region_code,jahr,abschluss_key,geschlecht,anzahl
 abg_kr = L("fact_abgaenge_kreis_2023.csv")         # region_code,...,abschlussart,anzahl,anzahl_weiblich + insgesamt-spalte? nein
 schule = L("fact_schule_2023.csv")
-arbm = L("fact_arbeitsmarkt_2025.csv")
+arbm = L("fact_arbeitsmarkt_2023.csv")
 ausg = L("fact_ausgaben_je_schueler.csv")
 bev = L("fact_bevoelkerung_2023_2024.csv")
 
@@ -120,7 +120,7 @@ out["LF8_korrelation"]={"ausgaben_vs_abiturquote_r":round(r_abi,3),"p_zweiseitig
                         "ohne_stadtstaaten":{"r_abiturquote":round(r_abi_fl,3),"p":round(p_abi_fl,3),"r_ohne_hsa":round(r_ohne_fl,3),"p_ohne_hsa":round(p_ohne_fl,3),"n":int(n_fl)},
                         "interpretation":f"r=+{r_abi:.3f} (alle {n_all}, p={p_abi:.3f}) ist ein Stadtstaaten-Artefakt; ohne Berlin/Hamburg/Bremen r={r_abi_fl:.3f} (n={n_fl}, p={p_abi_fl:.3f}, nicht signifikant). Bei n={n_all} kein robuster Zusammenhang -> keine Kausalaussage."}
 
-# ---- LF9: 3-dim Risiko-Kreise (Quote ohne HSA 2023 + Jugend-ALQ 2025 + verf. Einkommen 2021 invertiert) ----
+# ---- LF9: 3-dim Risiko-Kreise (Quote ohne HSA 2023 + Jugend-ALQ 2023 + verf. Einkommen 2021 invertiert) ----
 am=arbm[arbm.ebene=="KR"][["region_code","region","jugend_alq_15_25"]].copy()
 am["region_code"]=am.region_code.astype(str).str.zfill(5)
 eink=L("fact_einkommen_kreis.csv").copy()
@@ -138,7 +138,7 @@ mk["risiko_score"]=zq+za+ze
 risk=mk.sort_values("risiko_score",ascending=False).head(8)
 out["LF9_n_kreise"]=int(len(mk))
 out["LF9_risiko_top8"]=[(r.region.strip(), round(r.quote_ohne_hsa,1), round(r.jugend_alq_15_25,1), int(r.einkommen_je_ew), round(r.risiko_score,2)) for r in risk.itertuples()]
-out["LF9_hinweis"]="3-dim z-standardisiert (ohne-HSA 2023, Jugend-ALQ 2025, verf. Einkommen 2021 invertiert), n="+str(len(mk))+" Kreise; Datenstaende unterschiedlich -> Strukturindikator."
+out["LF9_hinweis"]="3-dim z-standardisiert (ohne-HSA 2023, Jugend-ALQ 2023, verf. Einkommen 2021 invertiert), n="+str(len(mk))+" Kreise; Bildung+Arbeitsmarkt auf Bezugsjahr 2023, Einkommen juengster Stand 2021 -> Strukturindikator."
 
 print(json.dumps(out, ensure_ascii=False, indent=1))
 # speichern

@@ -86,7 +86,7 @@ erDiagram
 |---|---|---|---|---|
 | **Abgänge** | `fact_abgaenge_kreis_2023` (2023, alle Ebenen) + `fact_abgaenge_land` (2022 BL) → vereinheitlicht in P3 | Region × Jahr × Abschluss × Geschlecht | Abgänge, Quote ohne HSA, Abschlussquoten | LF1–LF4, LF6 |
 | **Schule** | `fact_schule_2023` | Region × Jahr × Schulart | Schulen, Schüler, Anteil ausländisch | LF5 |
-| **Arbeitsmarkt** | `fact_arbeitsmarkt_2025` | Region × Jahr | Jugend-ALQ, Arbeitslose 15–25 | LF9 |
+| **Arbeitsmarkt** | `fact_arbeitsmarkt_2023` | Region × Jahr | Jugend-ALQ, Arbeitslose 15–25 | LF9 |
 | **Ausgaben** | `fact_ausgaben_je_schueler` (+ Detail `21711-02/03`) | Bundesland × Jahr × Schulart | Ausgaben je Schüler | LF7, LF8 |
 | *(Hilf)* **Bevölkerung** | `fact_bevoelkerung_2023_2024` | Region × Jahr × Altersgruppe | Bevölkerung (Nenner) | LF6 |
 | *(Übergang)* **Abgänge beruflich** | `fact_abgaenge_beruflich_2023` | Region × Jahr × Abschluss | nachgeholte Abschlüsse | Flow-Stufe ÜBERGANG (S06) |
@@ -102,7 +102,7 @@ erDiagram
 
 ## Beziehungen & Modellierungsregeln (REQ-038) – wie LIVE umgesetzt
 - Zentrale Verbindungsdimension: **Region** (`region_code`) an allen 9 Fakttabellen (1:n) – d. h. 6 physische Fakten (4 Kern-Fakten der S10-Vision inkl. Ausgaben nach Schulart und Abgänge nach Schulart × Abschlussart, LF5) + 3 Hilfsfakten (Bevölkerung, berufliche Abgänge, Einkommen).
-- **Zeit** (`dim_zeit[jahr]`) ist **aktiv nur an `fact_abgaenge`** verknüpft – das ist die einzige echte Mehrjahres-Analyse (Schuljahre 2022/23 + 2023/24). Die übrigen Fakten sind **Einzeljahr-Snapshots** (Schule 2023, Arbeitsmarkt 2025, Bevölkerung als 2023-gefilterte Hilfsgröße) bzw. **Mehrjahres-Ø** (Ausgaben 2010–2024) und benötigen keine Zeit-Beziehung. Bezugsjahr der abgängebasierten Visuals = **2023** (Bericht-Filter, DQ11).
+- **Zeit** (`dim_zeit[jahr]`) ist **aktiv nur an `fact_abgaenge`** verknüpft – das ist die einzige echte Mehrjahres-Analyse (Schuljahre 2022/23 + 2023/24). Die übrigen Fakten sind **Einzeljahr-Snapshots** (Schule 2023, Arbeitsmarkt 2023, Bevölkerung als 2023-gefilterte Hilfsgröße) bzw. **Mehrjahres-Ø** (Ausgaben 2010–2024) und benötigen keine Zeit-Beziehung. Bezugsjahr der abgängebasierten Visuals = **2023** (Bericht-Filter, DQ11).
 - **Abschluss** an Abgänge; **Schulart** an Schule.
 - **Ausgaben** (gesamt + nach Schulart) sind auf Bundesland-/Deutschland-Ebene verfügbar; den Tabellen wurde ein **`region_code`** ergänzt (Name→AGS), sodass die Beziehung als sauberes **`region_code` → `dim_region[region_code]` (\*:1, Single-Direction)** läuft – kein m:n und kein Klartext-Namensschlüssel (M6 behoben, vgl. DQ9). Bei `fact_ausgaben_schulart` dient `schulart` als native Spalte (Achse für LF7), ohne eigene Beziehung zu `dim_schulart`. Auswertung auf BL/DE-Ebene (Visual-Filter `ebene=BL` bzw. `bundesland=Deutschland`).
 - Geschlecht als Attribut/Degenerate Dimension in Abgänge (für LF4-Gap), KEINE eigene Dimension.
@@ -126,7 +126,7 @@ Konforme Dimension über alle Prozesse ist **Region**; `Zeit` ist konform, aber 
 |---|:--:|:--:|:--:|:--:|
 | Abgänge (allgemeinbildend) | X | X (aktiv) | X | – |
 | Schule | X | (2023) | – | X |
-| Arbeitsmarkt | X | (2025) | – | – |
+| Arbeitsmarkt | X | (2023) | – | – |
 | Ausgaben (gesamt) | X | (Ø/2023) | – | (Attribut) |
 | Ausgaben nach Schulart | X | (2023) | – | (Attribut) |
 | Bevölkerung (Hilf) | X | (2023) | – | – |

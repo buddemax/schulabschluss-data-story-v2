@@ -22,7 +22,7 @@
 | `21111-01-03-4` | 2023 | 1 | Schulstruktur-Kontextjoin 2023 |
 | `21121-02-02-4` | 2023 | 1 | Übergangs-/Zweite-Chance-Perspektive 2023 |
 | `12411-02-03-4` | 1995–2024 | 30 | Sehr gute Nenner-/Kohorten-Zeitreihe |
-| `13211-02-05-4` | 2025 | 1 | Aktueller Arbeitsmarktkontext (Beschr.: ab 2009 verfügbar) |
+| `13211-02-05-4` | 2023 | 1 | Arbeitsmarktkontext auf Bezugsjahr 2023 (GENESIS-Zeitauswahl; Tabelle ab 2009 verfügbar) |
 
 > **Sauberster Kern (Empfehlung Datenrecherche):** Bundeslandentwicklung 2022/23→2023/24 **plus** lokaler Kreis-Drilldown 2023.
 

@@ -1,4 +1,4 @@
-table fact_arbeitsmarkt_2025
+table fact_arbeitsmarkt_2023
 	lineageTag: 5b436638-a0dd-4fcb-807c-5ea35032bbf8
 
 	column jahr
@@ -67,13 +67,13 @@ table fact_arbeitsmarkt_2025
 		summarizeBy: none
 		sourceColumn: jugend_alq_15_25
 
-	partition fact_arbeitsmarkt_2025 = m
+	partition fact_arbeitsmarkt_2023 = m
 		mode: import
 		source =
 				let
 				src = Csv.Document(File.Contents(DataFolder & "13211-02-05-4.csv"), [Delimiter=";", Columns=16, Encoding=1252, QuoteStyle=QuoteStyle.None]),
-				y = Table.SelectRows(src, each Text.Trim([Column1]) = "2025" and fnEbene([Column2]) <> "?"),
-				r = Table.AddColumn(y, "rec", each [jahr = 2025, region_code = Text.Trim([Column2]), region = Text.Trim([Column3]), ebene = fnEbene([Column2]), bundesland_code = fnBlc([Column2]), arbeitslose_insg = fnToInt([Column4]), arbeitslose_ausl = fnToInt([Column5]), arbeitslose_15_20 = fnToInt([Column7]), arbeitslose_15_25 = fnToInt([Column8]), alq_insg = fnToNum([Column11]), jugend_alq_15_25 = fnToNum([Column16])]),
+				y = Table.SelectRows(src, each Text.Trim([Column1]) = "2023" and fnEbene([Column2]) <> "?" and fnToInt([Column4]) <> null),
+				r = Table.AddColumn(y, "rec", each [jahr = 2023, region_code = Text.Trim([Column2]), region = Text.Trim([Column3]), ebene = fnEbene([Column2]), bundesland_code = fnBlc([Column2]), arbeitslose_insg = fnToInt([Column4]), arbeitslose_ausl = fnToInt([Column5]), arbeitslose_15_20 = fnToInt([Column7]), arbeitslose_15_25 = fnToInt([Column8]), alq_insg = fnToNum([Column11]), jugend_alq_15_25 = fnToNum([Column16])]),
 				tbl = Table.FromRecords(r[rec]),
 				typed = Table.TransformColumnTypes(tbl, {{"jahr", Int64.Type}, {"region_code", type text}, {"region", type text}, {"ebene", type text}, {"bundesland_code", type text}, {"arbeitslose_insg", Int64.Type}, {"arbeitslose_ausl", Int64.Type}, {"arbeitslose_15_20", Int64.Type}, {"arbeitslose_15_25", Int64.Type}, {"alq_insg", type number}, {"jugend_alq_15_25", type number}}, "en-US")
 				in

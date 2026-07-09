@@ -256,59 +256,59 @@
   [
    "Gelsenkirchen, kreisfreie Stadt",
    13.0,
-   13.4,
+   12.4,
    17924,
-   8.09
+   8.06
   ],
   [
    "Pirmasens, kreisfreie Stadt",
    16.5,
-   12.2,
+   11.2,
    21301,
-   7.41
+   7.37
   ],
   [
    "Mansfeld-Südharz, Landkreis",
    14.9,
-   11.6,
+   11.7,
    21295,
-   6.56
+   7.0
   ],
   [
-   "Stendal, Landkreis",
-   13.6,
-   11.5,
-   21358,
-   6.03
+   "Anhalt-Bitterfeld, Landkreis",
+   16.8,
+   9.1,
+   21997,
+   6.24
   ],
   [
    "Bremerhaven, kreisfreie Stadt",
    11.4,
-   11.4,
+   10.6,
    19361,
-   6.01
+   6.05
+  ],
+  [
+   "Dessau-Roßlau, kreisfreie Stadt",
+   14.8,
+   10.5,
+   22346,
+   5.98
+  ],
+  [
+   "Stendal, Landkreis",
+   13.6,
+   10.5,
+   21358,
+   5.98
   ],
   [
    "Uckermark, Landkreis",
    10.3,
-   14.1,
+   13.1,
    21246,
-   5.99
-  ],
-  [
-   "Halle (Saale), kreisfreie Stadt",
-   14.7,
-   8.8,
-   19846,
-   5.9
-  ],
-  [
-   "Gera, kreisfreie Stadt",
-   12.6,
-   12.2,
-   21602,
-   5.84
+   5.96
   ]
  ],
- "LF9_hinweis": "3-dim z-standardisiert (ohne-HSA 2023, Jugend-ALQ 2025, verf. Einkommen 2021 invertiert), n=398 Kreise; Datenstaende unterschiedlich -> Strukturindikator."
+ "LF9_hinweis": "3-dim z-standardisiert (ohne-HSA 2023, Jugend-ALQ 2023, verf. Einkommen 2021 invertiert), n=398 Kreise; Bildung+Arbeitsmarkt auf Bezugsjahr 2023, Einkommen juengster Stand 2021 -> Strukturindikator."
 }

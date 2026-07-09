@@ -35,7 +35,7 @@ Klare Trennung Fakten/Dimensionen, einfache Joins, abfrageoptimiert – ideal f�
 Z. B. Abgänge = Region × Jahr × Abschluss × Geschlecht; Schule = Region × Jahr × Schulart; Arbeitsmarkt = Region × Jahr. Steht dokumentiert in `dimensionales_schema.md`.
 
 **Warum ist die Zeitdimension nur an den Abgängen aktiv verknüpft?**
-Weil das die einzige echte **Mehrjahres-Analyse** ist (Schuljahre 22/23 + 23/24). Die übrigen Fakten sind Einzeljahr-Snapshots (Schule 2023, Arbeitsmarkt 2025) oder Mehrjahres-Durchschnitte (Ausgaben) – die brauchen keine Zeitbeziehung.
+Weil das die einzige echte **Mehrjahres-Analyse** ist (Schuljahre 22/23 + 23/24). Die übrigen Fakten sind Einzeljahr-Snapshots (Schule 2023, Arbeitsmarkt 2023) oder Mehrjahres-Durchschnitte (Ausgaben) – die brauchen keine Zeitbeziehung.
 
 **Warum kein Data Vault?**
 Data Vault (Hubs/Links/Satellites) lohnt sich bei vielen Quellen, hoher Integrationsfrequenz und Historisierung. Bei unseren wenigen, statischen Stichjahres-Quellen wäre das Overengineering und würde nur Join-Komplexität schaffen. Wir haben es bewusst begründet abgelehnt (LI4).
@@ -82,7 +82,7 @@ Drei Kennzahlen (Quote ohne HSA, Jugend-ALQ, verfügbares Einkommen) werden übe
 Nach der z-Standardisierung sind alle dimensionslos und vergleichbar (Mittel 0, Streuung 1). Genau dafür ist der z-Score da.
 
 **Ist die Rangliste nicht willkürlich (Gewichtung)?**
-Wir haben es geprüft: Über sieben Gewichtungen bleiben **Gelsenkirchen und Pirmasens immer in den Top-3**. Die Kernaussage ist robust, nur die hinteren Ränge verschieben sich.
+Wir haben es geprüft: Über sieben Gewichtungen bleiben **Gelsenkirchen und Pirmasens durchgängig in den Top-5**, in jeder Variante ist mindestens einer der beiden in den Top-3, und bei Gleichgewichtung (unser Score) stehen sie auf Platz 1 und 2. Die Kernaussage ist robust, nur die hinteren Ränge verschieben sich.
 
 **LF6: Warum kippt die Rangfolge absolut vs. relativ?**
 Absolut dominieren einfach die bevölkerungsreichen Länder (NRW). Erst **pro Kopf** (je 1.000 der 15–18-Jährigen) sieht man, wo das Problem wirklich groß ist – kleine Ost-Länder und Bremen. Das ist die methodische Kernbotschaft: die Bezugsgröße entscheidet.

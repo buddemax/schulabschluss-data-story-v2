@@ -55,7 +55,7 @@ Ohne HSA je 1000 (15-18) = DIVIDE ( [Abgänge ohne HSA], [Bev 15-18] ) * 1000
 Ausgaben je Schüler Ø = AVERAGE ( fact_ausgaben_je_schueler[ausgaben_je_schueler] )
 ```
 ```DAX
-Jugend-ALQ Ø = AVERAGE ( fact_arbeitsmarkt_2025[jugend_alq_15_25] )
+Jugend-ALQ Ø = AVERAGE ( fact_arbeitsmarkt_2023[jugend_alq_15_25] )
 ```
 > Format je %-Measure: Measure markieren → **Measuretools → Format** „% “ bzw. eine Dezimalstelle.
 >
@@ -63,7 +63,7 @@ Jugend-ALQ Ø = AVERAGE ( fact_arbeitsmarkt_2025[jugend_alq_15_25] )
 >
 > **STATUS (Phase 5 abgeschlossen): Alle 9/9 Visuals sind LIVE gebaut** – Seiten benannt **LF1 … LF9**. Verfeinerungen: LF4 (Filter `geschlecht ≠ insgesamt`), LF5 (`ebene=DE`, Schulart `≠ Insgesamt`, Measure-Nenner korrigiert), LF7 (`bundesland ≠ Deutschland`), LF8 (neu: Streudiagramm Ausgaben×Abitur, `ebene=BL`, Trendlinie), LF9 (Datenfehler behoben – s. u.).
 >
-> **DATENFEHLER BEHOBEN (kritisch):** `Jugend-ALQ Ø` zeigte ×10 zu hohe Werte (z. B. 141 statt 14,1), weil `de-DE`-Kultur den Punkt der Quell-CSV (`14.1`) als Tausendertrennzeichen las. Fix in Power Query (`fact_arbeitsmarkt_2025`): `Table.TransformColumnTypes(Headers, {…}, "en-US")`. Nach Fix == Referenzwert. Siehe `dq_report.md` → DQ8.
+> **DATENFEHLER BEHOBEN (kritisch):** `Jugend-ALQ Ø` zeigte ×10 zu hohe Werte (z. B. 141 statt 14,1), weil `de-DE`-Kultur den Punkt der Quell-CSV (`14.1`) als Tausendertrennzeichen las. Fix in Power Query (`fact_arbeitsmarkt_2023`): `Table.TransformColumnTypes(Headers, {…}, "en-US")`. Nach Fix == Referenzwert. Siehe `dq_report.md` → DQ8.
 
 ---
 
@@ -127,8 +127,8 @@ Jugend-ALQ Ø = AVERAGE ( fact_arbeitsmarkt_2025[jugend_alq_15_25] )
 ### LF9 – Risiko-Kreise (Bildung + Arbeitsmarkt)
 - **Visualtyp:** **Punktdiagramm (Scatter)** mit Quadranten
 - **X-Achse** = `Quote ohne HSA %` (Filter `ebene=KR`, `jahr=2023`) · **Y-Achse** = **`[Jugend-ALQ Ø]`** (Measure!) · **Details** = `dim_region[region]`
-- *(Hinweis: Jahresversatz ohne-HSA 2023 ↔ ALQ 2025 in der Story erwähnen.)*
-- **Soll-Wert:** Pirmasens (16,5 % / 12,2 %) und Gelsenkirchen (13,0 % / 13,4 %) oben rechts. (Vorlage `charts/LF9_…`)
+- *(Hinweis: Quote ohne HSA und Jugend-ALQ jetzt beide Bezugsjahr 2023; einziger verbleibender Jahresversatz ist die Einkommensdimension 2021 – in der Story/Fußnote erwähnen.)*
+- **Soll-Wert:** Pirmasens (16,5 % / 11,2 %) und Gelsenkirchen (13,0 % / 12,4 %) oben rechts. (Vorlage `charts/LF9_…`)
 
 ---
 

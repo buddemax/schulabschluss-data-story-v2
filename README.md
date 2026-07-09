@@ -107,7 +107,7 @@ Wir haben ein **dimensionales Sternschema (Kimball)** direkt in TMDL gepflegt: *
 ![Sternschema](charts/schema_stern.png)
 
 - **Dimensionen (4):** `dim_region` (mit Hierarchie Land → Regierungsbezirk → Kreis, SCD Typ 1), `dim_zeit`, `dim_abschluss`, `dim_schulart`.
-- **Fakten (9):** `fact_abgaenge`, `fact_abgaenge_schulart` *(LF5-Antwort, neu)*, `fact_schule_2023`, `fact_arbeitsmarkt_2025`, `fact_ausgaben_je_schueler`, `fact_ausgaben_schulart` + drei Hilfsfakten (`fact_bevoelkerung_2023_2024`, `fact_abgaenge_beruflich_2023`, `fact_einkommen_kreis`).
+- **Fakten (9):** `fact_abgaenge`, `fact_abgaenge_schulart` *(LF5-Antwort, neu)*, `fact_schule_2023`, `fact_arbeitsmarkt_2023`, `fact_ausgaben_je_schueler`, `fact_ausgaben_schulart` + drei Hilfsfakten (`fact_bevoelkerung_2023_2024`, `fact_abgaenge_beruflich_2023`, `fact_einkommen_kreis`).
 - **34 Measures** in `dim_abschluss.tmdl`: **23 analytische** (Quoten, Anteile, Streuung, 3-dim Risiko-Score, Dot-Plot-Position) + **11 Formatierungs-Measures** (`Farbe …`, Conditional Formatting „nach Feldwert").
 - **Aufbereitung zu 100 % in Power Query (M)** aus `data/raw`: Encoding, Missing-Handling, Wide→Long, AGS-Ableitung und Dezimal-Locale passieren im Modell, es gibt **kein vorgelagertes Cleaning** außerhalb des BI-Werkzeugs.
 
@@ -183,7 +183,7 @@ Die Python-Skripte dienen ausschließlich **Aufbereitungs-Vorlage, Referenzwert-
 | OUTPUT | Abgänge allgemeinbildender Schulen (21111-02-06-4) | DE/BL/RB/Kreis | 2023 |
 | OUTPUT | **Abgänge nach Schulart × Abschlussart** (Statist. Bericht 21111-12, XLSX) | Bundesland | 2022 & 2023 |
 | ÜBERGANG | Berufliche Schulabschlüsse (21121-02-02-4) | Kreis | 2023 |
-| ERGEBNIS | Jugend-Arbeitslosenquote (13211-02-05-4) | Kreis | 2025 |
+| ERGEBNIS | Jugend-Arbeitslosenquote (13211-02-05-4) | Kreis | 2023 |
 | ERGEBNIS | Verfügbares Einkommen je Einwohner, VGRdL (82411-01-03-4) | Kreis | 2021 |
 | Hilfsgröße | Bevölkerung nach Altersgruppen (12411-02-03-4) | Kreis | 2023 |
 

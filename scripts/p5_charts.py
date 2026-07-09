@@ -109,7 +109,7 @@ ax.set_title("Ausgaben↔Abitur: der positive Eindruck ist ein Stadtstaaten-Arte
 footer(fig); fig.tight_layout(rect=[0,0.03,1,1]); fig.savefig(os.path.join(OUT,"LF8_ausgaben_vs_abitur.png")); plt.close(fig)
 
 # ---- LF9: Risiko-Scatter Kreise ----
-arbm=L("fact_arbeitsmarkt_2025.csv"); arbm=arbm[arbm.ebene=="KR"][["region_code","region","jugend_alq_15_25"]]
+arbm=L("fact_arbeitsmarkt_2023.csv"); arbm=arbm[arbm.ebene=="KR"][["region_code","region","jugend_alq_15_25"]]
 arbm["region_code"]=arbm.region_code.astype(str).str.zfill(5); kr["region_code"]=kr.region_code.astype(str).str.zfill(5)
 mk=kr.merge(arbm,on="region_code").dropna(subset=["q","jugend_alq_15_25"])
 fig,ax=plt.subplots(figsize=(8,6))
@@ -119,7 +119,7 @@ ax.axvline(mq,color=C["blau"],ls=":",lw=1); ax.axhline(ma,color=C["blau"],ls=":"
 risk=mk.sort_values(["q","jugend_alq_15_25"],ascending=False).head(6)
 ax.scatter(risk.q,risk.jugend_alq_15_25,color=C["rot"],s=45)
 for _,r in risk.iterrows(): ax.annotate(str(r["region_x"]).split(",")[0],(r.q,r.jugend_alq_15_25),fontsize=8,color=C["rot"],xytext=(3,3),textcoords="offset points")
-ax.set_xlabel("Anteil ohne HSA (%, 2023)"); ax.set_ylabel("Jugend-Arbeitslosenquote 15-25 (%, 2025)")
+ax.set_xlabel("Anteil ohne HSA (%, 2023)"); ax.set_ylabel("Jugend-Arbeitslosenquote 15-25 (%, 2023)")
 ax.set_title("Risiko-Kreise: hohes Bildungsrisiko + hohe Jugendarbeitslosigkeit (r=+0,58 · p<0,001 · n=398)")
 footer(fig); fig.tight_layout(rect=[0,0.03,1,1]); fig.savefig(os.path.join(OUT,"LF9_risiko_scatter.png")); plt.close(fig)
 
@@ -170,7 +170,7 @@ footer(fig); fig.tight_layout(rect=[0,0.03,1,1]); fig.savefig(os.path.join(OUT,"
 fig,ax=plt.subplots(figsize=(10,6.2)); ax.axis("off")
 dims=[("dim_region",0.4,4.7),("dim_zeit",0.4,3.5),("dim_abschluss",0.4,2.3),("dim_schulart",0.4,1.1)]
 facts=[("fact_abgaenge",6.2,5.5),("fact_abgaenge_schulart",6.2,4.76),("fact_schule_2023",6.2,4.02),
-       ("fact_arbeitsmarkt_2025",6.2,3.29),("fact_ausgaben_je_schueler",6.2,2.55),("fact_ausgaben_schulart",6.2,1.81),
+       ("fact_arbeitsmarkt_2023",6.2,3.29),("fact_ausgaben_je_schueler",6.2,2.55),("fact_ausgaben_schulart",6.2,1.81),
        ("fact_bevoelkerung (Hilf)",6.2,1.07),("fact_abgaenge_beruflich (Hilf)",6.2,0.34),
        ("fact_einkommen_kreis (Hilf)",6.2,-0.4)]
 def _box(x,y,t,c):
@@ -193,7 +193,7 @@ fig.tight_layout(rect=[0,0.03,1,1]); fig.savefig(os.path.join(OUT,"schema_stern.
 fig,ax=plt.subplots(figsize=(10,6.2)); ax.axis("off")
 _dims=[("dim_region",0.4,4.7),("dim_zeit",0.4,3.5),("dim_abschluss",0.4,2.3),("dim_schulart",0.4,1.1)]
 _facts=[("fact_abgaenge",6.2,5.5),("fact_abgaenge_schulart",6.2,4.76),("fact_schule_2023",6.2,4.02),
-        ("fact_arbeitsmarkt_2025",6.2,3.29),("fact_ausgaben_je_schueler",6.2,2.55),("fact_ausgaben_schulart",6.2,1.81),
+        ("fact_arbeitsmarkt_2023",6.2,3.29),("fact_ausgaben_je_schueler",6.2,2.55),("fact_ausgaben_schulart",6.2,1.81),
         ("fact_bevoelkerung  ·  Hilf",6.2,1.07),("fact_abgaenge_beruflich  ·  Hilf",6.2,0.34),
         ("fact_einkommen_kreis  ·  Hilf",6.2,-0.4)]
 def _boxr(x,y,t,c):

@@ -84,9 +84,9 @@ for nme,rc in n2c.items():
 r8=corr(xs,ys)
 check("LF8 r(Ausgaben,Abiturquote) ~ +0,61 (n=16)", len(xs)==16 and abs(r8-0.61)<0.05, f"r={r8:.3f} n={len(xs)}")
 # LF9 range + r
-arb = rd("fact_arbeitsmarkt_2025.csv")
+arb = rd("fact_arbeitsmarkt_2023.csv")
 alq = [num(r["jugend_alq_15_25"]) for r in arb if num(r["jugend_alq_15_25"]) is not None]
-check("LF9 jugend_alq Bereich 2..15 (kein x10-Fehler)", 2.0<=min(alq) and max(alq)<=15.0, f"min={min(alq)} max={max(alq)}")
+check("LF9 jugend_alq Bereich 1,5..15 (kein x10-Fehler)", 1.5<=min(alq) and max(alq)<=15.0, f"min={min(alq)} max={max(alq)}")
 alqk = {str(r["region_code"]).zfill(5):num(r["jugend_alq_15_25"]) for r in arb if r["ebene"]=="KR" and num(r["jugend_alq_15_25"]) is not None}
 xs9,ys9=[],[]
 for rc,d in krd.items():
@@ -127,7 +127,7 @@ for r in abg:
         a=num(r["anzahl"]) or 0; rc=r["region_code"]; _tot[rc]=_tot.get(rc,0)+a
         if r["abschluss_key"]=="ohne_hauptschulabschluss": _ohnek[rc]=_ohnek.get(rc,0)+a
 _kq={rc:100*_ohnek.get(rc,0)/_tot[rc] for rc in _tot if _tot[rc]>0}
-_alq={r["region_code"]:num(r.get("jugend_alq_15_25")) for r in rd("fact_arbeitsmarkt_2025.csv") if r.get("ebene")=="KR" and num(r.get("jugend_alq_15_25")) is not None}
+_alq={r["region_code"]:num(r.get("jugend_alq_15_25")) for r in rd("fact_arbeitsmarkt_2023.csv") if r.get("ebene")=="KR" and num(r.get("jugend_alq_15_25")) is not None}
 _eink={r["region_code"]:num(r.get("einkommen_je_ew")) for r in rd("fact_einkommen_kreis.csv") if eb.get(r["region_code"])=="KR" and num(r.get("einkommen_je_ew")) is not None}
 # LF9 3-dim Risiko-Score: Bildungsrisiko + Jugend-ALQ + niedriges Einkommen (invertiert), n=398 mit allen 3 Kennzahlen
 _both=[rc for rc in _kq if rc in _alq and rc in _eink]
@@ -135,7 +135,7 @@ _qs=[_kq[rc] for rc in _both]; _as=[_alq[rc] for rc in _both]; _es=[_eink[rc] fo
 _muq=_st.mean(_qs); _sdq=_st.stdev(_qs); _mua=_st.mean(_as); _sda=_st.stdev(_as); _mue=_st.mean(_es); _sde=_st.stdev(_es)
 _score={rc:(_kq[rc]-_muq)/_sdq+(_alq[rc]-_mua)/_sda+(_mue-_eink[rc])/_sde for rc in _both}
 _top=max(_score,key=lambda r:_score[r])
-check("LF9 3-dim Risiko-Score: Gelsenkirchen #1 ~8,09 (n=398, inkl. Einkommen)", nm.get(_top,"").startswith("Gelsenkirchen") and abs(_score[_top]-8.09)<0.05 and len(_both)==398, f"{nm.get(_top,'')[:18]} {_score[_top]:.2f} n={len(_both)}")
+check("LF9 3-dim Risiko-Score: Gelsenkirchen #1 ~8,06 (n=398, inkl. Einkommen)", nm.get(_top,"").startswith("Gelsenkirchen") and abs(_score[_top]-8.06)<0.05 and len(_both)==398, f"{nm.get(_top,'')[:18]} {_score[_top]:.2f} n={len(_both)}")
 # Einkommen korreliert erwartungsgemäß negativ mit Bildungsrisiko (niedriges Einkommen = hohes Risiko)
 check("LF9 Einkommen ↔ ohne-HSA negativ korreliert (Plausibilität)", corr(_es,_qs)<-0.3, f"r={corr(_es,_qs):.2f}")
 # W8 belegt: die im LF9-/LF1-Text genannten Kennzahlen exakt aus den Rohdaten (Review-Punkt W8)
@@ -152,14 +152,17 @@ _j9=_kpiref.get("LF9_risiko_top8",[])
 check("kpi_referenzwerte.json LF9 = 3-dim (Gelsenkirchen #1, inkl. Einkommen)",
       len(_j9)>=1 and str(_j9[0][0]).startswith("Gelsenkirchen") and len(_j9[0])==5 and _j9[0][4]>6 and _kpiref.get("LF9_n_kreise")==398,
       f"{(_j9[0][0][:14]+' score='+str(_j9[0][4])) if _j9 else 'leer'} n={_kpiref.get('LF9_n_kreise')}")
-# LF9 Sensitivität belegen: Gelsenkirchen & Pirmasens in ALLEN geprüften Gewichtungen Top-3
+# LF9 Sensitivität belegen (Bezugsjahr 2023): Gelsenkirchen & Pirmasens in ALLEN 7 Gewichtungen in den Top-5,
+# in jeder Gewichtung mindestens einer der beiden in den Top-3, unter Gleichgewichtung Platz 1 und 2.
 _zq={rc:(_kq[rc]-_muq)/_sdq for rc in _both}; _za={rc:(_alq[rc]-_mua)/_sda for rc in _both}; _ze={rc:(_mue-_eink[rc])/_sde for rc in _both}
 def _topn(w,k=3):
     a,b,c=w; s={rc:a*_zq[rc]+b*_za[rc]+c*_ze[rc] for rc in _both}
     return [nm.get(rc,"") for rc in sorted(s,key=lambda r:-s[r])[:k]]
 _wv=[(1,1,1),(3,1,1),(2,1,1),(1,3,1),(1,2,1),(1,1,3),(1,1,2)]
-_gp=all(any(n.startswith("Gelsenkirchen") for n in _topn(w)) and any(n.startswith("Pirmasens") for n in _topn(w)) for w in _wv)
-check("LF9 Sensitivität belegt: Gelsenkirchen & Pirmasens in allen 7 Gewichtungen Top-3", _gp)
+_gp5=all(any(n.startswith("Gelsenkirchen") for n in _topn(w,5)) and any(n.startswith("Pirmasens") for n in _topn(w,5)) for w in _wv)
+_gp3=all(any(n.startswith("Gelsenkirchen") for n in _topn(w,3)) or any(n.startswith("Pirmasens") for n in _topn(w,3)) for w in _wv)
+_gp1=_topn((1,1,1),2)[0].startswith("Gelsenkirchen") and _topn((1,1,1),2)[1].startswith("Pirmasens")
+check("LF9 Sensitivität belegt: Gelsenkirchen & Pirmasens in allen 7 Gewichtungen Top-5 (min. einer Top-3; gleichgewichtet #1/#2)", _gp5 and _gp3 and _gp1)
 _perbl={}
 for rc,q in _kq.items(): _perbl.setdefault(_blc.get(rc),[]).append(q)
 _rlp=_st.stdev(_perbl.get("07",[]))
@@ -264,7 +267,7 @@ check("TMDL: Fakttabelle fact_einkommen_kreis (VGRdL, LF9) vorhanden", os.path.e
 check("Clean: fact_einkommen_kreis.csv (Kreis-Einkommen) vorhanden", os.path.exists(os.path.join(CLEAN,"fact_einkommen_kreis.csv")))
 check("TMDL: Schüleranteil schließt Insgesamt aus", 'dim_schulart[schulart]<>"Insgesamt"' in da)
 check("TMDL: Bev 15-18 auf jahr=2023 gepinnt", "fact_bevoelkerung_2023_2024[jahr]=2023" in da)
-am=open(os.path.join(tdir,"fact_arbeitsmarkt_2025.tmdl"),encoding="utf-8").read()
+am=open(os.path.join(tdir,"fact_arbeitsmarkt_2023.tmdl"),encoding="utf-8").read()
 check("TMDL: arbeitsmarkt en-US Typcast (DQ8)", '"en-US"' in am)
 rel=open(os.path.join(PBI,"SchulabschlussDataStory.SemanticModel","definition","relationships.tmdl"),encoding="utf-8").read()
 check("TMDL: Ausgaben↔dim_region als *:1 über region_code (kein m:n-Namensschlüssel, M6 behoben)",
@@ -396,9 +399,9 @@ check("LF8-Report: Stadtstaat-Slicer vorhanden + 2 bewusste Jahresfilter (Ausgab
 _lf4col=open(os.path.join(_lf4dir,"d96dbc5aa3afd6b99fd5","visual.json"),encoding="utf-8").read()
 check("Farbsystem einheitlich: LF8 Stadtstaat-Vermillion + LF4 Blau/Vermillion explizit + LF1 ohne Orange (#E69F00), keine Inline-Orange-Diagrammfarbe (Runde 13)",
       "measure 'Farbe Stadtstaat LF8'" in da and "Farbe Stadtstaat LF8" in _lf8sc and "#0072B2" in _lf4col and "#D55E00" in _lf4col and "#E69F00" not in da)
-# LF9-Faerbung: Schwelle 5,5 muss exakt die Top-10 treffen (Marge 5,57 vs. 5,44 - Drift-Warnung bei Datenaenderung)
-_n_ueber = sum(1 for v in _score.values() if v >= 5.5)
-check("LF9 Top-10-Schwelle 5,5 trifft exakt 10 Kreise (Farbe Risiko LF9)", _n_ueber == 10, f"{_n_ueber} Kreise >= 5,5")
+# LF9-Faerbung: Schwelle 5,66 muss exakt die Top-10 treffen (Marge 5,69 vs. 5,64 - Drift-Warnung bei Datenaenderung; Bezugsjahr 2023)
+_n_ueber = sum(1 for v in _score.values() if v >= 5.66)
+check("LF9 Top-10-Schwelle 5,66 trifft exakt 10 Kreise (Farbe Risiko LF9)", _n_ueber == 10, f"{_n_ueber} Kreise >= 5,66")
 # LF9-CF-Verdrahtung im Report: Farb-Measure am Scatter (inkl. Selector) + Datenbalken an der Tabelle
 _lf9sc = open(os.path.join(PBI, "SchulabschlussDataStory.Report", "definition", "pages", "7d13787a91e0b8cd5dd2", "visuals", "2d6e407f3e3c6e4bd0dc", "visual.json"), encoding="utf-8").read()
 _lf9tb = open(os.path.join(PBI, "SchulabschlussDataStory.Report", "definition", "pages", "7d13787a91e0b8cd5dd2", "visuals", "d2a6d9721a7261bd0032", "visual.json"), encoding="utf-8").read()

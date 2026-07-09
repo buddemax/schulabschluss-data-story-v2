@@ -54,6 +54,6 @@
 ## 8. Kritische Befunde aus Phase 0
 1. **Keine Rohdaten lokal** (auch nicht die in der Datenrecherche als „vorliegend" bezeichnete `21111-0013_de.csv`). → Beschaffung ist erster echter Arbeitsschritt.
 2. **Zwischenpräsentation verpasst/vergangen** (11.06.) – nur Abschluss zählt jetzt.
-3. **Daten-Asymmetrie:** Bundesland 2 Schuljahre, Kreis nur 2023, Arbeitsmarkt nur 2025, Bevölkerung 1995–2024. Sauberer Kern = Bundesland 22/23→23/24 + Kreis-Drilldown 2023.
+3. **Daten-Asymmetrie:** Bundesland 2 Schuljahre, Kreis nur 2023, Arbeitsmarkt auf Bezugsjahr 2023 angeglichen, Bevölkerung 1995–2024. Sauberer Kern = Bundesland 22/23→23/24 + Kreis-Drilldown 2023.
 4. **Ökonomie-Block (LF7–9, ERGEBNIS):** Ausgaben/Einkommen/Wanderung teils nur portal-/interaktiv beschaffbar → Risiko für Vollständigkeit.
 5. **Tool-Voraussetzungen** (Power BI Desktop lokal lauffähig, MCP-Anbindung) noch unbestätigt.

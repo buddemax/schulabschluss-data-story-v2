@@ -58,20 +58,21 @@ write_csv("fact_schule_2023.csv",
 for ci,cn in [(6,"schulen"),(7,"schueler_insg"),(9,"schueler_ausl")]:
     nullrate("fact_schule_2023",cn,[r[ci] for r in out])
 
-# ---------- 2) ARBEITSMARKT 13211-02-05-4 (2025) ----------
+# ---------- 2) ARBEITSMARKT 13211-02-05-4 (2023, = Berichtsjahr LF9) ----------
 print("ARBEITSMARKT:")
-rows=read_rows("13211-02-05-4.csv", r"^2025$")
+rows=read_rows("13211-02-05-4.csv", r"^2023$")
 out=[]
 for p in rows:
     if ebene(p[1])=="?": continue
+    if to_int(p[3]) is None: continue   # Geistzeilen aufgeloester Alt-Kreise (2023 alle "-") ueberspringen
     code=p[1]
-    out.append([2025,code,p[2],ebene(code),("DG" if code=="DG" else code[:2]),
+    out.append([2023,code,p[2],ebene(code),("DG" if code=="DG" else code[:2]),
                 to_int(p[3]),to_int(p[4]),to_int(p[6]),to_int(p[7]),
                 to_float(p[10]),to_float(p[15])])
-write_csv("fact_arbeitsmarkt_2025.csv",
+write_csv("fact_arbeitsmarkt_2023.csv",
           ["jahr","region_code","region","ebene","bundesland_code","arbeitslose_insg","arbeitslose_ausl","arbeitslose_15_20","arbeitslose_15_25","alq_insg","jugend_alq_15_25"], out)
 for ci,cn in [(8,"arbeitslose_15_25"),(10,"jugend_alq_15_25")]:
-    nullrate("fact_arbeitsmarkt_2025",cn,[r[ci] for r in out])
+    nullrate("fact_arbeitsmarkt_2023",cn,[r[ci] for r in out])
 
 # ---------- 3) BEVOELKERUNG 12411-02-03-4 (Filter 2023,2024) ----------
 print("BEVOELKERUNG (2023/2024):")
@@ -158,7 +159,7 @@ for t,c,n,m,pct in dq1:
 
 print("\n=== DQ4 Zeitliche Abdeckung ===")
 cov=[("fact_abgaenge_land","2022,2023 (SJ 22/23,23/24)"),("fact_abgaenge_kreis","2023"),
-     ("fact_schule","2023"),("fact_arbeitsmarkt","2025"),("fact_bevoelkerung","1995-2024 (genutzt 2023,2024)"),
+     ("fact_schule","2023"),("fact_arbeitsmarkt","2023"),("fact_bevoelkerung","1995-2024 (genutzt 2023,2024)"),
      ("fact_abgaenge_beruflich","2023"),("fact_ausgaben_je_schueler","2010-2024")]
 for t,j in cov: print(f"  {t:28s}: {j}")
 

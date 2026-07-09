@@ -7,7 +7,7 @@
 | DQ1 | **Vollständigkeit** | Null-/Missing-Rate je Tabelle & Spalte | Ausgaben 0 %; Arbeitsmarkt/Bevölkerung/beruflich 15–16 % (Geheimhaltung); Schule 44–51 % (strukturell: Schulart×Region nicht existent) | `dq_report.md` §DQ1 |
 | DQ2 | **Plausibilität** | Σ Abschlussarten == Insgesamt (je Region) | DE exakt; 48/53 Regionen exakt; 5× Δ=±5 (Rundung) | Aufbereitung Abgänge/Kreis |
 | DQ3 | **Konsistenz** | Σ Kreise == Bundesland-Insgesamt | 12/14 Flächenländer exakt; SH/NRW Δ≤15 (Rundung) | Aufbereitung Abgänge/Kreis |
-| DQ4 | **Zeitliche Abdeckung** | vorhandene Jahre je Quelle | dokumentiert (Abgänge 2 SJ; Kreis/Schule 2023; Arbeitsmarkt 2025; Bev. bis 2024; Ausgaben 2010–24) | `dq_report.md` §DQ4 |
+| DQ4 | **Zeitliche Abdeckung** | vorhandene Jahre je Quelle | dokumentiert (Abgänge 2 SJ; Kreis/Schule 2023; Arbeitsmarkt 2023; Bev. bis 2024; Ausgaben 2010–24) | `dq_report.md` §DQ4 |
 | DQ5 | **Regionale Stabilität** | AGS-Schema, Gebietsstand, Stadtstaaten | einheitlich; keine relevante Gebietsreform 2023–25 | `dq_report.md` §DQ5 |
 | DQ6 | **Encoding** | erkannt & konvertiert | Windows-1252 → UTF-8 (Mojibake-Beleg) | `datenquellen_log.md` |
 | DQ7 | **Geheimhaltung/Sonderzeichen** | `-`/`.`/`x`/`...` als Missing (nicht 0) | in der Aufbereitung umgesetzt | Aufbereitung (Missing-Handling) |

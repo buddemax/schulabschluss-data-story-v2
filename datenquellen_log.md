@@ -10,10 +10,12 @@
 | 1 | `21111-02-06-4.csv` (Kreis+Land Abschlüsse allgemeinbild.) | regionalstatistik.de/genesisws/downloader/00/tables/21111-02-06-4_00.csv | 2026-06-29 | 54.568 | Win-1252 | 678 | **2023** | REQ-021 | |
 | 2 | `21111-01-03-4.csv` (Schulen & Schüler n. Schulart) | regionalstatistik.de/genesisws/downloader/00/tables/21111-01-03-4_00.csv | 2026-06-29 | 521.715 | Win-1252 | 6.743 | **2023** | REQ-022 | |
 | 3 | `21121-02-02-4.csv` (berufliche Abschlüsse) | regionalstatistik.de/genesisws/downloader/00/tables/21121-02-02-4_00.csv | 2026-06-29 | 46.130 | Win-1252 | 618 | **2023** | REQ-023 | |
-| 4 | `13211-02-05-4.csv` (Arbeitslose/Jugend-ALQ) | regionalstatistik.de/genesisws/downloader/00/tables/13211-02-05-4_00.csv | 2026-06-29 | 52.403 | Win-1252 | 595 | **2025** | REQ-024 | |
+| 4 | `13211-02-05-4.csv` (Arbeitslose/Jugend-ALQ) | regionalstatistik.de → GENESIS-Tabelle 13211-02-05-4, Zeitauswahl **2023** (Kreise) | 2026-07-09 | 52.229 | Win-1252 | 596 | **2023** | REQ-024 | Bezugsjahr LF9 |
 | 5 | `12411-02-03-4.csv` (Bevölkerung n. Altersgruppen) | regionalstatistik.de/genesisws/downloader/00/tables/12411-02-03-4_00.csv | 2026-06-29 | 23.777.424 | Win-1252 | 290.567 | **1995–2024** | REQ-024 | |
 | 6 | `82411-01-03-4.csv` (Verfügbares Einkommen je Einwohner, VGRdL) | regionalstatistik.de/genesisws/downloader/00/tables/82411-01-03-4_00.csv | 2026-07-01 | 29.677 | Win-1252 | 571 | **2021** | LF9 (Einkommensdimension Risiko-Score) | |
 | 7 | `21711_ausgaben_je_schueler_2024.xlsx` (Ausgaben je Schüler, Land) | destatis.de/.../statistischer-bericht-ausgaben-schueler-5217109247005.xlsx?__blob=publicationFile&v=4 | 2026-06-29 | 145.426 | UTF-8 (xlsx) | – | b01: **2010–2024**; 01/02/03: **2023, 2024** | REQ-025/LF7/LF8 | |
+
+> **Arbeitsmarkt-Bezugsjahr (13211-02-05-4):** Der offene Downloader (`…/downloader/00/tables/13211-02-05-4_00.csv`) liefert ausschließlich den neuesten Jahrgang (aktuell **2025**) und ignoriert Zeitparameter. Für einen kohärenten Querschnitts-Risikoscore wurde die Tabelle über die **GENESIS-Zeitauswahl auf das Berichtsjahr 2023** gezogen (= Bezugsjahr aller übrigen Kernkennzahlen). Der zuvor genutzte 2025-Stand ist als `data/raw/13211-02-05-4_2025.csv` archiviert (Cross-Check). Aufgelöste Alt-Kreise (Gebietsstände vor 2023, in der BA-Tabelle als Leerzeilen „–" geführt) werden in Power Query/Pipeline verworfen (`fnToInt([Column4]) <> null`), konsistent zum SCD-Typ-1-Gebietsstand 2023 der `dim_region`.
 
 ### Aus #6 extrahierte, pipeline-fertige CSVs (UTF-8, `;`)
 | Datei | Inhalt | Zeilen |

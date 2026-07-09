@@ -55,7 +55,7 @@ Alle Quellen sind offen und amtlich (Regionalstatistik/Destatis, Bundesagentur f
 | `21111-01-03-4.csv` | Regionalstatistik: Schülerinnen und Schüler nach Schulart | `dim_schulart`, `fact_schule_2023` | 2023 | LF5 |
 | `statbericht_allgbild_2023-24.xlsx` (Blatt `csv-21111-12`) | Destatis: Abgänger nach Schulart und Abschlussart | `fact_abgaenge_schulart` | 2023 | LF5 |
 | `21711_ausgaben_je_schueler_2024.xlsx` | Destatis Bildungsausgaben: Ausgaben je Schüler nach Schulart und Bundesland | `fact_ausgaben_je_schueler`, `fact_ausgaben_schulart` | 2023 (Ø) | LF7, LF8 |
-| `13211-02-05-4.csv` | Bundesagentur für Arbeit: Jugendarbeitslosenquote 15–25 | `fact_arbeitsmarkt_2025` | 2025 | LF9 |
+| `13211-02-05-4.csv` | Bundesagentur für Arbeit: Jugendarbeitslosenquote 15–25 | `fact_arbeitsmarkt_2023` | 2023 | LF9 |
 | `12411-02-03-4.csv` | Bevölkerungsfortschreibung nach Altersgruppe | `fact_bevoelkerung_2023_2024` | 2023 | LF6 (Nenner) |
 | `82411-01-03-4.csv` | VGRdL: verfügbares Einkommen je Einwohner | `fact_einkommen_kreis` | 2021 | LF9 (Einkommensdimension) |
 | `21121-02-02-4.csv` | Regionalstatistik: Absolventen/Abgänger **beruflicher** Schulen nach Abschlussart | `fact_abgaenge_beruflich_2023` | 2023 | Übergangsseite |
@@ -101,7 +101,7 @@ Die Abschlussart wird auf einen kanonischen Schlüssel gemappt (`ohne_hauptschul
 **4 Dimensionen · 6 Fakten · 3 Hilfsfakten.** Zentrale konforme Dimension ist **Region**; alle Fakten hängen 1:n (Single-Direction) über `region_code` an ihr.
 
 - **Dimensionen:** `dim_region` (Regionalschlüssel, Ebene, Ost/West, Stadt/Land), `dim_zeit` (Jahr, Schuljahr), `dim_abschluss` (5 Abschlussarten mit Rang), `dim_schulart`.
-- **Kern-Fakten:** `fact_abgaenge`, `fact_abgaenge_schulart`, `fact_schule_2023`, `fact_arbeitsmarkt_2025`, `fact_ausgaben_je_schueler`, `fact_ausgaben_schulart`.
+- **Kern-Fakten:** `fact_abgaenge`, `fact_abgaenge_schulart`, `fact_schule_2023`, `fact_arbeitsmarkt_2023`, `fact_ausgaben_je_schueler`, `fact_ausgaben_schulart`.
 - **Hilfsfakten:** `fact_bevoelkerung_2023_2024` (Nenner LF6), `fact_abgaenge_beruflich_2023` (Übergang), `fact_einkommen_kreis` (LF9).
 
 **Zeitbeziehung bewusst nur an einer Stelle:** `dim_zeit[jahr]` ist **aktiv nur an `fact_abgaenge`** verknüpft; das ist die einzige echte Mehrjahres-Analyse (2022/23 + 2023/24). Alle übrigen Fakten sind Einzeljahr-Snapshots bzw. Mehrjahres-Durchschnitte und brauchen keine Zeitbeziehung; ihr Bezugsjahr steckt im jeweiligen Measure/Visual-Filter.
@@ -350,7 +350,7 @@ Für jede Seite: **Leitfrage → verwendete Daten → Berechnung → Diagramm-An
 
 **Ziel:** Bildungsrisiko, Jugendarbeitslosigkeit und niedriges Einkommen räumlich zusammenführen.
 
-**Verwendete Daten:** `fact_abgaenge` (Quote ohne HSA), `fact_arbeitsmarkt_2025` (Jugend-ALQ), `fact_einkommen_kreis` (Einkommen), je Kreis.
+**Verwendete Daten:** `fact_abgaenge` (Quote ohne HSA), `fact_arbeitsmarkt_2023` (Jugend-ALQ), `fact_einkommen_kreis` (Einkommen), je Kreis.
 
 **Berechnung:** der **`Risiko-Score`** (drei z-standardisierte Kennzahlen addiert, Einkommen invertiert; siehe [Abschnitt 5](#der-risiko-score-lf9-ausführlich)), plus die drei Einzelkennzahlen.
 

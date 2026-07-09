@@ -45,9 +45,10 @@ def build_schule():
 
 def build_arbeitsmarkt():
     out=[]
-    for p in raw_year_rows("13211-02-05-4.csv", r"^2025$", 16):
+    for p in raw_year_rows("13211-02-05-4.csv", r"^2023$", 16):
         if ebene(p[1])=="?": continue
-        out.append([2025,p[1],p[2],ebene(p[1]),blc(p[1]),
+        if to_int(p[3]) is None: continue   # Geistzeilen aufgeloester Alt-Kreise (2023 alle "-") ueberspringen
+        out.append([2023,p[1],p[2],ebene(p[1]),blc(p[1]),
                     to_int(p[3]),to_int(p[4]),to_int(p[6]),to_int(p[7]),
                     to_float(p[10]),to_float(p[15])])
     return ["jahr","region_code","region","ebene","bundesland_code","arbeitslose_insg","arbeitslose_ausl","arbeitslose_15_20","arbeitslose_15_25","alq_insg","jugend_alq_15_25"], out
@@ -221,7 +222,7 @@ dh,dr=build_dim_region(abg_kreis)
 statb=build_statbericht_2022()
 results=[]
 results.append(compare("fact_schule_2023",*build_schule(),"fact_schule_2023.csv"))
-results.append(compare("fact_arbeitsmarkt_2025",*build_arbeitsmarkt(),"fact_arbeitsmarkt_2025.csv"))
+results.append(compare("fact_arbeitsmarkt_2023",*build_arbeitsmarkt(),"fact_arbeitsmarkt_2023.csv"))
 results.append(compare("fact_bevoelkerung_2023_2024",*build_bev(),"fact_bevoelkerung_2023_2024.csv"))
 results.append(compare("fact_abgaenge_beruflich_2023",*build_beruflich(),"fact_abgaenge_beruflich_2023.csv"))
 results.append(compare("fact_einkommen_kreis",*build_einkommen(),"fact_einkommen_kreis.csv"))

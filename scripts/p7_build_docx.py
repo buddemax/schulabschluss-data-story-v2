@@ -90,7 +90,7 @@ table(["Fluss-Stufe","Quelle / Tabelle","Ebene","Jahr"],[
  ["OUTPUT","Abgänge allgemeinbildender Schulen (21111-02-06-4)","DE/BL/RB/Kreis","2023"],
  ["OUTPUT","Abgänge nach Bundesland (Statistischer Bericht 21111-12)","Bundesland","2022 & 2023"],
  ["ÜBERGANG","Berufliche Schulabschlüsse (21121-02-02-4)","Kreis","2023"],
- ["ERGEBNIS","Arbeitslose / Jugend-Arbeitslosenquote (13211-02-05-4)","Kreis","2025"],
+ ["ERGEBNIS","Arbeitslose / Jugend-Arbeitslosenquote (13211-02-05-4)","Kreis","2023"],
  ["ERGEBNIS","Verfügbares Einkommen je Einwohner, VGRdL (82411-01-03-4)","Kreis","2021"],
  ["Hilfsgröße","Bevölkerung nach Altersgruppen (12411-02-03-4)","Kreis","1995–2024"]])
 P("Regionalschlüssel (AGS): DG = Deutschland, zweistellig = Bundesland, dreistellig = Regierungsbezirk bzw. "
@@ -138,7 +138,7 @@ P("Die zentrale, über alle Prozesse konforme Dimension ist die Region: dim_regi
   "Einkommenstabelle wurde ein region_code ergänzt (Name auf AGS), sodass alle Verknüpfungen als sauberes "
   "region_code → dim_region[region_code] (*:1) über den eindeutigen Schlüssel laufen, ohne Klartext-Namensschlüssel.")
 pic("pbi_model.png",6.4,4.9,"Abb. 1: Das Sternschema live in Power BI Desktop – Faktentabellen (fact_abgaenge, "
-    "fact_arbeitsmarkt_2025, fact_abgaenge_beruflich, fact_bevoelkerung u. a.) rund um die konforme Dimension "
+    "fact_arbeitsmarkt_2023, fact_abgaenge_beruflich, fact_bevoelkerung u. a.) rund um die konforme Dimension "
     "dim_region, verbunden über 1:n-Beziehungen (Modellansicht, Ausschnitt).")
 PL("Region-Hierarchie und Gebietsstand:","Damit die Navigation nicht allein an manuellen Ebenen-Filtern hängt, "
    "trägt dim_region eine echte Hierarchie Land → Regierungsbezirk → Kreis (aus dem AGS abgeleitet). Der "
@@ -151,7 +151,7 @@ P("Bus-Matrix (welche Dimension trägt welchen Faktprozess):",bold=True)
 table(["Faktprozess","Region","Zeit","Abschluss","Schulart"],[
  ["Abgänge","X","X (aktiv)","X","–"],
  ["Schule","X","(2023)","–","X"],
- ["Arbeitsmarkt","X","(2025)","–","–"],
+ ["Arbeitsmarkt","X","(2023)","–","–"],
  ["Ausgaben (gesamt)","X","(Ø/2023)","–","(Attribut)"],
  ["Ausgaben nach Schulart","X","(2023)","–","(Attribut)"],
  ["Bevölkerung (Hilf)","X","(2023)","–","–"],
@@ -340,8 +340,8 @@ PL("Warum wir es so gemacht haben:","Um drei sehr unterschiedliche Größen (Pro
    "Erstplatzierter ab); die weiteren Ränge variieren dagegen (etwa Mansfeld-Südharz, Bremerhaven oder Uckermark). "
    "Damit beantwortet LF9 die Leitfrage vollständig, inklusive der Einkommensdimension, die die Vision als "
    "Ergebnis-Stufe von Anfang an vorsah.")
-PL("Grenzen, ehrlich benannt:","Die Datenstände unterscheiden sich (ohne HSA 2023, Jugend-ALQ 2025, Einkommen "
-   "2021, da dies die aktuellste VGRdL-Veröffentlichung ist). Der Score ist deshalb als Strukturindikator zu "
+PL("Grenzen, ehrlich benannt:","Bildung und Arbeitsmarkt liegen auf demselben Bezugsjahr 2023; einzig die Einkommensdimension "
+   "hat den Stand 2021 (aktuellste VGRdL-Veröffentlichung). Der Score ist deshalb als Strukturindikator zu "
    "lesen, nicht als tagesaktuelle Momentaufnahme. Der Kern-Zusammenhang Bildungsrisiko und "
    "Jugendarbeitslosigkeit ist über alle 398 Kreise hoch signifikant (r = +0,58, p < 0,001, 95%-Intervall "
    "+0,51 bis +0,64) und, anders als bei LF8 mit nur 16 Ländern, durch die große Kreiszahl eng geschätzt. "

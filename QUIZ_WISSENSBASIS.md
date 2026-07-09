@@ -240,7 +240,7 @@ Vision/Leitfragen → Datenbeschaffung → Datenqualität → dimensionale Model
 
 **Schwer (offen):**
 8. Warum ist der LF8-Zusammenhang (r=+0,61) kein Beleg für „mehr Geld = mehr Abitur"? → **Stadtstaaten-Confounder**; ohne Berlin/Hamburg/Bremen r=−0,36 (n.s.), zusätzlich nur 16 Datenpunkte → breite KI → nicht belastbar. Korrelation ≠ Kausalität.
-9. Erkläre den 3-dim Risiko-Score. → Drei Kennzahlen über 398 Kreise **z-standardisiert** und summiert, Einkommen **invertiert**, gleich gewichtet; robust in allen geprüften Gewichtungen (Gelsenkirchen/Pirmasens immer Top-3).
+9. Erkläre den 3-dim Risiko-Score. → Drei Kennzahlen (ohne HSA 2023, Jugend-ALQ 2023, Einkommen 2021 invertiert) über 398 Kreise **z-standardisiert** und summiert, gleich gewichtet; robust über alle sieben geprüften Gewichtungen (Gelsenkirchen/Pirmasens durchgängig Top-5, je einer Top-3, gleichgewichtet Platz 1/2).
 10. Warum kein Data Vault, sondern Sternschema? → Wenige, statische Stichjahres-Quellen → Vault wäre Overengineering (Join-Komplexität, kein Mehrwert); Stern ist abfrageoptimiert und passend.
 11. Warum ist die Zeit nur an den Abgängen aktiv verknüpft? → Nur dort echte Mehrjahres-Analyse (22/23 + 23/24); Rest sind Snapshots/Durchschnitte.
 12. Was ist der Unterschied MOLAP vs. Tabular/VertiPaq? → MOLAP = vorberechneter, gespeicherter Cube; Tabular = spaltenorientiert, **in-memory**, on-the-fly aggregiert (kein vorberechneter Würfel), Sprache DAX statt MDX.

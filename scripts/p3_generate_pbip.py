@@ -18,7 +18,7 @@ for d in (PB, SM, RP, DEF, TAB): os.makedirs(d, exist_ok=True)
 
 # Tabellen, die ins Modell kommen (Datei ohne .csv)
 TABLES = ["dim_region","dim_zeit","dim_abschluss","dim_schulart",
-          "fact_abgaenge","fact_schule_2023","fact_arbeitsmarkt_2025",
+          "fact_abgaenge","fact_schule_2023","fact_arbeitsmarkt_2023",
           "fact_ausgaben_je_schueler","fact_bevoelkerung_2023_2024","fact_abgaenge_beruflich_2023"]
 
 # Typ-Zuordnung per Spaltenname
@@ -88,7 +88,7 @@ rels=[
  ("dim_abschluss","abschluss_key","fact_abgaenge","abschluss_key"),
  ("dim_region","region_code","fact_schule_2023","region_code"),
  ("dim_schulart","schulart","fact_schule_2023","schulart"),
- ("dim_region","region_code","fact_arbeitsmarkt_2025","region_code"),
+ ("dim_region","region_code","fact_arbeitsmarkt_2023","region_code"),
  ("dim_region","region_code","fact_bevoelkerung_2023_2024","region_code"),
  ("dim_region","region_code","fact_abgaenge_beruflich_2023","region_code"),
 ]

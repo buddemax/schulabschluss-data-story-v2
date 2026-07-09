@@ -144,7 +144,7 @@ lf_slide("TEIL 3 · ÖKONOMISCH",RGBColor(0x55,0x52,0x77),"LF8 — Mehr Geld = m
     [("r = +0,61 über alle 16 BL (p=0,01) …",True),("… aber OHNE Stadtstaaten: r = −0,36 (n.s.)",True),("Positiver Eindruck = Stadtstaaten-Artefakt",True),("n=16 → kein robuster Befund, keine Kausalität",False)],
     "Artefakt","Stadtstaaten treiben die Trendlinie")
 lf_slide("TEIL 3 · ÖKONOMISCH",RGBColor(0x55,0x52,0x77),"LF9 — Risiko-Kreise: Bildung trifft Arbeitsmarkt","pbi/pbi_lf9.png",
-    [("Gelsenkirchen, Pirmasens, Mansfeld-Südharz führen",True),("Hohe Quote ohne HSA + hohe Jugend-ALQ + niedriges Einkommen",False),("Score z-standardisiert (3 Dimensionen), gleich gewichtet",False),("Datenstände 2023/2025/2021 dokumentiert",False)],
+    [("Gelsenkirchen, Pirmasens, Mansfeld-Südharz führen",True),("Hohe Quote ohne HSA + hohe Jugend-ALQ + niedriges Einkommen",False),("Score z-standardisiert (3 Dimensionen), gleich gewichtet",False),("Datenstände 2023/2023/2021 dokumentiert",False)],
     "Top-Risiko","Gelsenkirchen: Score 8,1 · 13,0 % ohne HSA · 13,4 % Jugend-ALQ")
 
 # DATENQUALITAET
@@ -188,7 +188,7 @@ NOTES=[
  "John Kanto - LF6. Die Wertung kippt: absolut führt NRW (meiste Fälle), relativ (je 1.000 der 15-18-Jährigen) führt Sachsen-Anhalt. Kleine Ost-Länder und Bremen rücken nach vorn. Relative Betrachtung ist fairer. Übergabe an Aaron Ziegler.",
  "Sprecher: Aaron Ziegler (Teil 3 - Ökonomie, ca. 5 Min). LF7 Ausgaben je Schüler: Gymnasien/Gesamtschulen am teuersten (~11 Tsd €), Grundschulen ~8,4 Tsd €. Nach Bundesland führen die Stadtstaaten (Berlin/Hamburg).",
  "Aaron Ziegler - LF8. Mehr Ausgaben je Schüler gehen mit höherer Abiturquote einher: r = +0,61 über 16 Bundesländer; mit der Quote ohne HSA r = -0,33. WICHTIG: Zusammenhang, KEINE Kausalität; Strukturkosten der Stadtstaaten beachten.",
- "Aaron Ziegler - LF9. Risiko-Kreise verbinden hohes Bildungsrisiko (ohne HSA), hohe Jugend-Arbeitslosigkeit und niedriges verfügbares Einkommen: Gelsenkirchen führt (Score 8,1) vor Pirmasens und Mansfeld-Südharz. Score z-standardisiert über drei Dimensionen, gleich gewichtet. Datenstände 2023/2025/2021 transparent dokumentiert.",
+ "Aaron Ziegler - LF9. Risiko-Kreise verbinden hohes Bildungsrisiko (ohne HSA), hohe Jugend-Arbeitslosigkeit und niedriges verfügbares Einkommen: Gelsenkirchen führt (Score 8,1) vor Pirmasens und Mansfeld-Südharz. Score z-standardisiert über drei Dimensionen, gleich gewichtet. Datenstände 2023/2023/2021 transparent dokumentiert.",
  "Aaron Ziegler - Datenqualität & Methodik. 6 offene Quellen, jede Kennzahl unabhängig gegen die amtlichen Quellwerte nachgerechnet; Konsistenz/Plausibilität geprüft, Missing nie als 0. Behobene Datenfehler transparent dokumentiert (DQ8-DQ11): Dezimal-Locale (Jugend-ALQ x10), Whitespace-Join (Ausgaben), Jahresbezug 2023. Sternschema: 4 Kern-Fakten + 4 Dimensionen.",
  "Aaron Ziegler - Fazit. Kernbotschaften zusammenführen: Niveau = Länderpolitik, aber Risiken sind lokal; Streuung; relative Betrachtung verändert das Ranking; Ausgaben-Zusammenhang ohne Kausalbeweis; Risiko-Kreise. Schlusssatz: Bildungsinvestitionen wirken nur, wenn sie lokal in Abschlüsse, Übergänge und Einkommen übersetzt werden.",
  "Aaron Ziegler - Dank und Überleitung zur Diskussion. Für Rückfragen bereitstehen; Team nochmals nennen.",

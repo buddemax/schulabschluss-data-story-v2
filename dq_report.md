@@ -41,8 +41,8 @@ Quelle: `21111-02-06-4`, Σ Kreise je Bundesland vs. Bundesland-Insgesamt (Fläc
 |---|---|---:|---:|---:|---|
 | fact_schule_2023 | schulen | 6276 | 3219 | 51,3 % | **strukturell**: Schulart existiert in Region nicht (`-`) – kein Fehler |
 | fact_schule_2023 | schueler_insg | 6276 | 2773 | 44,2 % | strukturell (s. o.) |
-| fact_arbeitsmarkt_2025 | arbeitslose_15_25 | 523 | 79 | 15,1 % | Geheimhaltung in kleinen Kreisen |
-| fact_arbeitsmarkt_2025 | jugend_alq_15_25 | 523 | 85 | 16,3 % | Geheimhaltung |
+| fact_arbeitsmarkt_2023 | arbeitslose_15_25 | 444 | 0 | 0,0 % | vollständig (aufgelöste Alt-Kreise als Leerzeilen verworfen) |
+| fact_arbeitsmarkt_2023 | jugend_alq_15_25 | 444 | 6 | 1,4 % | Geheimhaltung in wenigen kleinen Kreisen |
 | fact_bevoelkerung_2023_2024 | insgesamt | 18828 | 2844 | 15,1 % | 2024 für einige Regionen/Altersgruppen noch nicht/suppr. |
 | fact_abgaenge_beruflich_2023 | insgesamt | 523 | 84 | 16,1 % | Geheimhaltung kleine Kreise |
 | fact_ausgaben_je_schueler | ausgaben_je_schueler | 255 | 0 | 0,0 % | vollständig |
@@ -56,11 +56,11 @@ Quelle: `21111-02-06-4`, Σ Kreise je Bundesland vs. Bundesland-Insgesamt (Fläc
 | fact_abgaenge_land | 2022, 2023 (SJ 2022/23, 2023/24) |
 | fact_abgaenge_kreis_2023 | 2023 |
 | fact_schule_2023 | 2023 |
-| fact_arbeitsmarkt_2025 | 2025 |
+| fact_arbeitsmarkt_2023 | 2023 |
 | fact_bevoelkerung_2023_2024 | 1995–2024 (genutzt: 2023, 2024) |
 | fact_abgaenge_beruflich_2023 | 2023 |
 | fact_ausgaben_je_schueler | 2010–2024 |
-→ Sauberer Kern: Bundesland-Zweijahresvergleich (Abgänge) + Kreis-Drilldown 2023. Arbeitsmarkt 2025 als aktueller Kontext (Zeitversatz dokumentiert).
+→ Sauberer Kern: Bundesland-Zweijahresvergleich (Abgänge) + Kreis-Drilldown 2023. Arbeitsmarkt auf dasselbe Bezugsjahr 2023 angeglichen (GENESIS-Zeitauswahl); der Risiko-Score ist damit ein kohärenter 2023-Querschnitt (einzige verbleibende Ausnahme: Einkommensdimension jüngster Stand 2021, s. u.).
 
 ## DQ5 Regionale Stabilität / AGS (REQ-065) – GRÜN (dokumentiert)
 - Einheitlicher Regionalschlüssel (AGS): `DG`=Deutschland, 2-stellig=Bundesland, 3-stellig=Regierungsbezirk, 5-stellig=Kreis. Bundesland-Code = AGS[:2].
@@ -69,8 +69,8 @@ Quelle: `21111-02-06-4`, Σ Kreise je Bundesland vs. Bundesland-Insgesamt (Fläc
 
 ## DQ8 Dezimal-/Locale-Parsing in Power Query (Phase 5, beim Visual-Bau entdeckt) – BEHOBEN
 - **Befund:** Im Power-BI-Modell zeigte die Messgröße `Jugend-ALQ Ø` (LF9) Werte bis **141** statt **14,1** (Faktor ×10). Tooltip-Beleg: „Uckermark, Landkreis" = 141,00; Referenzwert = 14,1 (Spalten-Max der gesamten Spalte = 14,1; Ø = 5,58).
-- **Ursache:** Die Clean-CSVs verwenden **Punkt als Dezimaltrennzeichen** (`14.1`), das Modell hat jedoch Kultur **`de-DE`**. `Table.TransformColumnTypes` ohne Kultur-Argument interpretierte den Punkt als **Tausendertrennzeichen** → `14.1` → `141`. Betroffen: die Dezimalspalten `jugend_alq_15_25` und `alq_insg` in `fact_arbeitsmarkt_2025` (alle anderen Faktspalten sind Ganzzahlen und daher unbetroffen).
-- **Fix:** In der Power-Query-M von `fact_arbeitsmarkt_2025` wurde `Table.TransformColumnTypes(Headers, {…}, "en-US")` gesetzt (Kultur en-US für korrektes Punkt-Dezimal-Parsing). Verifikation nach Fix: Deutschland 5,7 / Flensburg 6,7 / Uckermark 14,1 – exakt == Referenzwert. LF9-Y-Achse jetzt 0–15 (plausibel).
+- **Ursache:** Die Clean-CSVs verwenden **Punkt als Dezimaltrennzeichen** (`14.1`), das Modell hat jedoch Kultur **`de-DE`**. `Table.TransformColumnTypes` ohne Kultur-Argument interpretierte den Punkt als **Tausendertrennzeichen** → `14.1` → `141`. Betroffen: die Dezimalspalten `jugend_alq_15_25` und `alq_insg` in `fact_arbeitsmarkt_2023` (alle anderen Faktspalten sind Ganzzahlen und daher unbetroffen).
+- **Fix:** In der Power-Query-M von `fact_arbeitsmarkt_2023` wurde `Table.TransformColumnTypes(Headers, {…}, "en-US")` gesetzt (Kultur en-US für korrektes Punkt-Dezimal-Parsing). Verifikation nach Fix: Deutschland 5,7 / Flensburg 6,7 / Uckermark 14,1 – exakt == Referenzwert. LF9-Y-Achse jetzt 0–15 (plausibel).
 - **Lehre/Architektur:** Bei `de-DE`-Modellen und Punkt-Dezimal-Quellen immer Kultur explizit beim Typcast angeben (oder Quelle auf Komma-Dezimal umstellen). Dokumentiert als Modellierungs-/Datenaufbereitungsregel.
 
 ## DQ9 Mehrdeutige Gebietsnamen in dim_region – korrigiert (Phase-6-Audit)
@@ -85,7 +85,7 @@ Quelle: `21111-02-06-4`, Σ Kreise je Bundesland vs. Bundesland-Insgesamt (Fläc
 
 ## DQ11 Jahresbezug der Kennzahlen (Phase 5 Verifikation) – BEHOBEN
 - **Befund:** `fact_abgaenge` enthält 2022+2023, `fact_bevoelkerung_2023_2024` enthält 2023+2024. Messgrößen ohne Jahresfilter summierten beide Jahre: `Bev 15-18` ergab DE **4,69 Mio** statt **2,34 Mio** (2023); abgängebasierte Quoten poolten 2022+2023 (z. B. Sachsen-Anhalt 11,98 % statt 12,66 % für 2023). LF1/LF2 hatten bereits korrekt `dim_zeit[jahr]=2023`, LF4/LF6/LF8 nicht.
-- **Fix:** (1) Measure `Bev 15-18` auf `fact_bevoelkerung[jahr]=2023` gepinnt; (2) Bericht-Filter `dim_zeit[jahr]=2023` (Filter für alle Seiten) → vereinheitlicht alle abgängebasierten Visuals auf das Bezugsjahr 2023, konsistent mit allen Referenzwerten. (Ausgaben bleiben bewusst als Mehrjahres-Ø; Arbeitsmarkt 2025; Schule 2023.)
+- **Fix:** (1) Measure `Bev 15-18` auf `fact_bevoelkerung[jahr]=2023` gepinnt; (2) Bericht-Filter `dim_zeit[jahr]=2023` (Filter für alle Seiten) → vereinheitlicht alle abgängebasierten Visuals auf das Bezugsjahr 2023, konsistent mit allen Referenzwerten. (Ausgaben bleiben bewusst als Mehrjahres-Ø; Arbeitsmarkt 2023; Schule 2023.)
 
 ## Clean-Artefakte (Endstand)
-`data/clean/`: fact_abgaenge_land, fact_abgaenge_kreis_2023, fact_schule_2023, fact_arbeitsmarkt_2025, fact_bevoelkerung_2023_2024, fact_abgaenge_beruflich_2023, fact_ausgaben_je_schueler, dim_region, dim_zeit, dim_abschluss, dim_schulart.
+`data/clean/`: fact_abgaenge_land, fact_abgaenge_kreis_2023, fact_schule_2023, fact_arbeitsmarkt_2023, fact_bevoelkerung_2023_2024, fact_abgaenge_beruflich_2023, fact_ausgaben_je_schueler, dim_region, dim_zeit, dim_abschluss, dim_schulart.

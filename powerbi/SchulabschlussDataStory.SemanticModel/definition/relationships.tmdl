@@ -19,7 +19,7 @@ relationship rel0500000-0000-0000-0000-000000000000
 	toColumn: dim_schulart.schulart
 
 relationship rel0600000-0000-0000-0000-000000000000
-	fromColumn: fact_arbeitsmarkt_2025.region_code
+	fromColumn: fact_arbeitsmarkt_2023.region_code
 	toColumn: dim_region.region_code
 
 relationship rel0700000-0000-0000-0000-000000000000

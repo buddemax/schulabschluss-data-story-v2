@@ -48,7 +48,7 @@ table dim_abschluss
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Jugend-ALQ Ø' = AVERAGE(fact_arbeitsmarkt_2025[jugend_alq_15_25])
+	measure 'Jugend-ALQ Ø' = AVERAGE(fact_arbeitsmarkt_2023[jugend_alq_15_25])
 		lineageTag: f192af56-bae5-418e-ad4c-e5717a60778b
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -103,8 +103,8 @@ table dim_abschluss
 		formatString: 0.0
 		lineageTag: b1f0c0de-1a2b-4c3d-9e8f-000000000f03
 
-	/// Formatierungs-Measure: LF9-Scatter, Top-10-Risiko-Kreise vermillion (Score >= 5,5 trennt exakt Platz 10 [5,57] von Platz 11 [5,44]), Rest gedaempft
-	measure 'Farbe Risiko LF9' = IF([Risiko-Score] >= 5.5, "#D55E00", "#8C8C8C")
+	/// Formatierungs-Measure: LF9-Scatter, Top-10-Risiko-Kreise vermillion (Score >= 5,66 trennt exakt Platz 10 [5,69] von Platz 11 [5,64]), Rest gedaempft
+	measure 'Farbe Risiko LF9' = IF([Risiko-Score] >= 5.66, "#D55E00", "#8C8C8C")
 		lineageTag: b1f0c0de-1a2b-4c3d-9e8f-000000000f04
 
 	/// Formatierungs-Measure: LF2-Top-15-Balken, Spitzenreiter Anhalt-Bitterfeld akzentuiert

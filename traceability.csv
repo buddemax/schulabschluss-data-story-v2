@@ -18,14 +18,14 @@ REQ-020;S08/DR;P1;data/raw/statbericht_allgbild_*.xlsx;P2-Gate PASS;gruen
 REQ-021;S08/DR;P1-P2;fact_abgaenge_kreis_2023.csv;P2-Gate PASS;gruen
 REQ-022;S08/DR;P1-P2;fact_schule_2023.csv;P2-Gate PASS;gruen
 REQ-023;S08/DR;P1-P2;fact_abgaenge_beruflich_2023.csv;P2-Gate PASS;gruen
-REQ-024;S08/DR;P1-P2;fact_arbeitsmarkt_2025.csv + bevoelkerung;P2-Gate PASS;gruen
+REQ-024;S08/DR;P1-P2;fact_arbeitsmarkt_2023.csv + bevoelkerung;P2-Gate PASS;gruen
 REQ-025;S08;P1-P2;fact_ausgaben_je_schueler.csv;P2-Gate PASS;gruen
 REQ-026;S09;P2;dq_report.md;Flensburg 492/6,7% == Quelle;gruen
 REQ-027;S09/§7d;P2;dq_report.md;S09-TabA als illustrativ dokumentiert;gruen
 REQ-028;S08;P3;dimensionales_schema.md;4 Kern-Fakten (Abgaenge/Schule/Arbeitsmarkt/Ausgaben) + 4 Dims · zzgl. 2 dokumentierte Hilfsfakten (Bevoelkerung f. je-1000, beruflich f. Uebergang) -> bewusste Abweichung vom strikten 4+4;gruen
 REQ-030;S10;P3;powerbi/.../fact_abgaenge.tmdl;LIVE in PBI Desktop geladen+Daten (Refresh OK);gruen
 REQ-031;S10;P3;powerbi/.../fact_schule_2023.tmdl;LIVE geladen+Daten;gruen
-REQ-032;S10;P3;powerbi/.../fact_arbeitsmarkt_2025.tmdl;LIVE geladen+Daten;gruen
+REQ-032;S10;P3;powerbi/.../fact_arbeitsmarkt_2023.tmdl;LIVE geladen+Daten;gruen
 REQ-033;S10;P3;powerbi/.../fact_ausgaben_je_schueler.tmdl;LIVE geladen+Daten;gruen
 REQ-034;S10;P2-P3;dim_region.tmdl;LIVE geladen;gruen
 REQ-035;S10;P2-P3;dim_zeit.tmdl;LIVE geladen (jahr-Key) · Beziehung dim_zeit->fact_abgaenge (Zwei-Jahres-Analyse) · andere Fakten sind Einzeljahr/Mehrjahres-Ø ohne Zeit-Join;gruen
