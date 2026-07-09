@@ -1,7 +1,7 @@
 # Analyseabfragen & KPIs (REQ-053, REQ-056) – DAX + Referenzwert
 
 > Je Leitfrage: KPI, **DAX-Measure** (für Power-BI-Modell), **Referenzwert** (aus den amtlichen Quelldaten, `data/kpi_referenzwerte.json`).
-> **Validierungsregel (§7d):** Eine Measure gilt als bestätigt, wenn das Power-BI-Ergebnis mit der Nachrechnung übereinstimmt. Wir haben das auf zwei Wegen geprüft: jede Kennzahl unabhängig aus den Rohdaten nachgerechnet und die 23 analytischen DAX-Measures im TMDL gegengelesen; Stichproben (LF1 Sachsen-Anhalt 12,66 %, LF2 16,78 %, LF5 35,23 %, LF9 3-dim Risiko-Score Gelsenkirchen 8,08, LF3 RLP σ 2,84) zusätzlich live in Power BI Desktop abgeglichen. Bezugsjahr der abgängebasierten Visuals ist 2023 (Bericht-Filter `dim_zeit[jahr]=2023`, DQ11).
+> **Validierungsregel (§7d):** Eine Measure gilt als bestätigt, wenn das Power-BI-Ergebnis mit der Nachrechnung übereinstimmt. Wir haben das auf zwei Wegen geprüft: jede Kennzahl unabhängig aus den Rohdaten nachgerechnet und die 23 analytischen DAX-Measures im TMDL gegengelesen; Stichproben (LF1 Sachsen-Anhalt 12,66 %, LF2 16,78 %, LF5 35,23 %, LF9 3-dim Risiko-Score Gelsenkirchen 8,06, LF3 RLP σ 2,84) zusätzlich live in Power BI Desktop abgeglichen. Bezugsjahr der abgängebasierten Visuals ist 2023 (Bericht-Filter `dim_zeit[jahr]=2023`, DQ11).
 
 ## Basis-Measures
 ```DAX
@@ -145,7 +145,7 @@ Risiko-Score =
  RETURN zOhne + zALQ + zEink
 ```
 Diese Measure ist live im Modell und treibt die Tabelle Top-Risiko-Kreise auf der LF9-Berichtsseite. Mittelwert und Standardabweichung werden über die 398 Kreise mit allen drei Kennzahlen gebildet (Stichproben-σ); der Einkommensterm ist invertiert (Mittel minus Kreiswert), sodass niedriges Einkommen den Score erhöht.
-**Referenzwert (Top-8, 3-dimensional):** Gelsenkirchen 8,08 · Pirmasens 7,41 · Mansfeld-Südharz 6,56 · Stendal 6,03 · Bremerhaven 6,01 · Uckermark 5,99 · Halle (Saale) 5,90 · Gera 5,84. Mit Einkommen rückt Gelsenkirchen (verfügbares Einkommen nur ~17.900 EUR je EW) an die Spitze; Bremerhaven kommt neu in die Top-5.
+**Referenzwert (Top-8, 3-dimensional):** Gelsenkirchen 8,06 · Pirmasens 7,37 · Mansfeld-Südharz 7,00 · Anhalt-Bitterfeld 6,24 · Bremerhaven 6,05 · Dessau-Roßlau 5,98 · Stendal 5,98 · Uckermark 5,96. Mit Einkommen rückt Gelsenkirchen (verfügbares Einkommen nur ~17.900 EUR je EW) an die Spitze; Bremerhaven kommt neu in die Top-5.
 **Datengrundlage und Plausibilität:** Einkommen = verfügbares Einkommen der privaten Haushalte je Einwohner (Regionalstatistik 82411-01-03-4, VGRdL, Stand 2021, Kreisebene). Niedriges Einkommen korreliert erwartungsgemäß mit hohem Bildungsrisiko (r=-0,49) und hoher Jugendarbeitslosigkeit (r=-0,59) – die drei Dimensionen zeigen also in dieselbe Richtung. Datenstände: ohne HSA 2023, Jugend-ALQ 2023, Einkommen 2021; Bildung und Arbeitsmarkt liegen damit auf demselben Bezugsjahr 2023, einzig die Einkommensdimension ist der jüngste verfügbare Stand (2021) – der Score ist als Strukturindikator zu lesen, nicht als tagesaktuelle Momentaufnahme.
 **Sensitivität (nachgerechnet):** Über sieben geprüfte Gewichtungen (gleich (1,1,1); bildungslastig (3,1,1),(2,1,1); ALQ-lastig (1,3,1),(1,2,1); einkommenslastig (1,1,3),(1,1,2)) bleibt das **Führungsduo Gelsenkirchen und Pirmasens durchgängig in den Top-5**; in jeder Variante steht mindestens einer der beiden in den Top-3, und in jeder Variante stellen sie den Erstplatzierten (beide wechseln sich ab – bei Gleichgewichtung Gelsenkirchen vor Pirmasens). Die weiteren Ränge variieren gewichtungsabhängig (Mansfeld-Südharz bei gleicher Gewichtung Rang 3; bei bildungslastiger Gewichtung rückt Anhalt-Bitterfeld auf, bei einkommens-/ALQ-lastiger Gewichtung Bremerhaven bzw. Uckermark). Die Kernaussage – dieselben strukturschwachen Kreise führen – ist damit robust, die exakte Reihenfolge dahinter nicht. Der zweidimensionale Kern-Zusammenhang Bildungsrisiko ↔ Jugendarbeitslosigkeit ist über alle 398 Kreise hochsignifikant (r=+0,59, p<0,001, 95%-KI nach Fisher-z [+0,53; +0,65]) und – anders als bei LF8 mit nur 16 Ländern – durch die große Kreiszahl eng geschätzt.
 
@@ -162,6 +162,6 @@ Diese Measure ist live im Modell und treibt die Tabelle Top-Risiko-Kreise auf de
 |LF6|absolut vs. relativ|ja|ja|live (je-1000, jahr=2023)|
 |LF7|Ausgaben nach Schulart (DE) + nach BL|ja|ja|live (fact_ausgaben_schulart)|
 |LF8|Ausgaben↔Abschluss (mit Confounder)|ja|ja (Scatter, Trendlinie, p-Wert)|Wert korrekt, Aussage bewusst relativiert: Stadtstaaten-Artefakt, ohne SS nicht signifikant|
-|LF9|Risiko-Score (3-dim)|ja|ja|live (3-dim Score inkl. Einkommen, Gelsenkirchen 8,08; Kern-r ohne-HSA↔ALQ =+0,58, p<0,001, n=398)|
+|LF9|Risiko-Score (3-dim)|ja|ja|live (3-dim Score inkl. Einkommen, Gelsenkirchen 8,06; Kern-r ohne-HSA↔ALQ =+0,59, p<0,001, n=398)|
 
 Lesart: „live" bedeutet, dass die Kennzahl als DAX-Measure im Power-BI-Modell vorhanden ist, dort genutzt wird und mit der Nachrechnung übereinstimmt. Bei LF8 ist der Zahlenwert korrekt, die inhaltliche Aussage aber bewusst relativiert (Confounder, fehlende Signifikanz ohne Stadtstaaten).

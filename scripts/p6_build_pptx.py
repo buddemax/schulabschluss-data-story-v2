@@ -145,7 +145,7 @@ lf_slide("TEIL 3 · ÖKONOMISCH",RGBColor(0x55,0x52,0x77),"LF8 — Mehr Geld = m
     "Artefakt","Stadtstaaten treiben die Trendlinie")
 lf_slide("TEIL 3 · ÖKONOMISCH",RGBColor(0x55,0x52,0x77),"LF9 — Risiko-Kreise: Bildung trifft Arbeitsmarkt","pbi/pbi_lf9.png",
     [("Gelsenkirchen, Pirmasens, Mansfeld-Südharz führen",True),("Hohe Quote ohne HSA + hohe Jugend-ALQ + niedriges Einkommen",False),("Score z-standardisiert (3 Dimensionen), gleich gewichtet",False),("Datenstände 2023/2023/2021 dokumentiert",False)],
-    "Top-Risiko","Gelsenkirchen: Score 8,1 · 13,0 % ohne HSA · 13,4 % Jugend-ALQ")
+    "Top-Risiko","Gelsenkirchen: Score 8,1 · 13,0 % ohne HSA · 12,4 % Jugend-ALQ")
 
 # DATENQUALITAET
 s=slide()

@@ -25,6 +25,17 @@
                     }
                   }
                 ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Datenstände je Kennzahl: Quote ohne HSA 2023 · Jugend-ALQ 2023 · verf. Einkommen 2021.",
+                    "textStyle": {
+                      "fontSize": "8pt",
+                      "fontStyle": "italic"
+                    }
+                  }
+                ]
               }
             ]
           }

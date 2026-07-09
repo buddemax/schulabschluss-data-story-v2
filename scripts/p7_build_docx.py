@@ -319,8 +319,8 @@ PL("Warum wir es trotzdem zeigen:","Ein ehrlich ausgewiesenes Nicht-Ergebnis ist
 P("LF9 – Welche Kreise verbinden Bildungsrisiko, Arbeitslosigkeit und niedriges Einkommen?",bold=True)
 PL("Ergebnis:","Wir fassen alle drei Dimensionen der Ergebnis-Stufe in einem z-standardisierten Risiko-Score "
    "zusammen: Bildungsrisiko (Quote ohne Hauptschulabschluss 2023), Jugendarbeitslosigkeit (15 bis 25 Jahre, "
-   "2025) und niedriges verfügbares Einkommen je Einwohner (VGRdL 2021). Die höchsten Werte erreichen "
-   "Gelsenkirchen (8,1), Pirmasens (7,4), Mansfeld-Südharz (6,6), Stendal (6,0) und Bremerhaven (6,0).")
+   "2023) und niedriges verfügbares Einkommen je Einwohner (VGRdL 2021). Die höchsten Werte erreichen "
+   "Gelsenkirchen (8,1), Pirmasens (7,4), Mansfeld-Südharz (7,0), Anhalt-Bitterfeld (6,2) und Bremerhaven (6,1).")
 pic("pbi/pbi_lf9.png",cap="Abb. 10 (LF9): Berichtsseite LF9 – Bildungsrisiko × Jugendarbeitslosigkeit je Kreis "
     "und dreidimensionales Risiko-Score-Ranking (inkl. verfügbarem Einkommen je Einwohner); Spitze: Gelsenkirchen "
     "(rund 8,1). Punktdiagramm (Verteilung), Ranking-Tabelle und ein Balkendiagramm der höchsten Risiko-Kreise; "

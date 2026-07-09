@@ -85,7 +85,7 @@ Wir sind ein dreiköpfiges Team im Modul *Analytische Anwendungen* und haben die
 ![LF8](charts/pbi/pbi_lf8.png)
 
 #### LF9 — Welche Kreise verbinden Bildungsrisiko, Arbeitslosigkeit und niedriges Einkommen?
-**Unsere Antwort:** Unser **dreidimensionaler Risiko-Score** (Bildungsrisiko + Jugendarbeitslosigkeit + niedriges **verfügbares Einkommen je Einwohner**, z-standardisiert über 398 Kreise) führt **Gelsenkirchen (8,08)** vor Pirmasens und Mansfeld-Südharz. Der Dot-Plot je Bundesland zeigt: Hochrisiko-Kreise liegen in **West wie Ost**. Ein **Balkendiagramm** der höchsten Risiko-Kreise, die Ranking-Tabelle und die Methodik-Box machen die Berechnung transparent; über Slicer und einen Einkommens-Schieberegler ist die Seite interaktiv.
+**Unsere Antwort:** Unser **dreidimensionaler Risiko-Score** (Bildungsrisiko + Jugendarbeitslosigkeit + niedriges **verfügbares Einkommen je Einwohner**, z-standardisiert über 398 Kreise) führt **Gelsenkirchen (8,06)** vor Pirmasens und Mansfeld-Südharz. Der Dot-Plot je Bundesland zeigt: Hochrisiko-Kreise liegen in **West wie Ost**. Ein **Balkendiagramm** der höchsten Risiko-Kreise, die Ranking-Tabelle und die Methodik-Box machen die Berechnung transparent; über Slicer und einen Einkommens-Schieberegler ist die Seite interaktiv. *(Datenstände je Kennzahl: Quote ohne HSA 2023 · Jugend-ALQ 2023 · verf. Einkommen 2021 — am Visual ausgewiesen.)*
 
 ![LF9](charts/pbi/pbi_lf9.png)
 
