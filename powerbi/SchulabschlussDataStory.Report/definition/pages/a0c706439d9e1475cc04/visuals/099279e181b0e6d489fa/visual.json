@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Erkenntnis LF5: Der Schulartmix prägt die Abschlussverteilung deutlich. Links die Zusammensetzung der Schülerschaft nach Schulart (Input). Rechts, welche Schulart die Abgänge ohne Hauptschulabschluss stellt: 42 % (23.324) entfallen 2023 bundesweit auf Förderschulen, 22 % auf integrierte Gesamtschulen, von Gymnasien nur rund 3 % (Deutschland, Destatis 21111-12)."
+                    "value": "Erkenntnis LF5: Der Schulartmix prägt die Abschlussverteilung deutlich. Links die Zusammensetzung der Schülerschaft nach Schulart (Input, fest auf Deutschland, da nur DE-Ebene verfügbar). Rechts, welche Schulart die Abgänge ohne Hauptschulabschluss stellt (reagiert auf den Bundesland-Filter): 42 % (23.324) entfallen 2023 bundesweit auf Förderschulen, 22 % auf integrierte Gesamtschulen, von Gymnasien nur rund 3 % (Deutschland, Destatis 21111-12). Hinweis: Beim Filtern eines Bundeslandes bleibt der linke Chart bewusst unverändert (nur Deutschland)."
                   }
                 ]
               }

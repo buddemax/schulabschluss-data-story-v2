@@ -113,7 +113,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Schülerschaft nach Schulart (Input, Deutschland 2023)'"
+                  "Value": "'Schülerstruktur nach Schulart (fest: Deutschland 2023, nur DE-Ebene verfügbar)'"
                 }
               }
             }

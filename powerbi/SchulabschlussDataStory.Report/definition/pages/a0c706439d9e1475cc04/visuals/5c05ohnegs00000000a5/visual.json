@@ -126,7 +126,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Abgänge ohne Hauptschulabschluss je Schulart (Deutschland 2023)'"
+                  "Value": "'Abgänge ohne HSA je Schulart (2023, reagiert auf Bundesland-Filter)'"
                 }
               }
             }

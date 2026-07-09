@@ -103,6 +103,7 @@ Jugend-ALQ Ø = AVERAGE ( fact_arbeitsmarkt_2023[jugend_alq_15_25] )
 - **Kategorie/Gruppe** = `dim_schulart[schulart]` · **Werte** = `Schüleranteil %`
 - **Filter:** `fact_schule_2023[ebene]` = `DE` (Deutschland) · Schulart ≠ „Insgesamt"
 - **Soll-Wert:** Grundschulen **35,2 %**, Gymnasien **25,9 %**, Integr. Gesamtschulen **13,1 %**.
+- **Asymmetrie kennzeichnen (wichtig gegen Fehldeutung):** Die Seite zeigt zwei Charts mit unterschiedlicher Reichweite. **Links = Schülerstruktur, die Schülerstruktur ist quellseitig nur auf Deutschland-Ebene verfügbar und bleibt daher beim Bundesland-Filter fest** (Titel: „Schülerstruktur nach Schulart (fest: Deutschland 2023, nur DE-Ebene verfügbar)"). **Rechts = Abgänge ohne HSA je Schulart** aus `fact_abgaenge_schulart` (Landesebene 2023), **reagiert auf den Bundesland-Slicer** (Titel: „Abgänge ohne HSA je Schulart (2023, reagiert auf Bundesland-Filter)"). Ohne diese Beschriftung wirkt der linke Chart beim Filtern fälschlich „unverändert/kaputt".
 
 ### LF6 – Absolut vs. relativ (Wertung kippt)
 - **Visualtyp A (absolut):** Balken – **Y** = `dim_region[region]`, **X** = `Abgänge ohne HSA`

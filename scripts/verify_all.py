@@ -317,6 +317,10 @@ def _lf5read(_d):
 _lf5_de=any(("clusteredColumnChart" in _lf5read(_d) and "ebene" in _lf5read(_d) and "'DE'" in _lf5read(_d))
             for _d in os.listdir(_lf5dir))
 check("LF5-Säulendiagramm auf ebene='DE' gefiltert (kein Ebenen-Mix)", _lf5_de)
+# Asymmetrie-Beschriftung (Step 6): linker Chart als DE-fest, rechter Chart als bundeslandfilter-abhängig kenntlich gemacht
+_lf5all="".join(_lf5read(_d) for _d in os.listdir(_lf5dir))
+check("LF5-Report: Asymmetrie beschriftet (links 'nur DE-Ebene verfügbar' fest, rechts 'reagiert auf Bundesland-Filter')",
+      "nur DE-Ebene verfügbar" in _lf5all and "reagiert auf Bundesland-Filter" in _lf5all)
 _sch=[r for r in csv.DictReader(open(os.path.join(ROOT,"data","clean","fact_schule_2023.csv"),encoding="utf-8"),delimiter=";") if r["ebene"]=="DE"]
 _agg={}
 for _r in _sch:
